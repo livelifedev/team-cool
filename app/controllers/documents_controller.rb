@@ -31,7 +31,7 @@ class PagesController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:title, :description, :user_id, :type)
+    params.require(:document).permit(:title, :description, :user_id, :type, subject_ids: [])
   end
 
 
