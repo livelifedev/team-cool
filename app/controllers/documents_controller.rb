@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
   def index
-
+    #get all available documents
+    @documents = Document.all
   end
 
   def create
@@ -8,7 +9,8 @@ class DocumentsController < ApplicationController
   end
 
   def new
-
+    #get access to necessary attribute names
+    @document = Document.new
   end
 
   def edit
@@ -30,7 +32,13 @@ class DocumentsController < ApplicationController
 
   private
 
+  def set_types
+    #get access to types enum keys
+    @types = Document.types.keys
+  end
+
   def document_params
+    #whitelist params
     params.require(:document).permit(:title, :description, :user_id, :type, subject_ids: [])
   end
 
