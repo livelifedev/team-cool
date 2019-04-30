@@ -1,0 +1,25 @@
+<%= form_with model: @document, local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <% @types.each do |option| %>
+      <div>
+        <%= form.radio_button :doc_type, option %>
+        <%= form.label "doc_type_#{option}".to_sym, option %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :document %>
+    <%= form.file_field :document %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
