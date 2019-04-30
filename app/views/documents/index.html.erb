@@ -7,5 +7,6 @@
   <p><%= document.doc_type %></p>
   <%= link_to "edit", edit_document_path(document.id) %>
   <%= link_to "show", document_path(document.id) %>
+  <%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %>
   <p>---------------------------</p>  
 <% end %>
