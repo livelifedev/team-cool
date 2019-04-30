@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_004139) do
+ActiveRecord::Schema.define(version: 2019_04_30_062624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,10 +28,19 @@ ActiveRecord::Schema.define(version: 2019_04_30_004139) do
     t.integer "doc_type"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.float "score"
+    t.bigint "document_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_ratings_on_document_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ratings", "documents"
 end
