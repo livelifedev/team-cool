@@ -37,12 +37,16 @@ class DocumentsController < ApplicationController
       set_types
       render "edit"
     else
+      flash[:notice] = "Document was successfully updated."
       redirect_to documents_path
     end
   end
 
   def destroy
     #document retrieved from before_action
+    @document.destroy
+    flash[:notice] = "Document was successfully deleted."
+    redirect_to documents_path
   end
 
 
