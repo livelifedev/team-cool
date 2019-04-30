@@ -1,4 +1,7 @@
 class DocumentsController < ApplicationController
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_types, only: [:new, :edit]
+
   def index
     #get all available documents
     @documents = Document.all
@@ -6,6 +9,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.create(document_params)
+    redirect_to documents_path
   end
 
   def new
@@ -14,19 +18,21 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-
+    #document retrieved from before_action
   end
 
   def show
-
+    #document retrieved from before_action
   end
 
   def update
-
+    #document retrieved from before_action
+    @document.update(document_params)
+    redirect_to documents_path
   end
 
   def destroy
-
+    #document retrieved from before_action
   end
 
 
@@ -34,7 +40,12 @@ class DocumentsController < ApplicationController
 
   def set_types
     #get access to types enum keys
-    @types = Document.types.keys
+    @types = Document.doc_types.keys
+  end
+
+  def set_document
+    id = params[:id]
+    @document = Document.find(id)
   end
 
   def document_params
