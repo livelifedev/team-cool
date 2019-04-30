@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.create(document_params)
+    redirect_to documents_path
   end
 
   def new
@@ -18,7 +19,8 @@ class DocumentsController < ApplicationController
   end
 
   def show
-
+    #get params id to get individual document
+    set_document
   end
 
   def update
@@ -35,6 +37,11 @@ class DocumentsController < ApplicationController
   def set_types
     #get access to types enum keys
     @types = Document.types.keys
+  end
+
+  def set_document
+    id = params[:id]
+    @document = Document.find(id)
   end
 
   def document_params
