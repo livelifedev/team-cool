@@ -27,6 +27,8 @@ class DocumentsController < ApplicationController
 
   def update
     #document retrieved from before_action
+    @document.update(document_params)
+    redirect_to documents_path
   end
 
   def destroy
@@ -38,7 +40,7 @@ class DocumentsController < ApplicationController
 
   def set_types
     #get access to types enum keys
-    @types = Document.types.keys
+    @types = Document.doc_types.keys
   end
 
   def set_document
