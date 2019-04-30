@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
+
   def index
     #get all available documents
     @documents = Document.all
@@ -15,20 +17,19 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-
+    #document retrieved from before_action
   end
 
   def show
-    #get params id to get individual document
-    set_document
+    #document retrieved from before_action
   end
 
   def update
-
+    #document retrieved from before_action
   end
 
   def destroy
-
+    #document retrieved from before_action
   end
 
 
