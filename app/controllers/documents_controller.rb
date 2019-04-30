@@ -9,7 +9,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.create(document_params)
-    if @listing.errors.any?
+    if @document.errors.any?
       set_types
       render "new"
     else
@@ -33,7 +33,12 @@ class DocumentsController < ApplicationController
   def update
     #document retrieved from before_action
     @document.update(document_params)
-    redirect_to documents_path
+    if @document.errors.any?
+      set_types
+      render "edit"
+    else
+      redirect_to documents_path
+    end
   end
 
   def destroy
