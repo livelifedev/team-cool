@@ -9,7 +9,12 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.create(document_params)
-    redirect_to documents_path
+    if @listing.errors.any?
+      set_types
+      render "new"
+    else
+      redirect_to documents_path
+    end
   end
 
   def new
