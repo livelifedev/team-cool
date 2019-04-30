@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+subjects = Subject.create([
+  { name: "Maths" }, 
+  { name: "History" },
+  { name: "Science" },
+  { name: "Geography" },
+  { name: "English" },
+  { name: "Biology" },
+])
