@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
     <html lang="en">
     <head>
@@ -26,49 +26,12 @@
       <% end %> 
     </div>
 
-    
-        <!--BANNER-->
-        <header>
-        <!--NAV
-        <nav class="nav">--> 
-            <!--INSERT LOGO-->
-            
-            
-                    <div id="menuToggle">
-                      
-                      <input type="checkbox" />
-                      
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      
-                      <ul id="menu">
-                        <a href="#"><li>Home</li></a>
-                        <a href="#"><li>About</li></a>
-                        <a href="#"><li>Info</li></a>
-                        <a href="#"><li>Contact</li></a>
-                      </ul>
-                    </div>
-                  </nav>
-
-            <!--<li><a href="#home">HOME</a></li>
-               <li><a href="#about">ABOUT</a></li>
-               <li><a href="#upload">UPLOAD</a></li>
-               <li><a href="#browse">BROWSE BY SUBJECT</a></li><br><br>
-               <li><a href="#search">SEARCH</a></li>
-            </ul>
-            <ul class="login">
-                    <li><a href="#login">Login</a></li>
-                    <li><a href="#signup">Signup</a></li>
-            </ul>
-        </nav>-->
-            
-        
-        </header>
+    <%= render 'nav_top' %>
 
         <div class="title">
             <h1>LibU</h1>
         </div>
+        
 
         <div class="wrap">
                 <div class="search">
@@ -78,9 +41,9 @@
                   </button>
                 </div>
              </div>
-        
+            </div>
 
-        <!--INSERT ERB TO ROTATE THROUGH MOST POPULAR-->
+            <!--INSERT ERB TO ROTATE THROUGH MOST POPULAR-->
         <div class="subjectgrid">
         <h2>Popular Subjects</h2>
 
@@ -104,18 +67,6 @@
             </div>
         </div>
 
-        <div class="footer">
-            <nav class="bottomnav">
-                <ul>
-                    <li><a href="#top">Back to top</a></li>
-                    <li><a href="#top">About</a></li>
-                    <li><a href="#top">Contact</a></li>
-                    <li><a href="#top">Privacy</a></li>
-            </nav>
-        <br>
-        &copy; 2019 Libu
-        <br>
-        </div>
+    <%=render 'nav_bottom' %>
         
     </body>
-</html>
