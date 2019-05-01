@@ -21,7 +21,7 @@
   <% end %></p>
   <p><%= document.doc_type %></p>
   <p> Rating
-    <%= document.ratings.average(:score) %>
+    <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
     (<%= document.ratings.count %>)
   </p>
   <%= link_to "edit", edit_document_path(document.id) %>

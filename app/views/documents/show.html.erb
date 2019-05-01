@@ -5,7 +5,7 @@
 <% end %></p>
 <p><%= @document.doc_type %></p>
 <p> Rating
-  <%= @document.ratings.average(:score).round(1) %>
+  <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
   (<%= @document.ratings.count %>)
 </p>
 <form action="<%= rate_document_path %>" method="POST">
