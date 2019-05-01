@@ -9,7 +9,12 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.create(document_params)
-    redirect_to documents_path
+    if @document.errors.any?
+      set_types
+      render "new"
+    else
+      redirect_to documents_path
+    end
   end
 
   def new
@@ -28,11 +33,20 @@ class DocumentsController < ApplicationController
   def update
     #document retrieved from before_action
     @document.update(document_params)
-    redirect_to documents_path
+    if @document.errors.any?
+      set_types
+      render "edit"
+    else
+      flash[:notice] = "Document was successfully updated."
+      redirect_to documents_path
+    end
   end
 
   def destroy
     #document retrieved from before_action
+    @document.destroy
+    flash[:notice] = "Document was successfully deleted."
+    redirect_to documents_path
   end
 
 
