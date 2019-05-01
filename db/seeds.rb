@@ -14,3 +14,14 @@ subjects = Subject.create([
   { name: "English" },
   { name: "Biology" },
 ])
+
+documents = []
+
+20.times do
+  documents << Document.create(
+    title: Faker::Book.title, 
+    description: Faker::Quote.matz,
+    doc_type: rand(2)
+  )
+end
+
