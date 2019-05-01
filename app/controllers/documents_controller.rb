@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
     #get all available documents
     @documents = Document.all
     @q = Document.ransack(params[:q])
+    # @q.title_cont = "" unless params[:q]
     @document = @q.result(distinct: true) 
   end
 

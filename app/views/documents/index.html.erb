@@ -6,8 +6,12 @@
   <%= f.submit %>
 <% end %>
 
-<% @document.each do |x|%>
-<p><%= x.title %></p>
+<% if !params[:q].nil? %>
+  <% @document.each do |attr|%>
+  <p><%= attr.title %></p>
+  <p><%= attr.description %></p>
+  <p><%= attr.doc_type %></p>
+  <% end %>
 <% end %>
 
 
