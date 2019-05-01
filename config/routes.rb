@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get "/", to: "pages#home", as: "root"
-  get "/documents", to: "documents#index"
-  resource :documents	
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :documents	
+  resources :users, only: [:show, :edit, :update]
+  post "documents/:id/rate", to: "documents#rate", as: "rate_document"
 end
