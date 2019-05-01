@@ -22,6 +22,6 @@ documents = []
     title: Faker::Book.title, 
     description: Faker::Quote.matz,
     doc_type: rand(2)
-  )
+  ).subjects.create(name:Subject.pluck(:name)[rand(6)])
 end
 
