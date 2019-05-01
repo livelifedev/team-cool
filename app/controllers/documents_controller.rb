@@ -5,6 +5,8 @@ class DocumentsController < ApplicationController
   def index
     #get all available documents
     @documents = Document.all
+    @q = Document.ransack(params[:q])
+    @document = @q.result(distinct: true) 
   end
 
   def create
@@ -49,6 +51,10 @@ class DocumentsController < ApplicationController
     redirect_to documents_path
   end
 
+  # def rate
+  #   @document.ratings.create(document_params)
+  #   # render params.inspect
+  # end
 
   private
 
@@ -65,6 +71,7 @@ class DocumentsController < ApplicationController
   def document_params
     #whitelist params
     params.require(:document).permit(:title, :description, :user_id, :doc_type, subject_ids: [])
+    
   end
 
 

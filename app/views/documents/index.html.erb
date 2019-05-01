@@ -1,3 +1,18 @@
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :title_cont %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+<% @document.each do |x|%>
+<p><%= x.title %></p>
+<% end %>
+
+
+
+
 <% @documents.each do |document| %>
   <p><%= document.title %></p>
   <p><%= document.description %></p>
