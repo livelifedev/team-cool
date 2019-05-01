@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :rate]
   before_action :set_types, only: [:new, :edit]
 
   def index
@@ -40,7 +40,7 @@ class DocumentsController < ApplicationController
       render "edit"
     else
       flash[:notice] = "Document was successfully updated."
-      redirect_to documents_path
+      redirect_to document_path(@document)
     end
   end
 
@@ -51,10 +51,11 @@ class DocumentsController < ApplicationController
     redirect_to documents_path
   end
 
-  # def rate
-  #   @document.ratings.create(document_params)
-  #   # render params.inspect
-  # end
+  def rate
+    # render plain: params.inspect
+    @document.ratings.create(score:params["score"])
+    redirect_to document_path(@document)
+  end
 
   private
 
