@@ -1,1 +1,121 @@
-<h1>Homepage</h1>
+
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--LINK ONCE INSIDE RAILS-->
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/Styles/home.css.scss", :media => "all" %>
+        
+    </head>
+
+    <body>
+
+    <div>
+      <% if user_signed_in? %>
+        <li><%= link_to "Update Profile", edit_user_registration_path %></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li><%= link_to "Log In", new_user_session_path %></li>
+      <% end %> 
+    </div>
+
+    
+        <!--BANNER-->
+        <header>
+        <!--NAV
+        <nav class="nav">--> 
+            <!--INSERT LOGO-->
+            
+            
+                    <div id="menuToggle">
+                      
+                      <input type="checkbox" />
+                      
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      
+                      <ul id="menu">
+                        <a href="#"><li>Home</li></a>
+                        <a href="#"><li>About</li></a>
+                        <a href="#"><li>Info</li></a>
+                        <a href="#"><li>Contact</li></a>
+                      </ul>
+                    </div>
+                  </nav>
+
+            <!--<li><a href="#home">HOME</a></li>
+               <li><a href="#about">ABOUT</a></li>
+               <li><a href="#upload">UPLOAD</a></li>
+               <li><a href="#browse">BROWSE BY SUBJECT</a></li><br><br>
+               <li><a href="#search">SEARCH</a></li>
+            </ul>
+            <ul class="login">
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="#signup">Signup</a></li>
+            </ul>
+        </nav>-->
+            
+        
+        </header>
+
+        <div class="title">
+            <h1>LibU</h1>
+        </div>
+
+        <div class="wrap">
+                <div class="search">
+                   <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                   <button type="submit" class="searchButton">
+                     <i class="fa fa-search"></i>
+                  </button>
+                </div>
+             </div>
+        
+
+        <!--INSERT ERB TO ROTATE THROUGH MOST POPULAR-->
+        <div class="subjectgrid">
+        <h2>Popular Subjects</h2>
+
+            <div class ="subjectline">
+
+                <div class="subjectone">
+                    <!--Link to Subject page-->
+                    <%= image_tag("science_photo.jpg", :alt => "Science") %>
+                    <h4> Science</h4> 
+                </div>
+
+                <div class="subjecttwo"> <!--Link to Subject page-->
+                <%= image_tag("history_photo.jpg", :alt => "History") %>
+                    <h4> History</h4>
+                </div>
+
+                <div class="subjectthree"> <!--Link to Subject page-->
+                <%= image_tag("math_photo.jpg", :alt => "Math") %>
+                    <h4> Math</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <nav class="bottomnav">
+                <ul>
+                    <li><a href="#top">Back to top</a></li>
+                    <li><a href="#top">About</a></li>
+                    <li><a href="#top">Contact</a></li>
+                    <li><a href="#top">Privacy</a></li>
+            </nav>
+        <br>
+        &copy; 2019 Libu
+        <br>
+        </div>
+        
+    </body>
+</html>
