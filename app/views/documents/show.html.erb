@@ -5,9 +5,23 @@
 <% end %></p>
 <p><%= @document.doc_type %></p>
 <p> Rating
-  <%= @document.ratings.average(:score) %>
+  <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
   (<%= @document.ratings.count %>)
 </p>
+<form action="<%= rate_document_path %>" method="POST">
+  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <select name="score">
+    <option value = "1">1</option>
+    <option value = "2">2</option>
+    <option value = "3">3</option>
+    <option value = "4">4</option>
+    <option value = "5">5</option>
+  </select>
+  <input type="submit" value="Rate" />
+</form>
 <%= link_to "edit", edit_document_path(@document.id) %>
 <%= link_to "back to documents index", documents_path %>
 <%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %>
+
+
+
