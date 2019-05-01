@@ -1,16 +1,21 @@
 <%= search_form_for @q do |f| %>
-
-  <%= f.label :title_cont %>
-  <%= f.search_field :title_cont %>
-
-  <%= f.submit %>
+  <div class="wrap">
+  <div class="search">
+    <%= f.search_field :title_cont, class: "searchTerm", placeholder: "What are you looking for?" %>
+    <%= f.submit "S" %>
+  </div>
+  </div>
 <% end %>
 
 <% if !params[:q].nil? %>
-  <% @document.each do |attr|%>
-  <p><%= attr.title %></p>
-  <p><%= attr.description %></p>
-  <p><%= attr.doc_type %></p>
+  <% if params[:q][:title_cont] != "" %>
+  <div class="results">
+    <% @document.each do |attr|%>
+    <p><%= attr.title %></p>
+    <p><%= attr.description %></p>
+    <p><%= attr.doc_type %></p>
+    <% end %>
+  </div>
   <% end %>
 <% end %>
 
