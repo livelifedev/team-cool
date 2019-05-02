@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :documents, dependent: :destroy
-  has_many :ratings, dependent: :destroy
+  has_many :questions
+  has_many :answers
 
   enum gender: { female: 0, male: 1, other: 2 }
   validates :first_name, :surname, :username, :birthday, :school, presence: true

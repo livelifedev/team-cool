@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :documents	
   resources :users, only: [:show, :edit, :update]
   post "documents/:id/rate", to: "documents#rate", as: "rate_document"
+  resources :questions do
+    resources :anwers
+  end
 end

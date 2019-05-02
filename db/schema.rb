@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2019_05_02_021354) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.integer "question_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "document_subjects", force: :cascade do |t|
     t.integer "document_id"
     t.integer "subject_id"
@@ -49,6 +57,13 @@ ActiveRecord::Schema.define(version: 2019_05_02_021354) do
     t.integer "doc_type"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -85,6 +100,8 @@ ActiveRecord::Schema.define(version: 2019_05_02_021354) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "documents", "users"
   add_foreign_key "ratings", "documents"
   add_foreign_key "ratings", "users"
 end
