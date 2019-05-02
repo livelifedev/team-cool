@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
       body: params[:document][:body],
       user_id: current_user.id
     )
+    redirect_to document_path(@document)
   end
 
   def new
