@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :questions do
     resources :anwers
   end
+  resources :comments, only: [:index, :create, :destroy]
 end
