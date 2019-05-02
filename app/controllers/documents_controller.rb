@@ -5,6 +5,7 @@ class DocumentsController < ApplicationController
   def index
     #get all available documents
     @documents = Document.all
+    # render plain: params[:q][:title_cont].inspect
     @q = Document.ransack(params[:q])
     # @q.title_cont = "" unless params[:q]
     @document = @q.result(distinct: true) 
