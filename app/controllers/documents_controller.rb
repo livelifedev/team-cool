@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_document, only: [:show, :edit, :update, :destroy, :rate]
   before_action :set_types, only: [:new, :edit]
 
@@ -12,7 +13,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.create(document_params)
+    @document = current_user.documents.create(document_params)
+    # @document = Document.create(document_params)
     if @document.errors.any?
       set_types
       render "new"

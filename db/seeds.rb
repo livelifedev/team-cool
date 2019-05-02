@@ -15,13 +15,41 @@ subjects = Subject.create([
   { name: "Biology" },
 ])
 
-documents = []
+
+admin = User.create(
+  first_name: "Admin",
+  surname: "Admin",
+  username: "Admin",
+  email: "admin@admin.com", 
+  password: "qwerty69",
+  birthday: "1993-04-16",
+  school: "Coder Academy",
+  gender: 2
+)
+
+users = []
 
 20.times do
+  users << User.create(
+    first_name: Faker::Name.first_name,
+    surname: Faker::Name.last_name,
+    username: Faker::Name.initials,
+    email: Faker::Internet.email, 
+    password: "12345678",
+    birthday: "1993-04-16",
+    school: Faker::University.name,
+    gender: rand(2)
+  )
+end
+
+documents = []
+
+40.times do
   documents << Document.create(
     title: Faker::Book.title, 
     description: Faker::Quote.matz,
-    doc_type: rand(2)
+    doc_type: rand(2),
+    user_id: rand(21)
   ).subject_ids = [rand(1..6)]
 end
 
