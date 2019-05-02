@@ -34,6 +34,11 @@ class DocumentsController < ApplicationController
 
   def show
     #document retrieved from before_action
+    @comment = Comment.new
+    # @comment = @document.comments.create(
+    #   body: "comment_params[:body]",
+    #   user_id: current_user.id
+    # )
   end
 
   def update
@@ -57,8 +62,12 @@ class DocumentsController < ApplicationController
 
   def rate
     # render plain: params.inspect
-    @document.ratings.create(score:params["score"])
-    redirect_to document_path(@document)
+    if current_user
+      @document.ratings.create(score:params["score"], user_id: current_user.id)
+      # @document.ratings.user_id = current_user.id
+      # @document.save
+      redirect_to document_path(@document)
+    end
   end
 
   private
@@ -76,7 +85,6 @@ class DocumentsController < ApplicationController
   def document_params
     #whitelist params
     params.require(:document).permit(:title, :description, :user_id, :doc_type, subject_ids: [])
-    
   end
 
 

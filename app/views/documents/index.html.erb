@@ -41,7 +41,7 @@
 
 <% @documents.each do |document| %>
   <p><%= document.title %></p>
-  <p><%= document.description %></p>
+  <p><%= truncate(document.description, length:100) %></p>
   <p><% document.subjects.each do |sub| %>
     <li><%= sub.name %></li>
   <% end %></p>
