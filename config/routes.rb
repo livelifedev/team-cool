@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post "documents/:id/rate", to: "documents#rate", as: "rate_document"
   resources :questions do
-    resources :anwers
+    resources :answers
   end
   
 end
