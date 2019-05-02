@@ -57,8 +57,12 @@ class DocumentsController < ApplicationController
 
   def rate
     # render plain: params.inspect
-    @document.ratings.create(score:params["score"])
-    redirect_to document_path(@document)
+    if current_user
+      @document.ratings.create(score:params["score"], user_id: current_user.id)
+      # @document.ratings.user_id = current_user.id
+      # @document.save
+      redirect_to document_path(@document)
+    end
   end
 
   private
