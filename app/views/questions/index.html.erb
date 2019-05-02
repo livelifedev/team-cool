@@ -6,22 +6,28 @@
 <% @questions.each do |question| %>
 <div>
     <h4><%= question.content %></h4>
-    <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.email %>
+    <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.email %><br/>
 
+  <% if can? :update, question %>
     <%= link_to "Edit", edit_question_path(question) %>
+  <% end %>
 
+  <% if can? :destroy, question %>
     <%= link_to 'Destroy', question, method: :delete, data: { confirm: "Are you sure?" } %>
-
+  <% end %>
+  
     <% if question.answers.any? %>
         
         <h3>Answers</h3>
-        <% render question.answers %>
+        <%= render question.answers %>
     <% end %>
 
     <h3>Add Answer</h3>
-    <%= form_with model: question, local: true do |f| %>
+    <%= form_for([question, question.answers.create]) do |f| %>
         <%= f.text_field :content %>
         <%= submit_tag "Add" %>
     <% end %>
+
+    
 </div>
 <% end %>
