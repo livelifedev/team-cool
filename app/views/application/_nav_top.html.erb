@@ -1,4 +1,4 @@
-<head>
+<header>
     <nav class="nav">
                 
         <div id="menuToggle">
@@ -10,10 +10,13 @@
             <span></span>
             
             <ul id="menu">
-            <a href="#"><li>Home</li></a>
-            <a href="#"><li>About</li></a>
-            <a href="#"><li>Info</li></a>
-            <a href="#"><li>Contact</li></a>
+            <a href="#"><li><%= link_to "Home", root_path %>Home</li></a>
+            <a href="#"><li><%= link_to "About", root_path %>About</li></a>
+            <a href="#"><li><%= link_to "Upload", root_path %>Upload</li></a>
+            <a href="#"><li><%= link_to "Search", root_path %>Search</li></a>
+
+
+        <div class="links">      
         <% if user_signed_in? %>
             <a href="#"><li><%= link_to "Update Profile", edit_user_registration_path %></li></a>
             <a href="#"><li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li></a>
@@ -24,5 +27,5 @@
             </ul>
         </div>
     </nav>
-</head>
+</header>
 

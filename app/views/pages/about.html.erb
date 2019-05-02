@@ -1,0 +1,41 @@
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "about.css.scss", :media => "all" %>
+       
+    </head>
+
+    <body>
+         <%= render 'nav_top' %>
+
+        <div class="abouthead">          
+            <h1> About Us </h1>
+        </div>
+
+        <div class="about">
+
+                    <%= image_tag("logo.png", :alt => "Logo", :class => "logo") %> <br>
+                
+            <div class="abouttext">
+                <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus tincidunt augue suscipit orci hendrerit
+                        malesuada id et tellus.
+                        Ut rutrum quam eget enim ultricies sodales. Quisque
+                        efficitur erat a volutpat tristique. Fusce condimentum
+                        purus in urna scelerisque volutpat.
+                        Duis porttitor massa nec enim malesuada, vitae aliquam
+                        neque vulputate. Morbi dictum ex porta, condimentum
+                        diam et, placerat magna.  
+                </p>
+            </div>
+        </div> 
+
+    <%= render nav_bottom %>

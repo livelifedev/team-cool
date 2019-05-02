@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--LINK ONCE INSIDE RAILS-->
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "home.css.scss", :media => "all" %>
+    </head>
+
+    <body>
+        
+        <%=render 'nav_top' %>
+           <%end%> 
+        
+
+        <div class="confirmed">
+            <h2> You're good to go! </h2><br>
+                <p>
+                    Thank you for your payment
+                </p>
+        </div>
+    <!--STYLE-->
+    
+        <%= button_to "BUTTON: link version", users_path, :method => "get" %>
+
+        <%=render "nav_bottom">
+
