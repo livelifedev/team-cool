@@ -24,8 +24,9 @@ class CommentsController < ApplicationController
   private
 
   def set_document
-    id = params[:id]
-    @document = Document.find(1)
+    # render plain: params.inspect
+    id = params[:document_id]
+    @document = Document.find(id)
   end
 
   def comment_params
