@@ -7,9 +7,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # render plain: comment_params[:body]
+    # render plain: params.inspect
+    # "document"=>{"body"=>"hoohaaa"}
     @comment = @document.comments.create(
-      body: comment_params[:body],
+      # body: params[:body],
+      body: params[:document][:body],
       user_id: current_user.id
     )
   end
@@ -27,7 +29,7 @@ class CommentsController < ApplicationController
 
   def comment_params
     #whitelist params
-    params.require(:comment).permit(:body)
+    # params.require(:comment).permit(:body)
   end
 
 end

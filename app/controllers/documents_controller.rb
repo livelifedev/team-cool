@@ -34,6 +34,11 @@ class DocumentsController < ApplicationController
 
   def show
     #document retrieved from before_action
+    @comment = Comment.new
+    # @comment = @document.comments.create(
+    #   body: "comment_params[:body]",
+    #   user_id: current_user.id
+    # )
   end
 
   def update
