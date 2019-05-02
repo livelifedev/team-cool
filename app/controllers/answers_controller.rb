@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
 
     def create
-        @question = Question.find(params[:id])
+        set_question
         @answer = @question.answers.build(answers_params)
         @answer.user = current_user
         @answer.save
@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
     end
 
     def destroy
-        @question = Question.find(params[:question_id])
+        set_question
         @answer = @question.answers.find(params[:id]).destroy
         flash[:notice] = "Answer was successfully deleted"
 

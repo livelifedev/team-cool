@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Q&A</h1>
 
 <%= link_to 'New Question', new_question_path %>
 
-<% @questions.each do |question|%>
+<% @questions.each do |question| %>
 <div>
-    <h3><%= question_content %></h3>
-    <% time_ago_in_words(question.created_at) %> ago by <%= question.user.email %>
+    <h4><%= question.content %></h4>
+    <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.email %>
 
     <%= link_to "Edit", edit_question_path(question) %>
-    <%= link_to 'Destroy', question, method: delete, data: { confirm: "Are you sure?" } %>
+
+    <%= link_to 'Destroy', question, method: :delete, data: { confirm: "Are you sure?" } %>
 
     <% if question.answers.any? %>
+        
         <h3>Answers</h3>
         <% render question.answers %>
     <% end %>
 
     <h3>Add Answer</h3>
-    <%= form_for(question, question.answers.build) do |f| %>
-        <%= f.text.area :content %>
+    <%= form_with model: question, local: true do |f| %>
+        <%= f.text_field :content %>
         <%= submit_tag "Add" %>
     <% end %>
 </div>
+<% end %>
