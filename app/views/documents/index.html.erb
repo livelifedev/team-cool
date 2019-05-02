@@ -1,0 +1,40 @@
+<%= search_form_for @q do |f| %>
+  <div class="wrap">
+  <div class="search">
+    <%= f.search_field :title_cont, class: "searchTerm", placeholder: "What are you looking for?" %>
+    <%= f.submit "S" %>
+  </div>
+  </div>
+<% end %>
+
+<% if !params[:q].nil? %>
+  <% if params[:q][:title_cont] != "" %>
+  <div class="results">
+    <% @document.each do |attr|%>
+    <p><%= attr.title %></p>
+    <p><%= attr.description %></p>
+    <p><%= attr.doc_type %></p>
+    <% end %>
+  </div>
+  <% end %>
+<% end %>
+
+
+
+
+<% @documents.each do |document| %>
+  <p><%= document.title %></p>
+  <p><%= document.description %></p>
+  <p><% document.subjects.each do |sub| %>
+    <li><%= sub.name %></li>
+  <% end %></p>
+  <p><%= document.doc_type %></p>
+  <p> Rating
+    <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
+    (<%= document.ratings.count %>)
+  </p>
+  <%= link_to "edit", edit_document_path(document.id) %>
+  <%= link_to "show", document_path(document.id) %>
+  <%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %>
+  <p>---------------------------</p>  
+<% end %>
