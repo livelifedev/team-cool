@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 2019_05_02_110628) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "document_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_comments_on_document_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "document_subjects", force: :cascade do |t|
     t.integer "document_id"
     t.integer "subject_id"
@@ -101,6 +111,8 @@ ActiveRecord::Schema.define(version: 2019_05_02_110628) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "documents", "users"
   add_foreign_key "ratings", "documents"
   add_foreign_key "ratings", "users"
 end

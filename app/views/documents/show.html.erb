@@ -24,4 +24,12 @@
 <%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %>
 
 
-
+<%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
