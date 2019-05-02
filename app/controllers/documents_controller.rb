@@ -1,17 +1,20 @@
 class DocumentsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_document, only: [:show, :edit, :update, :destroy, :rate]
   before_action :set_types, only: [:new, :edit]
 
   def index
     #get all available documents
     @documents = Document.all
+    # render plain: params[:q][:title_cont].inspect
     @q = Document.ransack(params[:q])
     # @q.title_cont = "" unless params[:q]
     @document = @q.result(distinct: true) 
   end
 
   def create
-    @document = Document.create(document_params)
+    @document = current_user.documents.create(document_params)
+    # @document = Document.create(document_params)
     if @document.errors.any?
       set_types
       render "new"

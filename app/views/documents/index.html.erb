@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
   <html>
     <head>
@@ -12,6 +13,30 @@
           <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
                 
   </head>                       
+=======
+<%= search_form_for @q do |f| %>
+  <div class="wrap">
+  <div class="search">
+    <%= f.search_field :title_cont, class: "searchTerm", placeholder: "What are you looking for?" %>
+    <%= f.submit "S" %>
+  </div>
+  </div>
+<% end %>
+
+<% if !params[:q].nil? %>
+  <% if params[:q][:title_cont] != "" %>
+  <div class="results">
+    <% @document.each do |attr|%>
+    <p><%= attr.title %></p>
+    <p><%= attr.description %></p>
+    <p><%= attr.doc_type %></p>
+    <% end %>
+  </div>
+  <% end %>
+<% end %>
+
+
+>>>>>>> 0227d8c7c50fb0a51db450fd666fe37adf29f560
 
 
 <% @documents.each do |document| %>

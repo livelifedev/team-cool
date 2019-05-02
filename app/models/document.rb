@@ -1,4 +1,5 @@
 class Document < ApplicationRecord
+  belongs_to :user
   has_many :document_subjects
   has_many :subjects, through: :document_subjects
   has_many :ratings, dependent: :destroy
