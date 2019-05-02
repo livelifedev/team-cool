@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :questions
   has_many :answers
+  has_many :comments
 
   enum gender: { female: 0, male: 1, other: 2 }
   validates :first_name, :surname, :username, :birthday, :school, presence: true
