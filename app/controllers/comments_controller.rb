@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   before_action :set_document, except: [:new]
 
   def index
@@ -27,11 +27,6 @@ class CommentsController < ApplicationController
     # render plain: params.inspect
     id = params[:document_id]
     @document = Document.find(id)
-  end
-
-  def comment_params
-    #whitelist params
-    # params.require(:comment).permit(:body)
   end
 
 end
