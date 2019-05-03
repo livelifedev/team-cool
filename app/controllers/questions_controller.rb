@@ -1,8 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /questions
   # GET /questions.json
+  
   def index
     @questions = Question.all
   end
@@ -10,6 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    authorize! :update, @question
   end
 
   # GET /questions/new
@@ -19,12 +21,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    authorize! :update, @question
   end
 
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
+    @question = current_user.questions.create(question_params)
 
     respond_to do |format|
       if @question.save
@@ -54,6 +57,8 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    authorize! :destroy, @question
+    
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }

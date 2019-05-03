@@ -15,7 +15,7 @@
             <a href="#"><li>Info</li></a>
             <a href="#"><li>Contact</li></a>
         <% if user_signed_in? %>
-            <a href="#"><li><%= link_to "Update Profile", edit_user_registration_path %></li></a>
+            <a href="#"><li><%= link_to "Profile", edit_user_registration_path %></li></a>
             <a href="#"><li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li></a>
         <% else %>
             <a href="#"><li><%= link_to "Log In", new_user_session_path %></li></a>

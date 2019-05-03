@@ -1,14 +1,21 @@
 class AnswersController < ApplicationController
 
+
+    def new
+        @answer = Answer.new
+    end
+
     def create
-        @question = Question.find(params[:id])
-        @answer = @question.answers.build(answers_params)
+        @question = Question.find(params[:question_id])
+        @answer = @question.answers.create(answers_params)
         @answer.user = current_user
         @answer.save
 
         redirect_to questions_path
     end
 
+    
+    
     def destroy
         @question = Question.find(params[:question_id])
         @answer = @question.answers.find(params[:id]).destroy
