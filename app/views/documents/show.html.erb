@@ -4,6 +4,7 @@
   <li><%= sub.name %></li>
 <% end %></p>
 <p><%= @document.doc_type %></p>
+<p><%= link_to "Download", @document.file if @document.file.attached? %></p>
 <p> Rating
   <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
   (<%= @document.ratings.count %>)
@@ -40,3 +41,4 @@
 <% end %>
 
 <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
+

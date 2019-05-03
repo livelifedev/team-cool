@@ -80,7 +80,7 @@ class DocumentsController < ApplicationController
 
   def document_params
     #whitelist params
-    params.require(:document).permit(:title, :description, :user_id, :doc_type, subject_ids: [])
+    params.require(:document).permit(:title, :description, :user_id, :doc_type, :file, subject_ids: [])
   end
 
 
