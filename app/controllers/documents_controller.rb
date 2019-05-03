@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :rate]
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_action :set_types, only: [:new, :edit]
 
   def index
@@ -64,16 +64,6 @@ class DocumentsController < ApplicationController
     @document.destroy
     flash[:notice] = "Document was successfully deleted."
     redirect_to documents_path
-  end
-
-  def rate
-    # render plain: params.inspect
-    if current_user
-      @document.ratings.create(score:params["score"], user_id: current_user.id)
-      # @document.ratings.user_id = current_user.id
-      # @document.save
-      redirect_to document_path(@document)
-    end
   end
 
   private
