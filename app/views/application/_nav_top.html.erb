@@ -1,6 +1,7 @@
+<%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/nav_top.scss" %>
+
 <header>
     <nav class="nav">
-                
         <div id="menuToggle">
                 
             <input type="checkbox" />
@@ -10,23 +11,25 @@
             <span></span>
             
         <ul id="menu">
-            <a href="#"><li><%= link_to "Home", root_path %>Home</li></a>
-            <a href="#"><li><%= link_to "About", root_path %>About</li></a>
-            <a href="#"><li><%= link_to "Upload", root_path %>Upload</li></a>
-            <a href="#"><li><%= link_to "Search", root_path %>Search</li></a>
+            <a href="#"><li><%= link_to "Home", root_path %></li></a>
+            <a href="#"><li><%= link_to "About", root_path %></li></a>
+            <a href="#"><li><%= link_to "Upload", root_path %></li></a>
+            <a href="#"><li><%= link_to "Search", root_path %></li></a>
+        </ul>
+    </nav>
+
+    <div class="loginlinks">    
+        <ul id="navlinks"> 
+            <% if user_signed_in? %>
+                <a href="#"><li><%= link_to "Update Profile", edit_user_registration_path %></li></a>
+                <a href="#"><li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li></a>
+            <% else %><br><br>
+                <a href="#"><li><%= link_to "Log In", new_user_session_path %></li></a><br>
+                <a href="#"><li><%= link_to "Sign Up", new_user_registration_path %></li></a><br>
+            <% end %> 
         </ul>
 
-        <div class="links">
-            <div class="form">      
-                <% if user_signed_in? %>
-                    <a href="#"><li><%= link_to "Update Profile", edit_user_registration_path %></li></a><br>
-                    <a href="#"><li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li></a><br>
-                <% else %>
-                    <a href="#"><li><%= link_to "Log In", new_user_session_path %></li></a><br>
-                    <a href="#"><li><%= link_to "Sign Up", new_user_registration_path %></li></a><br>
-                <% end %> 
+    </div>
 
-        </div>
-    </nav>
 </header>
 

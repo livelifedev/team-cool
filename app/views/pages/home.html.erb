@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>LibU</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--LINK ONCE INSIDE RAILS-->
+        
 
         <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
@@ -14,42 +14,68 @@
         
     </head>
 
-    <body>
+
 
     
 
     <%= render 'nav_top' %>
 
+    <h1>Log in</h1>
+  
+    <div class="login">
+    <div class="form"
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+
+    </div>
+  </div>
+
         <div class="title">
             <h1>LibU</h1>
         </div>
         
-        <%= render 'search' %>
 
-            <!--INSERT ERB TO ROTATE THROUGH MOST POPULAR-->
+            
         <div class="subjectgrid">
         <h2>Popular Subjects</h2>
 
             <div class ="subjectline">
 
                 <div class="subjectone">
-                    <!--Link to Subject page-->
+                    
                     <%= image_tag("science_photo.jpg", :alt => "Science") %>
                     <h4> Science</h4> 
                 </div>
 
-                <div class="subjecttwo"> <!--Link to Subject page-->
+                <div class="subjecttwo"> 
                 <%= image_tag("history_photo.jpg", :alt => "History") %>
                     <h4> History</h4>
                 </div>
 
-                <div class="subjectthree"> <!--Link to Subject page-->
-                <%= image_tag("math_photo.jpg", :alt => "Math") %>
+                <div class="subjectthree"> 
+                    <%= image_tag("math_photo.jpg", :alt => "Math") %>
                     <h4> Math</h4>
                 </div>
             </div>
         </div>
 
     <%=render 'nav_bottom' %>
-        
+
+    
     </body>
+
+        
