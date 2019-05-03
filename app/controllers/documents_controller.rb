@@ -10,7 +10,7 @@ class DocumentsController < ApplicationController
     @q = Document.ransack(params[:q])
     # @q.title_cont = "" unless params[:q]
     @document = @q.result(distinct: true) 
-    # render plain: @q.result.count == 0
+    # render plain: @document.inspect
   end
 
   def create

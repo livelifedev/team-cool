@@ -1,5 +1,5 @@
 <% if !params[:q].nil? %>
-  <% if params[:q][:title_cont] != "" %>
+  <% if params[:q][:title_or_description_cont] != "" %>
   <div class="results">
   <h2>Results</h2>
     <% if @document.count <= 0 %>
