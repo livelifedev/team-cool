@@ -34,16 +34,33 @@
 
 
 <% if !params[:q].nil? %>
-<% if params[:q][:title_cont] != "" %>
-<div class="results">
-<% @document.each do |attr|%>
-<p><%= attr.title %></p>
-<p><%= attr.description %></p>
-<p><%= attr.doc_type %></p>
+  <% if params[:q][:title_cont] != "" %>
+  <div class="results">
+  <h2>Results</h2>
+    <% if @document.count <= 0 %>
+      <p>No results</p>
+    <% else %>
+      <% @document.each do |doc|%>
+      <p><%= doc.title %></p>
+      <p><%= doc.description %></p>
+      <p>
+        <% doc.subjects.each do |sub| %>
+          <li><%= sub.name %></li>
+        <% end %>
+      </p>
+      <p><%= doc.doc_type %></p>
+      <p> Rating
+        <%= number_with_precision doc.ratings.average(:score), :precision => 1 %>
+        (<%= doc.ratings.count %>)
+      </p>
+      <%= link_to "show", document_path(doc.id) %>
+      <p>---------------------------</p>  
+      <% end %>
+    <% end %>
+  </div>
+  <%end%>
 <% end %>
-</div>
-<% end %>
-<% end %>
+
 
 
 
@@ -67,6 +84,7 @@
       </div>
       <% end %></p>
 
+
       <div class="doctype">
         <h3>Document Type</h3>
         <p><%= document.doc_type %></p>
@@ -74,7 +92,7 @@
 
       <div class = "docrating">
         <h3> Rating </h3>
-        <%= document.ratings.average(:score) %>
+        <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
         (<%= document.ratings.count %>)
         </p>
       </div>
@@ -91,3 +109,4 @@
   <% end %>
 
   <%=render 'nav_bottom' %>
+
