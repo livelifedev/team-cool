@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_051254) do
+ActiveRecord::Schema.define(version: 2019_05_03_121729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_05_03_051254) do
   create_table "document_subjects", force: :cascade do |t|
     t.integer "document_id"
     t.integer "subject_id"
+    t.index ["document_id"], name: "index_document_subjects_on_document_id"
+    t.index ["subject_id"], name: "index_document_subjects_on_subject_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -123,6 +125,10 @@ ActiveRecord::Schema.define(version: 2019_05_03_051254) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "documents"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "comments", "documents"
+  add_foreign_key "comments", "users"
+  add_foreign_key "document_subjects", "documents"
+  add_foreign_key "document_subjects", "subjects"
   add_foreign_key "documents", "users"
   add_foreign_key "ratings", "documents"
   add_foreign_key "ratings", "users"
