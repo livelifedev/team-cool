@@ -25,15 +25,17 @@
         </div>
         
 
-        <div class="wrap">
-                <div class="search">
-                   <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                   <button type="submit" class="searchButton">
-                     <i class="fa fa-search"></i>
-                  </button>
-                </div>
-             </div>
+        <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+            <div class="wrap">
+            <div class="search">
+                <input class="searchTerm" placeholder="What are you looking for?" type="search" name="q[title_or_description_cont]" id="q_title_or_description_cont">
+                <button type="submit" name="commit" class="searchButton" value="S" data-disable-with="S">
+                <i class="fa fa-search"></i>
+                </button>
             </div>
+            </div>
+        </form>
+
 
             <!--INSERT ERB TO ROTATE THROUGH MOST POPULAR-->
         <div class="subjectgrid">

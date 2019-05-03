@@ -23,6 +23,11 @@
 <%= link_to "back to documents index", documents_path %>
 <%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %>
 
+<p><% @document.comments.each do |comment| %>
+  <li>User <%= comment.user_id %></li>
+  <li><%= comment.body %></li>
+  <li>created <%= time_ago_in_words(comment.created_at) %></li>
+<% end %></p>
 
 <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
   <div>
@@ -33,3 +38,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
