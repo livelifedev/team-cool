@@ -1,6 +1,7 @@
 <% if !params[:q].nil? %>
   <% if params[:q][:title_cont] != "" %>
   <div class="results">
+  <h2>Results</h2>
     <% @document.each do |doc|%>
     <p><%= doc.title %></p>
     <p><%= doc.description %></p>
@@ -14,11 +15,29 @@
       <%= number_with_precision doc.ratings.average(:score), :precision => 1 %>
       (<%= doc.ratings.count %>)
     </p>
-    <%= link_to "edit", edit_document_path(doc.id) %>
     <%= link_to "show", document_path(doc.id) %>
-    <%= link_to 'Delete', document_path(doc), method: :delete, data: {confirm: "Are you sure?"} %>
     <p>---------------------------</p>  
     <% end %>
   </div>
   <% end %>
+<% end %>
+
+
+
+<h2>Index</h2>
+<% @documents.each do |document| %>
+  <p><%= document.title %></p>
+  <p><%= truncate(document.description, length:100) %></p>
+  <p><% document.subjects.each do |sub| %>
+    <li><%= sub.name %></li>
+  <% end %></p>
+  <p><%= document.doc_type %></p>
+  <p> Rating
+    <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
+    (<%= document.ratings.count %>)
+  </p>
+  <%= link_to "edit", edit_document_path(document.id) %>
+  <%= link_to "show", document_path(document.id) %>
+  <%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %>
+  <p>---------------------------</p>  
 <% end %>
