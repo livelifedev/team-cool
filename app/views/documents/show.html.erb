@@ -38,3 +38,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>

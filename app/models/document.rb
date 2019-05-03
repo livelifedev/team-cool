@@ -3,7 +3,8 @@ class Document < ApplicationRecord
   has_many :document_subjects
   has_many :subjects, through: :document_subjects
   has_many :ratings, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   enum doc_type: { essay: 0, presentation: 1 }
   validates :title, :description, :doc_type, presence: true
 end
