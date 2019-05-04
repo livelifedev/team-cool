@@ -55,7 +55,7 @@
       (<%= @document.ratings.count %>)
     
     <h4> Leave your rating </h4>
-    <form action="<%= rate_document_path %>" method="POST">
+    <form action="<%= document_ratings_path(@document) %>" method="POST">
       <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
       <select name="score">
         <option value = "1">1</option>
