@@ -6,60 +6,56 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>LibU</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--LINK ONCE INSIDE RAILS-->
+        
 
         <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/Styles/home.css.scss", :media => "all" %>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/views/pages/home.html.erb" %>
         
     </head>
 
-    <body>
+
 
     
 
     <%= render 'nav_top' %>
 
-        <div class="title">
-            <h1>LibU</h1>
-        </div>
+        <h1 class="home-title">
+            <span>LibU</span><br>
+            <span id="linetwo">Connecting students</span>
+        </h1>
         
-        <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-            <div class="wrap">
-            <div class="search">
-                <input class="searchTerm" placeholder="What are you looking for?" type="search" name="q[title_or_description_cont]" id="q_title_or_description_cont">
-                <button type="submit" name="commit" class="searchButton" value="S" data-disable-with="S">
-                <i class="fa fa-search"></i>
-                </button>
-            </div>
-            </div>
-        </form>
+
+        
 
 
-            <!--INSERT ERB TO ROTATE THROUGH MOST POPULAR-->
+
         <div class="subjectgrid">
         <h2>Popular Subjects</h2>
 
             <div class ="subjectline">
 
                 <div class="subjectone">
-                    <!--Link to Subject page-->
+                    
                     <%= image_tag("science_photo.jpg", :alt => "Science") %>
                     <h4> Science</h4> 
                 </div>
 
-                <div class="subjecttwo"> <!--Link to Subject page-->
+                <div class="subjecttwo"> 
                 <%= image_tag("history_photo.jpg", :alt => "History") %>
                     <h4> History</h4>
                 </div>
 
-                <div class="subjectthree"> <!--Link to Subject page-->
-                <%= image_tag("math_photo.jpg", :alt => "Math") %>
+                <div class="subjectthree"> 
+                    <%= image_tag("math_photo.jpg", :alt => "Math") %>
                     <h4> Math</h4>
                 </div>
             </div>
         </div>
 
     <%=render 'nav_bottom' %>
-        
+
+    
     </body>
+
+        

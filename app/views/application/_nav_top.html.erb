@@ -1,28 +1,39 @@
-<head>
-    <nav class="nav">
-                
-        <div id="menuToggle">
-                
-            <input type="checkbox" />
+<%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/nav_top.scss" %>
+
+<header id="head">
+
+        <nav>
+
+            <div id="menuToggle">
                     
-            <span></span>
-            <span></span>
-            <span></span>
-            
+                <input type="checkbox" />
+                        
+                <span></span>
+                <span></span>
+                <span></span>
+                
             <ul id="menu">
-            <a href="#"><li>Home</li></a>
-            <a href="#"><li>About</li></a>
-            <a href="#"><li>Info</li></a>
-            <a href="#"><li>Contact</li></a>
-        <% if user_signed_in? %>
-            <a href="#"><li><%= link_to "Profile", edit_user_registration_path %></li></a>
-            <a href="#"><li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li></a>
-        <% else %>
-            <a href="#"><li><%= link_to "Log In", new_user_session_path %></li></a>
-            <a href="#"><li><%= link_to "Sign Up", new_user_registration_path %></li></a>
-        <% end %> 
+                <a href="#"><li><%= link_to "Home", root_path %></li></a>
+                <a href="#"><li><%= link_to "Login", root_path %></li></a>
+                <a href="#"><li><%= link_to "Signup", root_path %></li></a>
+                <a href="#"><li><%= link_to "About", root_path %></li></a>
+                <a href="#"><li><%= link_to "Upload", root_path %></li></a>
+                <a href="#"><li><%= link_to "Search", root_path %></li></a>
+                
             </ul>
+            </div>
+        </nav>
+
+        <div class="searchbutton">
+        <div id="wrap">
+        <form action="" autocomplete="on">
+        <input id="search" name="search" type="text" placeholder="What are you looking for?"><input id="search_submit" value="Rechercher" type="submit">
+        </form>
         </div>
-    </nav>
-</head>
+        </div>
+
+
+    
+
+</header>
 
