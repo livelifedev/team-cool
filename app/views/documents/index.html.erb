@@ -23,37 +23,6 @@
 
 
 
-<% if !params[:q].nil? %>
-  <% if params[:q][:title_cont] != "" %>
-  <div class="results">
-  <h2>Results</h2>
-    <% if @document.count <= 0 %>
-      <p>No results</p>
-    <% else %>
-      <% @document.each do |doc|%>
-      <p><%= doc.title %></p>
-      <p><%= doc.description %></p>
-      <p>
-        <% doc.subjects.each do |sub| %>
-          <li><%= sub.name %></li>
-        <% end %>
-      </p>
-      <p><%= doc.doc_type %></p>
-      <p> Rating
-        <%= number_with_precision doc.ratings.average(:score), :precision => 1 %>
-        (<%= doc.ratings.count %>)
-      </p>
-      <%= link_to "show", document_path(doc.id) %>
-      <p>---------------------------</p>  
-      <% end %>
-    <% end %>
-  </div>
-  <%end%>
-<% end %>
-
-
-
-
   <% @documents.each do |document| %>
     <div class="listings">
 
@@ -99,5 +68,5 @@
   <% end %>
 
   <%=render 'nav_bottom' %>
-
+</body>
 

@@ -1,10 +1,33 @@
-<form class="document_search" id="document_search" action="/documents" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-  <div class="wrap">
-  <div class="search">
-    <input class="searchTerm" placeholder="What are you looking for?" type="search" name="q[title_cont]" id="q_title_cont">
-    <button type="submit" name="commit" class="searchButton" value="S" data-disable-with="S">
-      <i class="fa fa-search"></i>
-    </button>
-  </div>
-  </div>
-</form>
+<div class="wrap">
+
+  <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get">
+    <input name="utf8" type="hidden" value="✓">
+
+      <input placeholder="What are you looking for?" type="search" name="q[g][0][c][0][v][0][value]" id="q_g_0_c_0_v_0_value">
+        
+      <button type="submit" name="commit" value="Search" data-disable-with="Search">
+        <i class="fa fa-search"></i>
+      </button>
+
+      <select name="q[g][0][c][0][a][0][name]" id="q_g_0_c_0_a_0_name">
+          <option value="title">Title</option>
+          <option value="description">Description</option>
+          <option value="user_id">Author</option>
+      </select>
+
+      <select name="q[g][0][c][0][p]" id="q_g_0_c_0_p">
+          <option value="eq">equals</option>
+          <option value="eq_any">equals any</option>
+          <option value="eq_all">equals all</option>
+          <option value="not_eq">not equal to</option>
+          <option value="not_eq_any">not equal to any</option>
+          <option value="not_eq_all">not equal to all</option>
+          <option selected="selected" value="cont">contains</option>
+          <option value="cont_any">contains any</option>
+          <option value="cont_all">contains all</option>
+      </select>
+
+  </form>
+
+</div>
+
