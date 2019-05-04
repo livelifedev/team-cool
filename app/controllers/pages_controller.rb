@@ -3,4 +3,7 @@ class PagesController < ApplicationController
     @q = Document.ransack(params[:q])
   end
 
+  def about
+
+  end
 end
