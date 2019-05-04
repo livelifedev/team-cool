@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get "/", to: "pages#home", as: "root"
   get "/about", to: "pages#about", as: "about"
+  get "/documents/search", to: "documents#search", as: "search"
   get "/documents/results", to: "documents#results", as: "results"
   resources :documents do
     resources :comments, only: [:index, :create, :destroy]

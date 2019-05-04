@@ -8,6 +8,10 @@ class DocumentsController < ApplicationController
     @documents = Document.all
   end
 
+  def search
+    @q = Document.ransack(params[:q])
+  end
+
   def results
     #get all available documents
     @documents = Document.all
