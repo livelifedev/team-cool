@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_002525) do
+ActiveRecord::Schema.define(version: 2019_05_03_121729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,9 +36,38 @@ ActiveRecord::Schema.define(version: 2019_05_02_002525) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.integer "question_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "document_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_bookmarks_on_document_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "document_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_comments_on_document_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "document_subjects", force: :cascade do |t|
     t.integer "document_id"
     t.integer "subject_id"
+    t.index ["document_id"], name: "index_document_subjects_on_document_id"
+    t.index ["subject_id"], name: "index_document_subjects_on_subject_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -51,12 +80,21 @@ ActiveRecord::Schema.define(version: 2019_05_02_002525) do
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.float "score"
     t.bigint "document_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["document_id"], name: "index_ratings_on_document_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -79,9 +117,17 @@ ActiveRecord::Schema.define(version: 2019_05_02_002525) do
     t.date "birthday"
     t.string "school"
     t.integer "gender"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ratings", "documents"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "documents"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "comments", "documents"
+  add_foreign_key "comments", "users"
+  add_foreign_key "document_subjects", "documents"
+  add_foreign_key "document_subjects", "subjects"
+  add_foreign_key "documents", "users"
 end

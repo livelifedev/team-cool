@@ -18,7 +18,10 @@
     <%= f.text_field :username, autofocus: true %>
   </div>
 
-  
+  <div class='field'>
+    <%= f.select :gender, User.genders.keys, {} %>
+  </div>
+
 
   <div class="field">
     <%= f.label :birthday %><br />
