@@ -20,45 +20,13 @@
 
     <%= render 'nav_top' %>
 
-    <h1>Log in</h1>
-  
-    <div class="login">
-    <div class="form"
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-
-
-        <div class="actions">
-          <%= f.submit "Log in" %>
-        </div>
-
-    </div>
-  </div>
-
-        <div class="title">
-            <h1>LibU</h1>
-        </div>
+        <h1 class="home-title">
+            <span>LibU</span><br>
+            <span id="linetwo">Connecting students</span>
+        </h1>
         
 
-        <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-            <div class="wrap">
-            <div class="search">
-                <input class="searchTerm" placeholder="What are you looking for?" type="search" name="q[title_or_description_cont]" id="q_title_or_description_cont">
-                <button type="submit" name="commit" class="searchButton" value="S" data-disable-with="S">
-                <i class="fa fa-search"></i>
-                </button>
-            </div>
-            </div>
-        </form>
+        
 
 
 

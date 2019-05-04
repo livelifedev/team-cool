@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_05_02_110628) do
-=======
-ActiveRecord::Schema.define(version: 2019_05_02_041702) do
->>>>>>> fdc25739d67ebe86d7727fd83bd5f79f39acc623
-=======
 ActiveRecord::Schema.define(version: 2019_05_03_051254) do
->>>>>>> 309e610c160ad6a9b93d908762b4f313d2c33ffb
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,10 +123,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_051254) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "documents"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "comments", "documents"
+  add_foreign_key "comments", "users"
   add_foreign_key "documents", "users"
-<<<<<<< HEAD
-=======
-  add_foreign_key "ratings", "documents"
-  add_foreign_key "ratings", "users"
->>>>>>> fdc25739d67ebe86d7727fd83bd5f79f39acc623
 end

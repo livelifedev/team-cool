@@ -1,42 +1,110 @@
-<p><%= @document.title %></p>
-<p><%= @document.description %></p>
-<p><% @document.subjects.each do |sub| %>
-  <li><%= sub.name %></li>
-<% end %></p>
-<p><%= @document.doc_type %></p>
-<p> Rating
-  <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
-  (<%= @document.ratings.count %>)
-</p>
-<form action="<%= rate_document_path %>" method="POST">
-  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
-  <select name="score">
-    <option value = "1">1</option>
-    <option value = "2">2</option>
-    <option value = "3">3</option>
-    <option value = "4">4</option>
-    <option value = "5">5</option>
-  </select>
-  <input type="submit" value="Rate" />
-</form>
-<%= link_to "edit", edit_document_path(@document.id) %>
-<%= link_to "back to documents index", documents_path %>
-<%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %>
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
 
-<p><% @document.comments.each do |comment| %>
-  <li>User <%= comment.user_id %></li>
-  <li><%= comment.body %></li>
-  <li>created <%= time_ago_in_words(comment.created_at) %></li>
-<% end %></p>
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-<%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
-  <div>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/doc_show.scsss" %>
+        
+    </head>
 
-<%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
+
+    <%= render 'nav_top' %>
+
+  <body>
+
+    <h2><%= @document.title %></h2>
+
+    <div class="docshow">
+    <%= image_tag("https://i.imgur.com/GOXwLQi.png?1") %>
+    </div>
+
+    <div class="bookmark">
+    <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
+    </div>
+
+  <div class ="bottom">
+    
+
+    <div class ="description">
+    <h4>Description</h4>
+    <p><%= @document.description %></p>
+    </div>
+
+    <div class = "subject">
+    <h4>Subject</h4>
+    <p><% @document.subjects.each do |sub| %>
+      <li><%= sub.name %></li>
+    <% end %></p>
+    </div>
+
+    <div class ="type">
+    <h4>Type</h4>
+    <p><%= @document.doc_type %></p>
+    </div>
+
+    <div class ="rating">
+    <h4> Current rating </h4>
+      <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
+      (<%= @document.ratings.count %>)
+    
+    <h4> Leave your rating </h4>
+    <form action="<%= rate_document_path %>" method="POST">
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+      <select name="score">
+        <option value = "1">1</option>
+        <option value = "2">2</option>
+        <option value = "3">3</option>
+        <option value = "4">4</option>
+        <option value = "5">5</option>
+      </select>
+      <input type="submit" value="Rate" />
+    </form>
+    </div>
+
+
+    <div class="comments">
+      <h4>Comment</h4>
+      <p><% @document.comments.each do |comment| %>
+        <li>User <%= comment.user_id %></li>
+        <li><%= comment.body %></li>
+        <li>created <%= time_ago_in_words(comment.created_at) %></li>
+      <% end %></p>
+
+
+      <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
+        <div>
+          <%= form.label :body %>
+          <%= form.text_area :body %>
+        </div>
+        <div>
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class = "links">
+      <ul>
+        <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
+        <li><%= link_to "Back to search results", documents_path %><li> <br> <br>
+
+        <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></i>
+      </ul>
+    </div>
+
+</div>
+
+      <%render 'nav_bottom' %>
+
+  </body>
+
+</html>
+
+
+

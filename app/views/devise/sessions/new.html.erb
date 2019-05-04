@@ -9,7 +9,7 @@
         <!--LINK ONCE INSIDE RAILS-->
         <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-        <%= stylesheet_link_tag "appliction", :media => "all" %>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/home.scss" %>
     </head>
 
     <body>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="signup"
-          New user? <%= link_to "Sign up now!", signup_path %>
+          New user? <%= link_to "Sign up now!", user_path %>
         </div
       <% end %>
     </div>
