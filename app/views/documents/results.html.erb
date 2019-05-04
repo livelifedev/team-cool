@@ -30,7 +30,7 @@
       <p>No results</p>
     <% else %>
 
-      <% @document.each do |document| %>
+      <% @documents.each do |document| %>
     <div class="listings">
 
       <div class = "doctitle">
@@ -46,10 +46,9 @@
       <div class = "docsubject">
         <h3>Subject</h3>
         <p><% document.subjects.each do |sub| %>
-        <li><%= sub.name %></li>
+          <li><%= sub.name %></li>
+        <% end %></p>
       </div>
-      <% end %></p>
-
 
       <div class="doctype">
         <h3>Document Type</h3>
@@ -57,8 +56,8 @@
       </div>
 
       <div class = "docrating">
-        <h3> Rating </h3>
-        <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
+        <h3>Rating</h3>
+        <p><%= number_with_precision document.ratings.average(:score), :precision => 1 %>
         (<%= document.ratings.count %>)
         </p>
       </div>
