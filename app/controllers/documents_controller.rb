@@ -29,7 +29,7 @@ class DocumentsController < ApplicationController
       set_types
       render "new"
     else
-      redirect_to documents_path
+      redirect_to document_path(@document.id)
     end
   end
 

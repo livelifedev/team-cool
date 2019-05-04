@@ -47,7 +47,9 @@
     <div class ="type">
     <h4>Type</h4>
     <p><%= @document.doc_type %></p>
+    <p><%= link_to "Download", @document.file if @document.file.attached? %></p>
     </div>
+
 
     <div class ="rating">
     <h4> Current rating </h4>
