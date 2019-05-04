@@ -1,17 +1,71 @@
-<h2>Index</h2>
-<% @documents.each do |document| %>
-  <p><%= document.title %></p>
-  <p><%= truncate(document.description, length:100) %></p>
-  <p><% document.subjects.each do |sub| %>
-    <li><%= sub.name %></li>
-  <% end %></p>
-  <p><%= document.doc_type %></p>
-  <p> Rating
-    <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
-    (<%= document.ratings.count %>)
-  </p>
-  <%= link_to "edit", edit_document_path(document.id) %>
-  <%= link_to "show", document_path(document.id) %>
-  <%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %>
-  <p>---------------------------</p>  
-<% end %>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>LibU</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+          <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+          <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/docs_index.scss" %>
+                
+  </head>
+<body>
+  <%=render 'nav_top' %>
+ 
+  <div class="docstitle">
+
+  <h3> Your search <br> <br> <br> <br> <br>results </h3>
+</div>
+
+
+
+  <% @documents.each do |document| %>
+    <div class="listings">
+
+      <div class = "doctitle">
+        <h3>Title</h3>
+        <p><%= document.title %></p>
+      </div>
+
+      <div class = "docdescribe">
+      <h3>Description</h3>
+        <p><%= truncate(document.description, length:100) %></p>
+      </div>
+
+      <div class = "docsubject">
+        <h3>Subject</h3>
+        <p><% document.subjects.each do |sub| %>
+          <li><%= sub.name %></li>
+        <% end %></p>
+      </div>
+
+      <div class="doctype">
+        <h3>Document Type</h3>
+        <p><%= document.doc_type %></p>
+      </div>
+
+      <div class = "docrating">
+        <h3>Rating</h3>
+        <p><%= number_with_precision document.ratings.average(:score), :precision => 1 %>
+        (<%= document.ratings.count %>)
+        </p>
+      </div>
+
+      <div class = "doclinks">
+        <ul>
+          <li><%= link_to "Edit", edit_document_path(document.id) %></li>
+          <li><%= link_to "Show", document_path(document.id) %></li>
+          <li><%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %></li>
+        </ul>
+      </div>
+
+    </div>
+  <% end %>
+
+  <%=render 'nav_bottom' %>
+</body>
+

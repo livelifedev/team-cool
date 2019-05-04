@@ -29,9 +29,12 @@
   </div>
   <div>
     <%= form.label :document %>
-    <%= form.file_field :document %>
+    <%= form.file_field :file, accept: "application/pdf" %>
+    <p>(PDF only)</p>
   </div>
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+  <%=render 'nav_bottom' %>

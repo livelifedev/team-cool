@@ -1,11 +1,15 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :rate]
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_action :set_types, only: [:new, :edit]
 
   def index
     #get all available documents
     @documents = Document.all
+  end
+
+  def search
+    @q = Document.ransack(params[:q])
   end
 
   def results
@@ -25,7 +29,7 @@ class DocumentsController < ApplicationController
       set_types
       render "new"
     else
-      redirect_to documents_path
+      redirect_to document_path(@document.id)
     end
   end
 
@@ -66,16 +70,6 @@ class DocumentsController < ApplicationController
     redirect_to documents_path
   end
 
-  def rate
-    # render plain: params.inspect
-    if current_user
-      @document.ratings.create(score:params["score"], user_id: current_user.id)
-      # @document.ratings.user_id = current_user.id
-      # @document.save
-      redirect_to document_path(@document)
-    end
-  end
-
   private
 
   def set_types
@@ -90,7 +84,7 @@ class DocumentsController < ApplicationController
 
   def document_params
     #whitelist params
-    params.require(:document).permit(:title, :description, :user_id, :doc_type, subject_ids: [])
+    params.require(:document).permit(:title, :description, :user_id, :doc_type, :file, subject_ids: [])
   end
 
 
