@@ -8,12 +8,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://checkout.stripe.com/checkout.js' %>
     <script src="https://js.stripe.com/v3/"></script>
-    <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.stripe_publishable_key %>
+    <%= tag :meta, :name=> 'stripe-key', :content => Rails.configuration.stripe[:publishable_key] %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
     
     <%= yield %>
   </body>
