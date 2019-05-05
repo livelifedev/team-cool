@@ -15,4 +15,5 @@ class User < ApplicationRecord
   enum gender: { female: 0, male: 1, other: 2 }
   validates :first_name, :surname, :username, :birthday, :school, presence: true
   has_one_attached :picture
+
 end

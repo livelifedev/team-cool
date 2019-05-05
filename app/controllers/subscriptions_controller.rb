@@ -1,35 +1,7 @@
 class SubscriptionsController < ApplicationController
-    layout "subscribe"
     before_action :authenticate_user!, except: [:new, :create]
 
-# Stripe Guides for testing payment
-#     def new
-#     end
-    
-#     def create
-#       # Amount in cents
-#       @amount = 500
-    
-#       customer = Stripe::Customer.create({
-#         email: params[:stripeEmail],
-#         source: params[:stripeToken],
-#       })
-    
-#       charge = Stripe::Charge.create({
-#         customer: customer.id,
-#         amount: @amount,
-#         description: 'Libu Membership',
-#         currency: 'aud',
-#       })
-    
-#     rescue Stripe::CardError => e
-#       flash[:error] = e.message
-#       redirect_to new_charge_path
-#     end
-# end
 
-
-  
     def new
       if user_signed_in? && current_user.subscribed?
         redirect_to root_path, notice: "You are already a subscriber"
@@ -56,13 +28,6 @@ class SubscriptionsController < ApplicationController
         stripe_subscription_id: subscription.id,
         subscribed: true
       }
-  
-    #   options.merge!(
-    #     card_last4: params[:user][:card_last4],
-    #     card_exp_month: params[:user][:card_exp_month],
-    #     card_exp_year: params[:user][:card_exp_year],
-    #     card_type: params[:user][:card_type]
-    #   ) if params[:user][:card_last4]
   
       current_user.update(options)
   

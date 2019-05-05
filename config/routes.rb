@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :subscriptions
   resources :library, only: [:index]
   resources :pricing, only: [:index]
-  
+  resources :charges
 
   get "/", to: "pages#home", as: "root"
   get "/documents/results", to: "documents#results", as: "results"

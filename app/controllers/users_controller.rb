@@ -7,6 +7,27 @@ class UsersController < ApplicationController
     end
 
 #     def show
+#         stripe_session = Stripe::Checkout::Session.create(
+#             client_reference_id: current_user.id,
+#             payment_method_types: ['card'],
+#             line_items: [{
+#                 name: @document.title,
+#                 description: @document.description,
+#                 amount: @document.deposit,
+#                 currency: 'aud',
+#                 quantity: 100,
+#             }],
+
+#             payment_intent_data: {
+#                 metadata: {
+#                     listing_id: @document.id
+#                 }
+#             },
+
+#             success_url: 'http://localhost:3000/payments/success',
+#             cancel_url: 'http://localhost:3000/cancel',
+# )
+#        @stripe_session_id = stripe_session.id
 #     end
 
 #     def edit
