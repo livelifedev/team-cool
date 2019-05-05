@@ -35,8 +35,8 @@ class DocumentsController < ApplicationController
 
   def new
     #get access to necessary attribute names
-    # @document = Document.new
-    @document = current_user.documents.create
+    @document = Document.new
+    # @document = current_user.documents.create
   end
 
   def edit
