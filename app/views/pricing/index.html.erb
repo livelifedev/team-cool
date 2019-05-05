@@ -9,7 +9,6 @@
   document.getElementById("stripePayment").addEventListener("click", function() {
   var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :public) %>');
 
-
   stripe.redirectToCheckout({
     sessionId: '<%= @stripe_session.id %>',
   }).then(function (result) {
