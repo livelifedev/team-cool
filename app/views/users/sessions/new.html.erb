@@ -1,3 +1,5 @@
+
+<%#TWO VIEWS FOR SIGN UP
 <!DOCTYPE html>
 <html>
     <html lang="en">
@@ -10,37 +12,51 @@
 
         <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-        <%= stylesheet_link_tag "login.css.scss", :media => "all" %>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/login.scss" %>
         
     </head>
-    <h1>Log in</h1>
   
-  <div class="login">
-    <div class="form"
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+  <header>
+  <%= render 'top_nav' %>
+  </header>
 
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
 
-        <% if devise_mapping.rememberable? %>
+  <body>
+    <h1>Log inqweweqew</h1>
+  
+    <div class="login">
+      <div class="form">
+      <%= render "users/shared/links" %>
+      
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
-          <% end %>
 
-        <div class="actions">
-          <%= f.submit "Log in" %>
-        </div>
-      <% end %>
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+            <% end %>
+
+          <div class="actions">
+            <%= f.submit "Log in" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-  
+    
 
-<%= render "users/shared/links" %>
+   
+
+    <%=render 'nav_bottom' %>
+
+  </body>
+</html>
