@@ -1,0 +1,14 @@
+<h1 class="title"><%= current_user.first_name %>'s Library</h1>
+      
+<h2>Download or manage your chosen documents below</h2>
+    
+<% if @library_documents.exists? %>
+    <%= render @library_documents, document: @document %>
+<% else %>
+    You haven't added any documents to your library yet. <%= link_to 'Add some', root_path %>.
+<% end %>
+
+
+<p>© 2019 Libu</p>
+
+<p>Privacy Policy</P>
