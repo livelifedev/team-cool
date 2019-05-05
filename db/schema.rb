@@ -143,8 +143,6 @@ ActiveRecord::Schema.define(version: 2019_05_03_121729) do
   add_foreign_key "document_subjects", "documents"
   add_foreign_key "document_subjects", "subjects"
   add_foreign_key "documents", "users"
-  add_foreign_key "comments", "documents"
-  add_foreign_key "comments", "users"
   add_foreign_key "ratings", "documents"
   add_foreign_key "ratings", "users"
 end
