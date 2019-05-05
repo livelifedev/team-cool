@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :library]
   before_action :set_types, only: [:new, :edit]
 
   def index
@@ -36,6 +36,7 @@ class DocumentsController < ApplicationController
   def new
     #get access to necessary attribute names
     @document = Document.new
+    # @document = current_user.documents.create
   end
 
   def edit
@@ -68,6 +69,22 @@ class DocumentsController < ApplicationController
     @document.destroy
     flash[:notice] = "Document was successfully deleted."
     redirect_to documents_path
+  end
+
+  # Add and remove documents from/to library for current user
+  def library
+    type = params[:type]
+
+    if type == 'add'
+      current_user.library_additions << @document
+      redirect_to library_index_path, notice: "#{@document.title} was added to your library"
+    elsif type == 'remove'
+      current_user.library_additions.delete(@document)
+      redirect_to root_path, notice: "#{@document.title} was removed from your library"
+    else
+      # type is missing, nothing should happend
+      redirect_to document_path(@document), notice: "Looks like nothing happend. Try once again"
+    end
   end
 
   private
