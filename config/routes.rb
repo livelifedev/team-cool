@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get "/", to: "pages#home", as: "root"
   get "/about", to: "pages#about", as: "about"
+  get "/privacy", to: "pages#privacy", as: "privacy"
   get "/documents/search", to: "documents#search", as: "search"
   get "/documents/results", to: "documents#results", as: "results"
   resources :documents do
