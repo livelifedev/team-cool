@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://js.stripe.com/v3/"></script>
+    <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.stripe_publishable_key %>
   </head>
 
   <body>
