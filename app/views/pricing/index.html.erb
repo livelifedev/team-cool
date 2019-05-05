@@ -1,21 +1,22 @@
 <section class="section">
-  <div>
     <h1 class="title">Pricing</h1>
     <h2 class="subtitle">Choose Your Plan</h2>
-    
-        <p>Students - $5/month</p>
-           <% if user_signed_in? %>
-            <%= link_to 'Subscribe', new_subscription_path(plan: "student", plan_id: Rails.application.credentials.student) %>
-          <% else %>
-            <%= link_to 'Subscribe', new_user_registration_path %>
-         <% end %>
-       
-      
-        <p>Teachers - $30/month</p>
-         <% if user_signed_in? %>
-            <%= link_to 'Subscribe', new_subscription_path(plan: "teacher", plan_id: Rails.application.credentials.teacher) %>
-          <% else %>
-            <%= link_to 'Subscribe', new_user_registration_path %>
-         <% end %>
-    </div>
+
+    <button id="stripePayment"> Sign Up </button>
 </section>
+
+<script>
+  document.getElementById("stripePayment").addEventListener("click", function() {
+  var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :public) %>');
+
+
+  stripe.redirectToCheckout({
+    sessionId: '<%= @stripe_session.id %>',
+  }).then(function (result) {
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `result.error.message`.
+  });
+
+});
+</script>
