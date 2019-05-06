@@ -5,24 +5,35 @@
     letter-spacing: 23px;
     color: #404443;
   }
+
+  .quote {
+    color: #ffff;
+    background-color: #858181;
+    margin: 4% 11% 8%;
+    padding: 8%;
+    border-radius: 1%;
+    font-size: xx-large;
+  }
   
   .about {
     display: inline-flex;
-    justify-content: space-evenly;
-    margin-bottom: 10%;
+    justify-content: center;
+    margin: 8% 0 -15%;
   }
   
   .abouttext {
     padding: 2%;
-    width: 26%;
-    background-color: floralwhite;
+    width: 49%;
+    background-color: #d4cfcf;
     border-radius: 4%;
+    margin-top: 35%;
+    font-size: large;
   }
   
   img.logo {
-    height: 300px;
-    border-radius: 20%;
-    padding: 2% 4% 4% 4%;
+    height: 600px;
+    border-radius: 7%;
+    margin-right: -38%;
   }
-  
+
   

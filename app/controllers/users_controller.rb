@@ -10,3 +10,4 @@ class UsersController < ApplicationController
     redirect_to admin_path, notice: 'User deleted.'
   end
 end
+
