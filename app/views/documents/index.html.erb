@@ -23,7 +23,7 @@
 
 
 
-  <% @documents.each do |document| %>
+  <% Subject.find(params[:subject]).documents.each do |document| %>
     <div class="listings">
 
       <div class = "doctitle">
