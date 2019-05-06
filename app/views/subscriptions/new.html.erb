@@ -1,8 +1,0 @@
-<h1>Subscribe</h1>
-  <p>Chosen plan: <strong><%= params[:plan] %>
-    <%= form_tag subscriptions_path do |form| %>
-            <!-- A Stripe element will be intserted here !-->
-      <%= hidden_field_tag :plan_id, params[:plan_id] %>
-      <button>Payment</button>
-    <% end %>
-  
