@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #   post '/:stripe' => 'pricing#webhook', as: :receive_webhooks
   # end
 
+  get "/profile", to: "accounts#profile"
   get "/account", to: "accounts#index"
   post "/payments", to: "payments#stripe"
   get "/payments/success", to: "payments#success"
