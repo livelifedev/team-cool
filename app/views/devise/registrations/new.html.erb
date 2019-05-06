@@ -25,11 +25,10 @@
     </div>
       
     
-
-    <div class="signupflex">
-      <div class="signupforms1">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="signupflex">
+        <div class="signupforms1">
 
           <div class="field">
             <%= f.label :first_name %><br />
@@ -51,9 +50,9 @@
             <%= f.select :gender, User.genders.keys, {} %>
           </div>
 
-      </div>
+        </div>
 
-      <div class="signupforms2">
+        <div class="signupforms2">
           <div class="field">
             <%= f.label :birthday %><br />
             <%= f.date_field :birthday, autofocus: true %>
@@ -85,10 +84,11 @@
           <div class="actions">
             <%= f.submit "Continue" %>
           </div>
-        <% end %>
-
+        </div>
       </div>
-    </div>
+    <% end %>
+
+      
   </body>
 
   <footer>
