@@ -11,7 +11,7 @@ class PricingController < ApplicationController
             quantity: 1,
             }],
             #change this to dynamic using env variable
-            success_url: 'http://localhost:3000/payment/success', 
+            success_url: 'http://localhost:3000/payments/success', 
             cancel_url: 'http://localhost:3000/cancel',
         )
 
