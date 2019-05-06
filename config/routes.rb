@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/account", to: "accounts#index"
   post "/payments", to: "payments#stripe"
   get "/payments/success", to: "payments#success"
+  get "/admin", to: "accounts#admin"
 
   devise_for :users
   get "/", to: "pages#home", as: "root"
