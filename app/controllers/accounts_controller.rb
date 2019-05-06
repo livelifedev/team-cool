@@ -15,4 +15,8 @@ class AccountsController < ApplicationController
     )
   end
 
+  def profile
+    @documents = Document.where(user_id: current_user.id)
+  end
+
 end
