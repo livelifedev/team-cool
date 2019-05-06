@@ -25,7 +25,7 @@
                 <!--LINK ONCE INSIDE RAILS-->
                 <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
         
-                <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/login.scss", :media => "all" %>
+                <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/login.scss"%>
             </head>
         
             <body>
@@ -43,33 +43,40 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-    <br><br></br>
+    <br>
 
         <div class="field">
           <%= f.label :password %><br />
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
 
-      <br><br></br>
+        <br>
 
-       <% if devise_mapping.rememberable? %>
-        <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <div class="signup">
+        <%= render "devise/shared/links" %> 
         </div>
-         <% end %>
+
+      <br>
+
+      <div class="remember">
+        <% if devise_mapping.rememberable? %>
+        
+          <%= f.check_box :remember_me %>
+          <div class="rememberme">
+            <%= f.label :remember_me %>
+          </div>
+        
+      </div>
+        <% end %>
 
         <div class="actions">
         <%= f.submit "Log in" %>
         </div>
 
-        <div class="signup"
-          New user? <%= link_to "Sign up now!", new_user_registration_path %>
-        </div
+        
       <% end %>
     </div>
   </div>
 
-<%= render "devise/shared/links" %>
 
 <%= render "nav_bottom" %>
