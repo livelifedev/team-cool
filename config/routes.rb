@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # end
 
   get "/profile", to: "accounts#profile"
-  get "/account", to: "accounts#index"
+  get "/accounts", to: "accounts#index"
   post "/payments", to: "payments#stripe"
   get "/payments/success", to: "payments#success"
   get "/admin", to: "accounts#admin"
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
   get "/", to: "pages#home", as: "root"
   get "/about", to: "pages#about", as: "about"
+  get "/contact", to: "pages#contact", as: "contact"
   get "/privacy", to: "pages#privacy", as: "privacy"
   get "/documents/search", to: "documents#search", as: "search"
   get "/documents/results", to: "documents#results", as: "results"
