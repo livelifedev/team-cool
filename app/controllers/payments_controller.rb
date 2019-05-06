@@ -4,6 +4,8 @@ class PaymentsController < ApplicationController
   def stripe
     # byebug
     payment_id = params[:id]
+    @stripe_trans = current_user.stripe_transaction = payment_id
+    @stripe_trans.save
   end
 
   def index
