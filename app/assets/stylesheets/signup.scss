@@ -6,7 +6,22 @@ h2 {
     color: #404443;
 }
 
-p {
+.subscriptionflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}  
+
+.subscription {
+    background-color: #d4cfcf;
+    border-radius: 2%;
+    font-style: oblique; 
+    margin: 5% 20% -1% 20%;
+    padding: 4%;
+
+}
+
+.memberlink   {
     margin-left: 24%;
     margin-top: 7%;
 }
@@ -34,3 +49,4 @@ p {
 .field {
     padding: 3%;
 }
+

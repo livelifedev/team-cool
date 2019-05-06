@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "/payments", to: "payments#stripe"
   get "/payments/success", to: "payments#success"
 
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users
   get "/", to: "pages#home", as: "root"
   get "/about", to: "pages#about", as: "about"
   get "/privacy", to: "pages#privacy", as: "privacy"
