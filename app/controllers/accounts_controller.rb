@@ -19,4 +19,8 @@ class AccountsController < ApplicationController
     @documents = Document.where(user_id: current_user.id)
   end
 
+  def admin
+    @users = User.all
+  end
+
 end
