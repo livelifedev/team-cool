@@ -1,3 +1,4 @@
+
 <%= form_with(model: question, local: true) do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +12,22 @@
     </div>
   <% end %>
 
+<div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+<div class='field'>
+    <%= form.select :reason, Question.reasons.keys, {} %>
+  </div>
+
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.label :message %>
+    <%= form.text_area :content, :cols => 80, :rows => 10 %>
+    
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= submit_tag "Submit" %>
   </div>
 <% end %>
