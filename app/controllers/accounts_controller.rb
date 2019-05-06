@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  
+
   def index
     @stripe_session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
