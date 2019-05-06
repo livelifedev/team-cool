@@ -9,13 +9,9 @@ Rails.application.routes.draw do
   get "/payments/success", to: "payments#success"
   get "/admin", to: "accounts#admin"
   # delete "admin/:id", to: "accounts#destroy"
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   get "users", to: "users#index"
   delete "users/:id", to: "users#destroy"
-
-  devise_for :users, :controllers => {:registrations => "registrations"}
-  
- 
   get "/", to: "pages#home", as: "root"
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
