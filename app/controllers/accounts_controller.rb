@@ -21,4 +21,15 @@ class AccountsController < ApplicationController
     @documents = Document.where(user_id: current_user.id)
   end
 
+  def admin
+    @users = User.all
+    @documents = Document.all
+  end
+
+  # def destroy
+  #   @user = User.find(params[:id])
+  #   @user.destroy
+  #   redirect_to admin_path, notice: 'User deleted.'
+  # end
+
 end
