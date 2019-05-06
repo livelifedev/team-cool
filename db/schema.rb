@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 2019_05_05_112040) do
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
+  create_table "libraries", force: :cascade do |t|
+    t.integer "document_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "content"
     t.integer "user_id"

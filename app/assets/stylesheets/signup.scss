@@ -1,0 +1,36 @@
+h2 {
+    text-align: center;
+    font-size: 59px;
+    letter-spacing: 23px;
+    margin-top: 10%;
+    color: #404443;
+}
+
+p {
+    margin-left: 24%;
+    margin-top: 7%;
+}
+
+.signupflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #d4cfcf;
+    margin: -7% 20% 15% 20%;
+    border-radius: 2%;
+    padding-top: 5%; 
+    font-style: oblique; 
+}
+
+.signupforms1 {
+    padding: 9%;
+    margin-right: 5%;
+}
+
+.signupforms2 {
+    padding: 8%;
+}
+
+.field {
+    padding: 3%;
+}
