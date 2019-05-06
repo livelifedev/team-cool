@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   devise_for :users
   get "users", to: "users#index"
   delete "users/:id", to: "users#destroy"
+
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  
+ 
   get "/", to: "pages#home", as: "root"
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
