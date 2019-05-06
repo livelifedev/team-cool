@@ -38,17 +38,17 @@
                 <div class="subjectone">
                     
                     <%= image_tag("science_photo.jpg", :alt => "Science") %>
-                    <h4> Science</h4> 
+                    <h4> <%= link_to "Science", documents_path(subject:3) %></h4> 
                 </div>
 
                 <div class="subjecttwo"> 
                 <%= image_tag("history_photo.jpg", :alt => "History") %>
-                    <h4> History</h4>
+                    <h4> <%= link_to "History", documents_path(subject:2) %></h4> 
                 </div>
 
                 <div class="subjectthree"> 
                     <%= image_tag("math_photo.jpg", :alt => "Math") %>
-                    <h4> Math</h4>
+                    <h4> <%= link_to "Math", documents_path(subject:1) %></h4> 
                 </div>
             </div>
         </div>

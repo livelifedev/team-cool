@@ -18,12 +18,12 @@
  
   <div class="docstitle">
 
-  <h3> Your search <br> <br> <br> <br> <br>results </h3>
+  <h3><%= Subject.find(1).name %> </h3>
 </div>
 
 
 
-  <% @documents.each do |document| %>
+  <% Subject.find(params[:subject]).documents.each do |document| %>
     <div class="listings">
 
       <div class = "doctitle">
