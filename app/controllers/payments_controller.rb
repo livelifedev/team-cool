@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
   end
 
   def success
-    render plain: "success"
+    
   end
 
 end

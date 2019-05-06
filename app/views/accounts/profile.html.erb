@@ -1,6 +1,79 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--LINK ONCE INSIDE RAILS-->
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/confirmation.scss", :media => "all" %>
+    </head>
+
+    <body>
+        
+        <%=render 'nav_top' %>
+
+
 <h1>Profile</h1>
 
-</h1>documents<h1>>
-<% @documents.each do |doc| %>
-  <li><%= doc.title %></li>
-<% end %>
+
+
+<div class="accountdetailsflex">
+  <div class="accountdetails">
+
+    <h4>Account details </h4>
+
+    <div class="editdetails">
+      <%= button_to "Edit details", edit_user_registration_path, :method => :get %>
+    </div>
+
+    <div class="name">
+      <h5>Name</h5>
+  
+    </div>
+
+    <div class="username">
+      <h5>Username</h5>
+  
+    </div>
+
+    <div class="email">
+      <h5>Email</h5>
+  
+  
+    </div>
+
+    <div class="gender">
+      <h5>Gender</h5>
+  
+    </div>
+
+    <div class="birthday">
+      <h5>Birthday</h5>
+    </div>
+
+    <div class="school">
+      <h5>School</h5>
+    </div>
+
+    
+
+   
+
+
+
+  </div>
+</div>
+
+<div class="bookmarksflex">
+  <div class="bookmarks">
+
+  <h4>Bookmarks</h4>
+  <% @documents.each do |doc| %>
+    <li><%= doc.title %></li>
+  <% end %>
+  </div>
+</div>
