@@ -1,5 +1,5 @@
 class PricingController < ApplicationController
-
+    skip_before_action :verify_authenticity_token
     def index
         @stripe_session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
@@ -11,7 +11,7 @@ class PricingController < ApplicationController
             quantity: 1,
             }],
             #change this to dynamic using env variable
-            success_url: 'http://localhost:3000/success', 
+            success_url: 'http://localhost:3000/payment/success', 
             cancel_url: 'http://localhost:3000/cancel',
         )
 
