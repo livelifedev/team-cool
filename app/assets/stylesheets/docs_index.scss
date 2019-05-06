@@ -55,3 +55,25 @@
     display: inline;
     text-decoration: underline;
 }
+
+.subjects {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+
+    .subjectname {
+        background-color: #d4cfcf;
+        width: 300px;
+        height: 200px;
+        margin: 20px;
+
+        p {
+            font-size: 45px;
+            padding-top: 35px;
+            text-align: center;
+        }
+    }
+}

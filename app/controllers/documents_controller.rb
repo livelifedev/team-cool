@@ -22,6 +22,10 @@ class DocumentsController < ApplicationController
     # render plain: @document.inspect
   end
 
+  def subjects
+    @subjects = Subject.all
+  end
+
   def create
     @document = current_user.documents.create(document_params)
     # @document = Document.create(document_params)
