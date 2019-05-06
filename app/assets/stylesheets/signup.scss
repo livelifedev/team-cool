@@ -6,20 +6,6 @@ h2 {
     color: #404443;
 }
 
-.subscriptionflex {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}  
-
-.subscription {
-    background-color: #d4cfcf;
-    border-radius: 2%;
-    font-style: oblique; 
-    margin: 5% 20% -1% 20%;
-    padding: 4%;
-
-}
 
 .memberlink   {
     margin-left: 24%;
@@ -48,5 +34,30 @@ h2 {
 
 .field {
     padding: 3%;
+}
+
+/*STYLING FOR PAYMENTS PAGE*/
+.subscriptionflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}  
+
+.subscription {
+    background-color: #d4cfcf;
+    border-radius: 2%;
+    font-style: oblique; 
+    margin: 5% 20% -1% 20%;
+    padding: 4%;
+
+}
+
+.subscriptionbutton {
+    text-align: center;
+    margin-top: -4%;
+}
+
+footer {
+    margin-top: 20%;
 }
 
