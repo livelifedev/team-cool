@@ -1,7 +1,26 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # constraints subdomain: "localhost:3000" do
+  #   post '/:stripe' => 'pricing#webhook', as: :receive_webhooks
+  # end
+
+  get "/account", to: "accounts#index"
+  post "/payments", to: "payments#stripe"
+  get "/payments/success", to: "payments#success"
+
+  devise_for :users, controllers: { registrations: "registrations" }
   get "/", to: "pages#home", as: "root"
- 
-  resources :documents
+  get "/about", to: "pages#about", as: "about"
+  get "/privacy", to: "pages#privacy", as: "privacy"
+  get "/documents/search", to: "documents#search", as: "search"
+  get "/documents/results", to: "documents#results", as: "results"
+  resources :documents do
+    resources :comments, only: [:index, :create, :destroy]
+    resources :bookmarks, only: [:index, :create, :destroy]
+    resources :ratings, only: [:index, :create, :destroy]
+  end
+  resources :users, only: [:show, :edit, :update]
+  resources :questions do
+    resources :answers
+  end
 end
+
