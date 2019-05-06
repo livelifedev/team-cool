@@ -15,4 +15,16 @@
   <% end %>
 </div>
 
+<h3>Documents:</h3>
+<div class="scrollbox">
+  <% @documents.each do |doc| %>
+    <li>
+      ID<%= doc.id %> -
+      <%= doc.title %>
+      <%= link_to "Edit", edit_document_path(doc.id) %> |
+      <%= link_to "Delete", document_path(doc.id), method: :delete, data: {confirm: "Are you sure?"} %>
+    </li>
+  <% end %>
+</div>
+
 </div>

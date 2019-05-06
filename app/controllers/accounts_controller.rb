@@ -21,6 +21,7 @@ class AccountsController < ApplicationController
 
   def admin
     @users = User.all
+    @documents = Document.all
   end
 
   # def destroy
