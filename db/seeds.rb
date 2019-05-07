@@ -24,8 +24,22 @@ admin = User.create(
   password: "qwerty69",
   birthday: "1993-04-16",
   school: "Coder Academy",
+  gender: 1,
+  stripe_transaction: "123",
+  admin: true
+)
+
+user = User.create(
+  first_name: "User",
+  surname: "User",
+  username: "User",
+  email: "user@user.com", 
+  password: "qwerty69",
+  birthday: "1993-04-16",
+  school: "Coder Academy",
   gender: 2,
-  stripe_transaction: "123"
+  stripe_transaction: "321",
+  admin: false
 )
 
 users = []
@@ -34,12 +48,14 @@ users = []
   users << User.create(
     first_name: Faker::Name.first_name,
     surname: Faker::Name.last_name,
-    username: Faker::Name.initials,
+    username: Faker::Team.mascot,
     email: Faker::Internet.email, 
     password: "12345678",
     birthday: "1993-04-16",
     school: Faker::University.name,
-    gender: rand(2)
+    gender: rand(2),
+    stripe_transaction: rand(1000).to_s,
+    admin: false
   )
 end
 
@@ -50,7 +66,7 @@ documents = []
     title: Faker::Book.title, 
     description: Faker::Quote.matz,
     doc_type: rand(2),
-    user_id: rand(21)
+    user_id: rand(User.count + 1)
   ).subject_ids = [rand(1..6)]
 end
 

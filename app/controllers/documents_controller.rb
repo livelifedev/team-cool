@@ -20,7 +20,7 @@ class DocumentsController < ApplicationController
     # render plain: params[:q][:title_cont].inspect
     @q = Document.ransack(params[:q])
     # @q.title_cont = "" unless params[:q]
-    @document = @q.result(distinct: true) 
+    @document = @q.result(distinct: true)
     # render plain: @document.inspect
   end
 

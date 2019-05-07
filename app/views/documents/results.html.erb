@@ -33,6 +33,11 @@
       <% @document.each do |document| %>
     <div class="listings">
 
+      <div class ="doctitle">
+        <h3>Author</h3>
+        <p><%= document.user.username %></p>
+      </div>
+
       <div class = "doctitle">
         <h3>Title</h3>
         <p><%= document.title %></p>
