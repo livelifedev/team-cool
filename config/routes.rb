@@ -7,10 +7,6 @@ Rails.application.routes.draw do
   get "/accounts", to: "accounts#index"
   post "/payments", to: "payments#stripe"
   get "/payments/success", to: "payments#success"
-
-  devise_for :users, :controllers => {:registrations => "registrations"}
-  
- 
   get "/admin", to: "accounts#admin"
   # delete "admin/:id", to: "accounts#destroy"
   
@@ -22,6 +18,7 @@ Rails.application.routes.draw do
   get "/privacy", to: "pages#privacy", as: "privacy"
   get "/documents/search", to: "documents#search", as: "search"
   get "/documents/results", to: "documents#results", as: "results"
+  get "/subjects", to: "documents#subjects", as: "subjects"
   resources :documents do
     resources :comments, only: [:index, :create, :destroy]
     resources :bookmarks, only: [:index, :create, :destroy]

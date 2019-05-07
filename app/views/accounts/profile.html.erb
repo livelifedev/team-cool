@@ -1,6 +1,102 @@
-<h1>Profile</h1>
+<!DOCTYPE html>
+<html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--LINK ONCE INSIDE RAILS-->
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-</h1>documents<h1>>
-<% @documents.each do |doc| %>
-  <li><%= doc.title %></li>
-<% end %>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/profile.scss" %>
+    </head>
+
+  <body>
+          
+    <%=render 'nav_top' %>
+
+
+    <h1>Profile</h1>
+
+    <div class="avatarflex">
+    <%= image_tag("user.png", :alt => "avatar", :class => "avatar") %>
+    </div> 
+
+    <div class="accountflex">
+    
+      <div class="bookmarks">
+      <button id="button">Bookmarks</button>
+        <div id="content">
+        
+          <% @documents.each do |doc| %>
+          <li><%= doc.title %></li>
+        
+          <% end %>
+        </div>
+      </div>
+
+      <div class="uploads">
+      <button id="button">My Uploads</button>
+      <div id ="content">
+
+      </div>
+
+      </div>
+
+      <button id="button">Edit Details</button>
+        <div id="content">
+          <div class="editprofile">
+            <%= button_to "Click here to edit account details", edit_user_registration_path, :method => :get%>
+          </div>
+        </div>
+
+      <div class="account">
+
+      <button id="button">Account Details</button>
+      
+        <div id="content">
+
+            
+          <div class="info">
+            <h5>Email</h5>
+            <%= current_user.email %>
+          </div>
+
+          <div class="info">
+            <h5>First Name</h5>
+            <%= current_user.first_name %>
+          </div>
+      
+          <div class="info">
+            <h5>Surname</h5>
+            <%= current_user.surname %>
+          </div>
+      
+          <div class="info">
+            <h5>Username</h5>
+            <%= current_user.username %>
+          </div>
+      
+          <div class="info">
+            <h5>Gender</h5>
+            <%= current_user.gender %>
+          </div>
+      
+          <div class="info">
+            <h5>Birthday</h5>
+            <%= current_user.birthday %>
+          </div>
+      
+          <div class="info">
+            <h5>School</h5>
+            <%= current_user.school %>
+          </div>
+
+        </div>
+      </div>
+
+  </body>
+
+  <%=render 'nav_bottom'%>
+</html>

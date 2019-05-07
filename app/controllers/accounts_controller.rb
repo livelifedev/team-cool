@@ -1,9 +1,10 @@
 class AccountsController < ApplicationController
-  
 
   def index
-    @stripe_session = Stripe::Checkout::Session.create(
+    user_id = current_user.id.to_s
+    @stripe_session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
+        client_reference_id: user_id,
         line_items: [{
         name: 'Lib U Account',
         description: 'A one-time payment to join Lib U',
@@ -14,7 +15,7 @@ class AccountsController < ApplicationController
         #change this to dynamic using env variable
         success_url: 'http://localhost:3000/payments/success', 
         cancel_url: 'http://localhost:3000/cancel',
-    )
+    })
   end
 
   def profile
@@ -25,6 +26,11 @@ class AccountsController < ApplicationController
     @users = User.all
     @documents = Document.all
   end
+
+
+
+
+  
 
   # def destroy
   #   @user = User.find(params[:id])
