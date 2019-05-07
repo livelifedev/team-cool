@@ -14,5 +14,10 @@ class ApplicationController < ActionController::Base
                devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name, :surname, :username, :birthday, :gender, :email, :password, :current_password)}
        end
 
+       def access
+              if current_user.stripe_transaction == "unpaid" || current_user.stripe_transaction.nil?
+                     redirect_to accounts_path
+              end
+       end
        
 end

@@ -1,6 +1,5 @@
 class AccountsController < ApplicationController
   
-
   def index
     user_id = current_user.id.to_s
     @stripe_session = Stripe::Checkout::Session.create({
@@ -13,7 +12,7 @@ class AccountsController < ApplicationController
         currency: 'aud',
         quantity: 1,
         }],
-        #change this to dynamic using env variable
+        #make this dynamic using env variable
         success_url: 'http://localhost:3000/payments/success', 
         cancel_url: 'http://localhost:3000/cancel',
     })
@@ -28,10 +27,6 @@ class AccountsController < ApplicationController
     @documents = Document.all
   end
 
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   @user.destroy
-  #   redirect_to admin_path, notice: 'User deleted.'
-  # end
+
 
 end

@@ -2,6 +2,8 @@ class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_document, only: [:show, :edit, :update, :destroy, :library]
   before_action :set_types, only: [:new, :edit]
+  before_action :access, only: [:show]
+
 
   def index
     #get all available documents

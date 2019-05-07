@@ -24,7 +24,8 @@ admin = User.create(
   password: "qwerty69",
   birthday: "1993-04-16",
   school: "Coder Academy",
-  gender: 2
+  gender: 2,
+  stripe_transaction: "123"
 )
 
 users = []

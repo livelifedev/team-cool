@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
-  # constraints subdomain: "localhost:3000" do
-  #   post '/:stripe' => 'pricing#webhook', as: :receive_webhooks
-  # end
-
+  get "/", to: "pages#home", as: "root"
   get "/profile", to: "accounts#profile"
   get "/accounts", to: "accounts#index"
   post "/payments", to: "payments#stripe"
   get "/payments/success", to: "payments#success"
   get "/admin", to: "accounts#admin"
-  # delete "admin/:id", to: "accounts#destroy"
   devise_for :users, :controllers => {:registrations => "registrations"}
   get "users", to: "users#index"
   delete "users/:id", to: "users#destroy"
-  get "/", to: "pages#home", as: "root"
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
   get "/privacy", to: "pages#privacy", as: "privacy"

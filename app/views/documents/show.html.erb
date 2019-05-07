@@ -94,7 +94,7 @@
     <div class = "links">
       <ul>
         <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
-        <li><%= link_to "Back to search results", documents_path %><li> <br> <br>
+        <li><%= link_to "Back to Home", root_path %><li> <br> <br>
 
         <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></i>
       </ul>
