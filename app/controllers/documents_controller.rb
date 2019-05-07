@@ -77,22 +77,6 @@ class DocumentsController < ApplicationController
     redirect_to documents_path
   end
 
-  # Add and remove documents from/to library for current user
-  def library
-    type = params[:type]
-
-    if type == 'add'
-      current_user.library_additions << @document
-      redirect_to library_index_path, notice: "#{@document.title} was added to your library"
-    elsif type == 'remove'
-      current_user.library_additions.delete(@document)
-      redirect_to root_path, notice: "#{@document.title} was removed from your library"
-    else
-      # type is missing, nothing should happend
-      redirect_to document_path(@document), notice: "Looks like nothing happend. Try once again"
-    end
-  end
-
   private
 
   def set_types
