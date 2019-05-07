@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+
   def index
     @users = User.all
   end
@@ -10,4 +12,6 @@ class UsersController < ApplicationController
     redirect_to admin_path, notice: 'User deleted.'
   end
 end
+
+
 

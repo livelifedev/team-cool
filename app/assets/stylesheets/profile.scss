@@ -1,0 +1,48 @@
+/*SHOW/HIDE TOGGLE*/
+#content {
+    display: none;
+    background-color:  #d4cfcf;
+    width: 50%;
+    padding: 4%;
+  }
+
+button:hover + div#content {
+    display: block;
+  }
+
+div#content:hover {
+    display: block;
+}
+
+#button {
+    color: #464444;
+    width: 50%;
+    background-color: #709fb0;
+    border: none;
+    font-size: x-large;
+    text-align: center;
+    font-family: 'Exo', sans-serif;
+}
+
+.info {
+    display: grid;
+    font-style: oblique;
+}
+
+.accountflex{
+   margin-top:  13%;
+   margin-left: 26%; 
+}
+
+
+.editprofile {
+    text-align: center;
+}
+
+.avatar {
+    width: 150px;
+    float: right;
+    margin-right: 22%;
+    margin-top: 3%;
+}
+

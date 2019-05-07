@@ -9,72 +9,94 @@
         <!--LINK ONCE INSIDE RAILS-->
         <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/confirmation.scss", :media => "all" %>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/profile.scss" %>
     </head>
 
-    <body>
-        
-        <%=render 'nav_top' %>
+  <body>
+          
+    <%=render 'nav_top' %>
 
 
-<h1>Profile</h1>
+    <h1>Profile</h1>
 
+    <div class="avatarflex">
+    <%= image_tag("user.png", :alt => "avatar", :class => "avatar") %>
+    </div> 
 
-
-<div class="accountdetailsflex">
-  <div class="accountdetails">
-
-    <h4>Account details </h4>
-
-    <div class="editdetails">
-      <%= button_to "Edit details", edit_user_registration_path, :method => :get %>
-    </div>
-
-    <div class="name">
-      <h5>Name</h5>
-      <%= current_user %>
-  
-    </div>
-
-    <div class="username">
-      <h5>Username</h5>
-  
-    </div>
-
-    <div class="email">
-      <h5>Email</h5>
-  
-  
-    </div>
-
-    <div class="gender">
-      <h5>Gender</h5>
-  
-    </div>
-
-    <div class="birthday">
-      <h5>Birthday</h5>
-    </div>
-
-    <div class="school">
-      <h5>School</h5>
-    </div>
-
+    <div class="accountflex">
     
+      <div class="bookmarks">
+      <button id="button">Bookmarks</button>
+        <div id="content">
+        
+          <% @documents.each do |doc| %>
+          <li><%= doc.title %></li>
+        
+          <% end %>
+        </div>
+      </div>
 
-   
+      <div class="uploads">
+      <button id="button">My Uploads</button>
+      <div id ="content">
 
+      </div>
 
+      </div>
 
-  </div>
-</div>
+      <button id="button">Edit Details</button>
+        <div id="content">
+          <div class="editprofile">
+            <%= button_to "Click here to edit account details", edit_user_registration_path, :method => :get%>
+          </div>
+        </div>
 
-<div class="bookmarksflex">
-  <div class="bookmarks">
+      <div class="account">
 
-  <h4>Bookmarks</h4>
-  <% @documents.each do |doc| %>
-    <li><%= doc.title %></li>
-  <% end %>
-  </div>
-</div>
+      <button id="button">Account Details</button>
+      
+        <div id="content">
+
+            
+          <div class="info">
+            <h5>Email</h5>
+            <%= current_user.email %>
+          </div>
+
+          <div class="info">
+            <h5>First Name</h5>
+            <%= current_user.first_name %>
+          </div>
+      
+          <div class="info">
+            <h5>Surname</h5>
+            <%= current_user.surname %>
+          </div>
+      
+          <div class="info">
+            <h5>Username</h5>
+            <%= current_user.username %>
+          </div>
+      
+          <div class="info">
+            <h5>Gender</h5>
+            <%= current_user.gender %>
+          </div>
+      
+          <div class="info">
+            <h5>Birthday</h5>
+            <%= current_user.birthday %>
+          </div>
+      
+          <div class="info">
+            <h5>School</h5>
+            <%= current_user.school %>
+          </div>
+
+        </div>
+      </div>
+
+  </body>
+
+  <%=render 'nav_bottom'%>
+</html>
