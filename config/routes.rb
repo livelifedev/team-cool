@@ -13,7 +13,7 @@ Rails.application.routes.draw do
  
   get "/admin", to: "accounts#admin"
   # delete "admin/:id", to: "accounts#destroy"
-  devise_for :users
+  
   get "users", to: "users#index"
   delete "users/:id", to: "users#destroy"
   get "/", to: "pages#home", as: "root"

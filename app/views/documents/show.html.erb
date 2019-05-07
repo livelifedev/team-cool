@@ -13,10 +13,7 @@
         <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/doc_show.scsss" %>
         
     </head>
-
-
-    <%= render 'nav_top' %>
-
+  
   <body>
 
     <h2><%= @document.title %></h2>
@@ -99,12 +96,8 @@
         <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></i>
       </ul>
     </div>
-
-</div>
-
-      <%render 'nav_bottom' %>
-
-  </body>
+  </div>
+</body>
 
 </html>
 

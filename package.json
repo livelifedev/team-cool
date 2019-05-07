@@ -1,5 +1,8 @@
 {
   "name": "rails-ass",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^3.2.0"
+  }
 }

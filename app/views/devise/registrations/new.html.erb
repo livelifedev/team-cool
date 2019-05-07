@@ -1,69 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/signup.scss" %>
-        
-    </head>
-
-  <body>
-
-    <%= render 'nav_top' %>
-
-    <h2> Sign Up </h2>
-
-    <p> Already a member? <%= render "devise/shared/links" %></p>
-      
-    
-
-    <div class="signupflex">
-      <div class="signupforms1">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
+<h2> Sign Up </h2>
+  <div class="signupflex">
+    <div class="signupforms1">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
           <div class="field">
-            <%= f.label :first_name %><br />
+            <%= f.label :first_name %>
             <%= f.text_field :first_name, autofocus: true %>
           </div>
 
           <div class="field">
-            <%= f.label :surname %><br />
+            <%= f.label :surname %>
             <%= f.text_field :surname, autofocus: true %>
           </div>
 
           <div class="field">
-            <%= f.label :username %><br />
+            <%= f.label :username %>
             <%= f.text_field :username, autofocus: true %>
           </div>
 
           <div class='field'>
-            <%= f.label :gender %> <br>
+            <%= f.label :gender %>
             <%= f.select :gender, User.genders.keys, {} %>
           </div>
-
       </div>
 
       <div class="signupforms2">
           <div class="field">
-            <%= f.label :birthday %><br />
+            <%= f.label :birthday %>
             <%= f.date_field :birthday, autofocus: true %>
           </div>
 
           <div class="field">
-            <%= f.label :school %><br />
+            <%= f.label :school %>
             <%= f.text_field :school, autofocus: true %>
           </div>
 
           <div class="field">
-            <%= f.label :email %><br />
+            <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
 
@@ -76,7 +50,7 @@
           </div>
 
           <div class="field">
-            <%= f.label :password_confirmation %><br />
+            <%= f.label :password_confirmation %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </div>
 
@@ -84,16 +58,7 @@
             <%= f.submit "Sign up" %>
           </div>
         <% end %>
-
-      </div>
+       
+        <%= render "devise/shared/links" %>
     </div>
-  </body>
-
-  <footer>
-
-      <%= render 'nav_bottom'%>
-
-  </footer>
-
-
-</html>
+</div> 

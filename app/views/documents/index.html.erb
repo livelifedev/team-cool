@@ -14,14 +14,12 @@
                 
   </head>
 <body>
-  <%=render 'nav_top' %>
+ 
  
   <div class="docstitle">
 
   <h3> Your search <br> <br> <br> <br> <br>results </h3>
 </div>
-
-
 
   <% Subject.find(params[:subject]).documents.each do |document| %>
     <div class="listings">
@@ -66,6 +64,6 @@
     </div>
   <% end %>
 
-  <%=render 'nav_bottom' %>
+
 </body>
 
