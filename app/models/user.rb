@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :libraries
   has_many :library_additions, through: :libraries, source: :document
-
+  
   enum gender: { male: 0, female: 1, other: 2 }
   validates :first_name, :surname, :username, :birthday, :school, presence: true
   has_one_attached :picture

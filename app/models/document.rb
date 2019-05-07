@@ -10,4 +10,5 @@ class Document < ApplicationRecord
   has_one_attached :file
   has_many :libraries
   has_many :added_documents, through: :libraries, source: :user
+
 end

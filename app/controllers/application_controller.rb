@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
        end
 
        def access
-              if current_user.stripe_transaction == "unpaid" || current_user.stripe_transaction.nil?
+              if current_user.stripe_transaction == nil || current_user.stripe_transaction == "unpaid"
                      redirect_to accounts_path
               end
        end
