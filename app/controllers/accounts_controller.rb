@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+
   def index
     user_id = current_user.id.to_s
     @stripe_session = Stripe::Checkout::Session.create({
@@ -25,6 +26,11 @@ class AccountsController < ApplicationController
     @users = User.all
     @documents = Document.all
   end
+
+
+
+
+  
 
   # def destroy
   #   @user = User.find(params[:id])
