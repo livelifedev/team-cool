@@ -26,6 +26,7 @@ class DocumentsController < ApplicationController
   end
 
   def subjects
+    session[:search_results] = request.url
     @subjects = Subject.all
   end
 
