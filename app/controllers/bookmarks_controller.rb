@@ -14,7 +14,7 @@ class BookmarksController < ApplicationController
   def destroy
     current_user.bookmarks.find(params[:id]).destroy
     flash[:notice] = "Bookmark was successfully deleted."
-    redirect_to profile_path
+    redirect_back(fallback_location: root_path)
   end
 
   private

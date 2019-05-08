@@ -69,6 +69,7 @@
           <ul>
             <% @user_documents.each do |doc| %>
               <li><%= doc.title %></li>
+              <%= link_to "Delete", document_path(doc.id), method: :delete, data: {confirm: "Are you sure?"} %>
             <% end %>
           </ul>
         </div>

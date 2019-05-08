@@ -63,7 +63,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     flash[:notice] = "Document was successfully deleted."
-    redirect_to documents_path
+    redirect_back(fallback_location: root_path)
   end
 
   private
