@@ -1,3 +1,56 @@
+h4 {
+    padding-bottom: 1%;
+    font-style: oblique;
+}
+
+.booksample {
+    height: 600px;
+    width: 300px;
+}
+
+.docshow {
+    text-align: center;
+    margin: 7.7% 7%;
+}
+
+.bookmark {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -3%;
+    margin-left: 27%;
+}
+
+.bookmark a {
+    color: #49948e;
+}
+
+.bottom {
+    background-color: #d4cfcf;
+    padding: 8%;
+    margin: -4% 25% 25% 25%
+}
+
+.links {
+    padding: 1%;
+    text-align: center;
+}
+
+.link ul {
+    display: inline;
+}
+
+.links li {
+    color: #404443;
+    font-style: oblique;
+    padding: 9%;
+    list-style: none;
+    text-decoration: underline;
+}
+
+
+/*DOCSINDEX*/
+
 .docstitle {
     text-align: center;
     font-size: 50px;
@@ -77,3 +130,28 @@
         }
     }
 }
+
+/*UPLOAD STYLES*/
+.uploadflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.upload {
+    display: inline-grid;
+    background-color: #d4cfcf;
+    padding: 8%;
+    border-radius: 8%;
+    font-size: 19px;
+    }
+
+.uploadform {
+    padding: 5%;
+}
+
+.doctype {
+    display: inline-flex;
+
+}
+    

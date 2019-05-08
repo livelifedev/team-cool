@@ -232,3 +232,29 @@ a:hover
     opacity: 0.8;
   }
 }
+
+
+/*NAV BOTTOM*/
+.bottomnav {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  background-color: none;
+  margin-top: 30%;
+  }
+  
+  .bottomnav ul {
+  display: inline-flex;
+  }
+  
+  .bottomnav li {
+  display: inline;
+  margin-right: 40px;
+  padding: 5px;
+  }
+  
+  .footer {
+  text-align: center;
+  }
+  
