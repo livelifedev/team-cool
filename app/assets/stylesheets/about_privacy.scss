@@ -1,12 +1,4 @@
-.abouthead {
-    padding: 2% 0% 2% 0%;
-    text-align: center;
-    font-size: 59px;
-    letter-spacing: 23px;
-    color: #404443;
-  }
-
-  .quote {
+.quote {
     color: #ffff;
     background-color: #858181;
     margin: 4% 11% 8%;
@@ -37,3 +29,23 @@
   }
 
   
+  .privacyflex{
+    display: inline-flex;
+    justify-content: center;
+    margin: 8% 0 -15%;
+  }
+
+  img.logosmall {
+    height: 600px;
+    border-radius: 7%;
+    margin-right: -48%;
+  }
+  
+  .privacytext {
+    padding: 2%;
+    width: 64%;
+    background-color: #d4cfcf;
+    border-radius: 4%;
+    margin-top: 34%;
+    font-size: large;
+  }

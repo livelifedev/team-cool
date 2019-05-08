@@ -1,10 +1,80 @@
+.user-profile {
+    margin: auto;
+    width: 28%;
+    height: 20%;
+    background: #709fb0;
+    border-radius: .3em;
+  }
+  
+.username {
+    margin: auto;
+    margin-top: -20%;
+    margin-left: 5.80em;
+    color: #658585;
+    font-size: 1.53em;
+    font-weight: bold;
+  }
+
+.user-profile  .bio {
+    margin: auto;
+    display: inline-block;
+    margin-left: 10.43em;
+    color: #c0c5c5;
+    font-size: .87em;
+  }
+.description {
+    margin: auto;
+    margin-top: 1.35em;
+    margin-right: 4.43em;
+    width: 14em;
+    color: #c0c5c5; 
+    font-size: .87em;
+  }
+
+.avatar {
+    padding: .7em;
+    margin-left: .3em;
+    margin-top: .3em;
+    height: 6.23em;
+    width: 6.23em;
+    border-radius: 18em;
+  }
+  
+.data li {
+    margin: 0 auto;
+    padding: 1.30em; 
+    width: 33.33334%;
+    display: table-cell;
+    text-align: center;
+  }
+  
+.user-profile span {
+    color: #e3eeee;
+    white-space: nowrap;
+    font-size: 1.27em;
+    font-weight: bold;
+  }
+
+.edit {
+    background-color: #e0d7d3;
+    border: none;
+    color: #626670;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+
 /*SHOW/HIDE TOGGLE*/
 #content {
     display: none;
     background-color:  #d4cfcf;
     width: 50%;
     padding: 4%;
-  }
+}
 
 button:hover + div#content {
     display: block;
@@ -19,30 +89,18 @@ div#content:hover {
     width: 50%;
     background-color: #709fb0;
     border: none;
-    font-size: x-large;
-    text-align: center;
-    font-family: 'Exo', sans-serif;
-}
-
-.info {
-    display: grid;
-    font-style: oblique;
-}
-
-.accountflex{
-   margin-top:  13%;
-   margin-left: 26%; 
-}
-
-
-.editprofile {
+    font-size: large;
     text-align: center;
 }
 
-.avatar {
-    width: 150px;
-    float: right;
-    margin-right: 22%;
-    margin-top: 3%;
+
+.accountflex {
+    border-radius: .3em;
+    margin: auto;
+    width: 56%;
+    margin-left: 36%;
+    margin-top: -1%;
+  
+
 }
 
