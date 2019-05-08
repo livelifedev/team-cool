@@ -1,33 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
 
-<%= form_with(model: question, local: true) do |form| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-      <ul>
-      <% question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/about_privacy_contact.scss" %>
+        
+    </head>
+
+  <body>
+
+
+    <div class="contactflex">
+      <div class="contact">
+
+        <%= form_with(model: question, local: true) do |form| %>
+          <% if question.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+              <ul>
+              <% question.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :email %><br />
+            <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class='field'>
+            <%= form.select :reason, Question.reasons.keys, {} %>
+          </div>
+
+          <div class="field">
+            <%= form.label :message %>
+            <%= form.text_area :content, :cols => 80, :rows => 10 %>
+            
+          </div>
+
+          <div class="contactsubmit">
+            <%= submit_tag "Submit" %>
+          </div>
+        <% end %>
+
+      </div>
     </div>
-  <% end %>
 
-<div class="field">
-    <%= form.label :email %><br />
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-<div class='field'>
-    <%= form.select :reason, Question.reasons.keys, {} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :content, :cols => 80, :rows => 10 %>
-    
-  </div>
-
-  <div class="actions">
-    <%= submit_tag "Submit" %>
-  </div>
-<% end %>
+  </body>
+</html>

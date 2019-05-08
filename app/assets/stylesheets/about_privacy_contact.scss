@@ -1,3 +1,5 @@
+/*ABOUT STYLES*/
+
 .quote {
     color: #ffff;
     background-color: #858181;
@@ -28,6 +30,7 @@
     margin-right: -38%;
   }
 
+  /* PRIVACY STYLES */
   
   .privacyflex{
     display: inline-flex;
@@ -48,4 +51,30 @@
     border-radius: 4%;
     margin-top: 34%;
     font-size: large;
+  }
+
+/*CONTACT STYLES*/
+
+.contactflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.contact {
+  display: inline-grid;
+  background-color: #d4cfcf;
+  padding: 4%;
+  border-radius: 8%;
+  font-size: 19px;
+  }
+
+  .backbutton {
+    text-align: center;
+    margin-top: -4%;
+  }
+
+  .contactsubmit {
+    text-align: center;
+    margin: 2%;
   }
