@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   def stripe
     payment_id = params[:data][:object][:payment_intent]
