@@ -61,9 +61,14 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    # byebug
     @document.destroy
     flash[:notice] = "Document was successfully deleted."
-    redirect_back(fallback_location: root_path)
+    if URI(request.referer).path == "/admin"
+      redirect_to admin_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
