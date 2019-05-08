@@ -130,3 +130,28 @@ h4 {
         }
     }
 }
+
+/*UPLOAD STYLES*/
+.uploadflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.upload {
+    display: inline-grid;
+    background-color: #d4cfcf;
+    padding: 8%;
+    border-radius: 8%;
+    font-size: 19px;
+    }
+
+.uploadform {
+    padding: 5%;
+}
+
+.doctype {
+    display: inline-flex;
+
+}
+    
