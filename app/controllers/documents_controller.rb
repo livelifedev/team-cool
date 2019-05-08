@@ -7,6 +7,7 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = Document.all
+    @document_subjects = Subject.find(params[:subject])
   end
 
   def search
@@ -37,6 +38,7 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
+    @subjects = Subject.all
   end
 
   def edit
@@ -44,6 +46,7 @@ class DocumentsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @rated = @document.ratings.find_by_user_id(current_user.id)
   end
 
   def update

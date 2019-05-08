@@ -66,7 +66,7 @@
     
     <h4> Leave your rating </h4>
     <form action="<%= document_ratings_path(@document) %>" method="POST">
-      <% if @document.ratings.find_by_user_id(current_user.id) %>
+      <% if @rated %>
         <input type="hidden" name="_method" value="put" />
       <% end %>
       <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
