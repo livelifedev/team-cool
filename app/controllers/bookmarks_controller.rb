@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_document
+  before_action :set_document, except: [:destroy]
 
   def create
     if !current_user.bookmarks.find_by_document_id(params[:document_id])
@@ -9,6 +9,12 @@ class BookmarksController < ApplicationController
       )
       redirect_to document_path(@document)
     end
+  end
+
+  def destroy
+    current_user.bookmarks.find(params[:id]).destroy
+    flash[:notice] = "Bookmark was successfully deleted."
+    redirect_to profile_path
   end
 
   private

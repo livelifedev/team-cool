@@ -19,7 +19,8 @@ class AccountsController < ApplicationController
   end
 
   def profile
-    @documents = Document.where(user_id: current_user.id)
+    @documents = Document.all
+    @user_documents = Document.where(user_id: current_user.id)
   end
 
   def admin
