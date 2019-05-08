@@ -21,11 +21,6 @@ class DocumentsController < ApplicationController
     session[:search_results] = request.url
   end
 
-  def subjects
-    session[:search_results] = request.url
-    @subjects = Subject.all
-  end
-
   def create
     @document = current_user.documents.create(document_params)
     if @document.errors.any?

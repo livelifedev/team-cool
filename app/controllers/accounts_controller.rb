@@ -26,6 +26,7 @@ class AccountsController < ApplicationController
   def admin
     @users = User.all
     @documents = Document.all
+    @subjects = Subject.all
   end
 
 

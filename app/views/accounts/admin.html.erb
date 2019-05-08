@@ -27,4 +27,16 @@
   <% end %>
 </div>
 
+<h3>Subjects:</h3>
+<div class="scrollbox">
+  <% @subjects.each do |subject| %>
+    <li>
+      <%= subject.name %>
+      <%= link_to "Add", edit_document_path(doc.id) %> |
+      <%= link_to "Edit", edit_document_path(doc.id) %> |
+      <%= link_to "Delete", document_path(doc.id), method: :delete, data: {confirm: "Are you sure?"} %>
+    </li>
+  <% end %>
+</div>
+
 </div>

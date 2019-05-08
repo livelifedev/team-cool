@@ -1,3 +1,20 @@
 class SubjectsController < ApplicationController
-  #create ability to show, add and edit subjects for admin
+
+  def index
+    session[:search_results] = request.url
+    @subjects = Subject.all
+  end
+
+  def create
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+
 end

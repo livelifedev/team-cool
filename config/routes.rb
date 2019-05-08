@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/privacy", to: "pages#privacy", as: "privacy"
   get "/documents/search", to: "documents#search", as: "search"
   get "/documents/results", to: "documents#results", as: "results"
-  get "/subjects", to: "documents#subjects", as: "subjects"
+  get "/subjects", to: "subjects#index", as: "subjects"
   resources :documents do
     resources :comments, only: [:index, :create, :destroy]
     resources :bookmarks, only: [:index, :create]
