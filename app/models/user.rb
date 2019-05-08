@@ -9,9 +9,6 @@ class User < ApplicationRecord
   has_many :answers
   has_many :comments, dependent: :destroy #change later, keep comment even if user deleted
   has_many :bookmarks, dependent: :destroy
-  has_many :libraries
-  has_many :library_additions, through: :libraries, source: :document
-  
   enum gender: { male: 0, female: 1, other: 2 }
   validates :first_name, :surname, :username, :birthday, :school, presence: true
   has_one_attached :picture

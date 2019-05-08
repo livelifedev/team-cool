@@ -14,6 +14,13 @@ class RatingsController < ApplicationController
     redirect_to document_path(@document)
   end
 
+  def update
+    @rating = @document.ratings.find_by_user_id(current_user.id).update(
+      score: params[:score]
+    )
+    redirect_to document_path(@document)
+  end
+
   private
 
   def set_document

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :destroy]
     resources :bookmarks, only: [:index, :create, :destroy]
     resources :ratings, only: [:index, :create, :destroy]
+    put "/ratings", to: "ratings#update"
+    patch "/ratings", to: "ratings#update"
   end
   resources :users, only: [:show, :edit, :update]
   resources :questions do
