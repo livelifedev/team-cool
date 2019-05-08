@@ -3,10 +3,12 @@ class BookmarksController < ApplicationController
   before_action :set_document
 
   def create
-    @comment = @document.bookmarks.create(
-      user_id: current_user.id
-    )
-    redirect_to document_path(@document)
+    if !current_user.bookmarks.find_by_document_id(params[:document_id])
+      @bookmark = @document.bookmarks.create(
+        user_id: current_user.id
+      )
+      redirect_to document_path(@document)
+    end
   end
 
   private
