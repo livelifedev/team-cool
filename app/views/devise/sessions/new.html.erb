@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <html lang="en">
+  <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>LibU</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <!--LINK ONCE INSIDE RAILS-->
+          <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+          <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/home.scss" %>
+  </head>
+
+  <body>
+            
+            <%=render 'nav_top' %><!DOCTYPE html>
+            <html>
+            <html lang="en">
+                <head>
+                    <meta charset="utf-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <title>LibU</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <!--LINK ONCE INSIDE RAILS-->
+                    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+            
+                    <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/user.scss"%>
+                </head>
+            
+                <body>
+                    
+                    <%=render 'nav_top' %>
+
+      <h1>Log in</h1>
+
+      <div class="login">
+        <div class="form">
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+        <br>
+
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+
+            <br>
+
+            <div class="signup">
+            <%= render "devise/shared/links" %> 
+            </div>
+
+          <br>
+
+          <div class="remember">
+            <% if devise_mapping.rememberable? %>
+            
+              <%= f.check_box :remember_me %>
+              <div class="rememberme">
+                <%= f.label :remember_me %>
+              </div>
+            
+          </div>
+            <% end %>
+
+            <div class="actions">
+            <%= f.submit "Log in" %>
+            </div>
+
+            
+          <% end %>
+        </div>
+      </div>
+
+
+    <%= render "nav_bottom" %>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/signup.scss" %>
+        
+  </head>
+
+  <body>
+
+  <%= render 'nav_top' %>
+
+  <h2> Subscription </h2>
+  
+    <div class="subscriptionflex">
+        <div class="subscription">
+          
+          
+            <p> To gain full access the site we ask that you make
+                a small one off payment of <b>$50.</b> 
+                <br><br>
+                This will allow you to bookmark, upload, download, rate and comment on documents.
+                <br><br>
+                If you're experiencing financial hardship please feel free
+                to contact us to discuss your situation and obtain a 
+                possible discount.
+            </p>
+
+            
+        </div>
+    </div>
+
+        <br>
+
+        <div class="subscriptionbutton">
+
+            <button id="stripePayment"> Continue to payment form </button>
+        </div>
+
+        <script>
+          document.getElementById("stripePayment").addEventListener("click", function() {
+          var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :public) %>');
+
+          stripe.redirectToCheckout({
+            sessionId: '<%= @stripe_session.id %>',
+          }).then(function (result) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
+          });
+
+        });
+      </script>
+  
+  </body>
+
+  <footer>
+    <%=render 'nav_bottom' %>
+  </footer>
+</html>

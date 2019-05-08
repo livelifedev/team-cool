@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/docs.scss" %>
+        
+    </head>
+
+  <body>
+
+    <%= render 'nav_top' %>
+
+    <h2> Upload </h2>
+
+<% if @document.errors.any? %>
+  <% @document.errors.full_messages.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+
+<%= form_with model: @document, local: true do |form| %>
+  <div class="uploadflex">
+    <div class="upload">
+
+      <div class="uploadform">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
+
+      <div class="uploadform">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
+
+      <div class="uploadform">
+        <%= form.collection_check_boxes :subject_ids, @subjects, :id, :name do |sub| %>
+        <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
+        <% end %>
+      </div>
+
+      <div class="uploadform">
+        <% @types.each do |option| %>
+          <div class="doctype">
+            <%= form.radio_button :doc_type, option %>
+            <%= form.label "doc_type_#{option}".to_sym, option %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="uploadform">
+        <%= form.label :document %>
+        <%= form.file_field :file, accept: "application/pdf" %>
+        <p>(PDF only)</p>
+      </div>
+
+      <div class="uploadform">
+        <%= form.submit %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+  <%=render 'nav_bottom' %>

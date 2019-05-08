@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--LINK ONCE INSIDE RAILS-->
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/profile.scss" %>
+    </head>
+
+  <body>
+          
+    <%=render 'nav_top' %>
+
+
+    <h2>Profile</h2>
+  
+  <div class="profileflex">
+
+    <div class="user-profile">
+      <div class="avatar">
+        <%= image_tag("user.png", :alt => "avatar", :class => "avatar") %>
+      </div>
+
+      <div class="username">
+        Hi <%= current_user.username %>
+      </div>
+
+      <div class="bio">
+        <%= current_user.first_name %><br>
+        <%= current_user.surname %>
+      </div>
+
+      <div class="description">
+        <%= current_user.email %><br>
+        <%= current_user.school %>
+      </div>
+
+      <ul class="data">
+        <li>
+          <span> <%= button_to "Click here to edit account details", edit_user_registration_path, :method => :get, :class => "edit"%></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="accountflex">
+    
+      <div class="bookmarks">
+        <button id="button">My Bookmarks</button>
+        <div id="content">
+          <ul>
+            <% current_user.bookmarks.each do |bookmark| %>
+              <li>
+                <%= @documents.find(bookmark.document_id).title %>
+                <%= link_to "Delete", bookmark_path(bookmark.id), method: :delete, data: {confirm: "Are you sure?"} %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="uploads">
+        <button id="button">My Uploads</button>
+        <div id ="content">
+          <ul>
+            <% @user_documents.each do |doc| %>
+              <li><%= doc.title %></li>
+              <%= link_to "Delete", document_path(doc.id), method: :delete, data: {confirm: "Are you sure?"} %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  </body>
+
+<%=render 'nav_bottom'%>
+</html>

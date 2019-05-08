@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/docs.scss" %>
+        
+    </head>
+
+
+    <%= render 'nav_top' %>
+
+  <body>
+
+    <h2><%= @document.title %></h2>
+
+    <div class="docshow">
+      <%= image_tag("https://i.imgur.com/GOXwLQi.png?1") %>
+    </div>
+
+    <div class="bookmark">
+      <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
+    </div>
+
+    <div class ="documentinfo">
+      
+    <div class>
+    <h4>Author</h4>
+    <p><%= @document.user.username %></p>
+    </div>
+
+      <div>
+        <h5>Description</h5>
+        <p><%= @document.description %></p>
+      </div>
+
+      <div>
+        <h5>Subject</h5>
+        <p><% @document.subjects.each do |sub| %>
+        <li><%= sub.name %></li>
+        <% end %></p>
+      </div>
+
+    <div>
+    <h4>Type</h4>
+    <p><%= @document.doc_type %></p>
+    <% if @document.file.attached? %>
+      <p><%= link_to "Download", @document.file %></p>
+    <% else %>
+      <p>Download link not available</p>
+    <% end %>
+    </div>
+
+
+    <div>
+    <h4> Current rating </h4>
+      <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
+      (<%= @document.ratings.count %>)
+    
+    <h4> Leave your rating </h4>
+    <form action="<%= document_ratings_path(@document) %>" method="POST">
+      <% if @rated %>
+        <input type="hidden" name="_method" value="put" />
+      <% end %>
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+      <select name="score">
+        <option value = "1">1</option>
+        <option value = "2">2</option>
+        <option value = "3">3</option>
+        <option value = "4">4</option>
+        <option value = "5">5</option>
+      </select>
+      <input type="submit" value="Rate" />
+    </form>
+    </div>
+
+
+    <div class="comments">
+      <h4>Comment</h4>
+      <p><% @document.comments.each do |comment| %>
+        <li><%= comment.user.username %></li>
+        <li><%= comment.body %></li>
+        <li>created <%= time_ago_in_words(comment.created_at) %> ago</li>
+      <% end %></p>
+
+
+        <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
+          <div>
+            <%= form.label :body %>
+            <%= form.text_area :body %>
+          </div>
+          <div>
+            <%= form.submit %>
+          </div>
+          <% end %>
+      </div>
+
+    <div class = "links">
+      <ul>
+        <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
+        <li><%= link_to "Back to Search Results", session[:search_results] %><li> <br> <br>
+
+          <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></i>
+        </ul>
+      </div>
+
+    </div>
+
+        
+
+  </body>
+
+  <%render 'nav_bottom' %>
+
+</html>
+
+
+

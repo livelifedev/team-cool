@@ -1,0 +1,17 @@
+<%=render 'nav_top' %>
+ 
+  <h3>Subjects</h3>
+
+  <div class="subjects">
+
+  <% @subjects.each do |subject| %>
+
+      <div class = "subjectname">
+        <p><%= link_to subject.name, documents_path(subject:subject.id) %></p>
+      </div>
+
+  <% end %>
+
+</div>
+
+  <%=render 'nav_bottom' %>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/user.scss" %>
+    </head>
+
+    <body>
+        
+        <%=render 'nav_top' %>
+        
+
+        <div class="confirmed">
+            <h1> You're good to go! </h1><br>
+                <p>
+                    Thank you for your payment
+                </p>
+        </div>
+
+        <div class="viewprofile">
+       <%= button_to "View my profile", profile_path, :method => :get %>
+        </div>
+    
+        </body>
+
+        <%=render "nav_bottom"%>
+
+</html>

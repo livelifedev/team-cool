@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/views/pages/home.html.erb" %>
+        
+    </head>
+
+
+
+    
+
+    <%= render 'nav_top' %>
+
+        <h1 class="home-title">
+            <span>LibU</span><br>
+            <span id="linetwo">Connecting students</span>
+        </h1>
+        
+
+        
+
+
+
+        <div class="subjectgrid">
+        <h2>Popular Subjects</h2>
+
+            <div class ="subjectline">
+
+                <div class="subjectone">
+                    
+                    <%= image_tag("science_photo.jpg", :alt => "Science") %>
+                    <h4> <%= link_to "Science", documents_path(subject:3) %></h4> 
+                </div>
+
+                <div class="subjecttwo"> 
+                <%= image_tag("history_photo.jpg", :alt => "History") %>
+                    <h4> <%= link_to "History", documents_path(subject:2) %></h4> 
+                </div>
+
+                <div class="subjectthree"> 
+                    <%= image_tag("math_photo.jpg", :alt => "Math") %>
+                    <h4> <%= link_to "Math", documents_path(subject:1) %></h4> 
+                </div>
+            </div>
+        </div>
+
+    <%=render 'nav_bottom' %>
+
+    
+    </body>
+
+        
