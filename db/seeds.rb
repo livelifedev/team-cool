@@ -70,3 +70,7 @@ documents = []
   ).subject_ids = [rand(1..6)]
 end
 
+Bookmark.create(
+  user_id: rand(User.count + 1),
+  document_id: rand(Document.count + 1)
+)

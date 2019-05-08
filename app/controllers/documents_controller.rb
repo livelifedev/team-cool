@@ -6,7 +6,6 @@ class DocumentsController < ApplicationController
 
 
   def index
-    #get all available documents
     @documents = Document.all
   end
 
@@ -15,13 +14,9 @@ class DocumentsController < ApplicationController
   end
 
   def results
-    #get all available documents
     @documents = Document.all
-    # render plain: params[:q][:title_cont].inspect
     @q = Document.ransack(params[:q])
-    # @q.title_cont = "" unless params[:q]
     @document = @q.result(distinct: true)
-    # render plain: @document.inspect
     session[:search_results] = request.url
   end
 
@@ -32,7 +27,6 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.create(document_params)
-    # @document = Document.create(document_params)
     if @document.errors.any?
       set_types
       render "new"
@@ -42,26 +36,17 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    #get access to necessary attribute names
     @document = Document.new
-    # @document = current_user.documents.create
   end
 
   def edit
-    #document retrieved from before_action
   end
 
   def show
-    #document retrieved from before_action
     @comment = Comment.new
-    # @comment = @document.comments.create(
-    #   body: "comment_params[:body]",
-    #   user_id: current_user.id
-    # )
   end
 
   def update
-    #document retrieved from before_action
     @document.update(document_params)
     if @document.errors.any?
       set_types
@@ -73,7 +58,6 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    #document retrieved from before_action
     @document.destroy
     flash[:notice] = "Document was successfully deleted."
     redirect_to documents_path
@@ -82,7 +66,6 @@ class DocumentsController < ApplicationController
   private
 
   def set_types
-    #get access to types enum keys
     @types = Document.doc_types.keys
   end
 
@@ -92,7 +75,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    #whitelist params
     params.require(:document).permit(:title, :description, :user_id, :doc_type, :file, subject_ids: [])
   end
 
