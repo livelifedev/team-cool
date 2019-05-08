@@ -13,8 +13,8 @@ class AccountsController < ApplicationController
         quantity: 1,
         }],
         #make this dynamic using env variable
-        success_url: 'http://localhost:3000/payments/success', 
-        cancel_url: 'http://localhost:3000/cancel',
+        success_url: "http://#{ENV['DOMAIN']}/payments/success", 
+        cancel_url: "http://#{ENV['DOMAIN']}/cancel",
     })
   end
 
