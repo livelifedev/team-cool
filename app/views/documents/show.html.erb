@@ -22,31 +22,31 @@
     <h2><%= @document.title %></h2>
 
     <div class="docshow">
-    <%= image_tag("https://i.imgur.com/GOXwLQi.png?1") %>
+      <%= image_tag("https://i.imgur.com/GOXwLQi.png?1") %>
     </div>
 
     <div class="bookmark">
-    <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
+      <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
     </div>
 
-  <div class ="bottom">
-    
+    <div class ="documentinfo">
+      
     <div class ="description">
     <h4>Author</h4>
     <p><%= @document.user.username %></p>
     </div>
 
-    <div class ="description">
-    <h4>Description</h4>
-    <p><%= @document.description %></p>
-    </div>
+      <div>
+        <h5>Description</h5>
+        <p><%= @document.description %></p>
+      </div>
 
-    <div class = "subject">
-    <h4>Subject</h4>
-    <p><% @document.subjects.each do |sub| %>
-      <li><%= sub.name %></li>
-    <% end %></p>
-    </div>
+      <div>
+        <h5>Subject</h5>
+        <p><% @document.subjects.each do |sub| %>
+        <li><%= sub.name %></li>
+        <% end %></p>
+      </div>
 
     <div class ="type">
     <h4>Type</h4>
@@ -91,31 +91,33 @@
       <% end %></p>
 
 
-      <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
-        <div>
-          <%= form.label :body %>
-          <%= form.text_area :body %>
-        </div>
-        <div>
-          <%= form.submit %>
-        </div>
-      <% end %>
-    </div>
+        <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
+          <div>
+            <%= form.label :body %>
+            <%= form.text_area :body %>
+          </div>
+          <div>
+            <%= form.submit %>
+          </div>
+          <% end %>
+      </div>
 
     <div class = "links">
       <ul>
         <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
         <li><%= link_to "Back to Search Results", session[:search_results] %><li> <br> <br>
 
-        <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></i>
-      </ul>
+          <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></i>
+        </ul>
+      </div>
+
     </div>
 
-</div>
-
-      <%render 'nav_bottom' %>
+        
 
   </body>
+
+  <%render 'nav_bottom' %>
 
 </html>
 
