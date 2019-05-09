@@ -1,6 +1,6 @@
 class Document < ApplicationRecord
   belongs_to :user
-  before_create :file_check
+  # before_create :file_check
   has_many :document_subjects
   has_many :subjects, through: :document_subjects, dependent: :destroy
   has_many :ratings, dependent: :destroy
@@ -11,12 +11,12 @@ class Document < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
   has_one_attached :file
 
-  validate :file_check
+  # validate :file_check
   
-  def file_check
-    unless file.attached?
-      errors.add :picture, 'Please select a document' unless file.attached?
-    end
-  end
+  # def file_check
+  #   unless file.attached?
+  #     errors.add :picture, 'Please select a document' unless file.attached?
+  #   end
+  # end
 
 end
