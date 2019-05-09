@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy #change later, keep comment even if user deleted
   has_many :bookmarks, dependent: :destroy
   enum gender: { male: 0, female: 1, other: 2 }
-  validates :first_name, :surname, :username, :birthday, :school, presence: true
+  validates :first_name, :surname, :birthday, :gender, :email, :school, presence: true, length: { minimum: 2 }
+  validates :username, :email, uniqueness: true
+  validates :password, length: { in: 6..20 }
   has_one_attached :picture
 end

@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
-  
+  before_action :admin_access, only: [:admin]
+
   def index
     user_id = current_user.id.to_s
     domain = request.base_url

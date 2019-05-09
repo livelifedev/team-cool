@@ -1,9 +1,8 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :subjects, :results]
+  before_action :access, only: [:show]
   before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_action :set_types, only: [:new, :edit]
-  before_action :access, only: [:show]
-
 
   def index
     @documents = Document.all
@@ -74,6 +73,7 @@ class DocumentsController < ApplicationController
 
   def set_types
     @types = Document.doc_types.keys
+    @subjects = Subject.all
   end
 
   def set_document
@@ -84,6 +84,5 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit(:title, :description, :user_id, :doc_type, :file, subject_ids: [])
   end
-
 
 end

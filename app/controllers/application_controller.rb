@@ -20,4 +20,7 @@ class ApplicationController < ActionController::Base
               end
        end
        
+       def admin_access
+              redirect_to root_path if !current_user.admin
+       end
 end
