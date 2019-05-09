@@ -7,7 +7,11 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = Document.all
-    @document_subjects = Subject.find(params[:subject])
+    if params[:subject]
+      @document_subjects = Subject.find(params[:subject])
+    else
+      redirect_to subjects_path
+    end
   end
 
   def search
