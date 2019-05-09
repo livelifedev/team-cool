@@ -14,7 +14,6 @@
                 
   </head>
 <body>
-  <%=render 'nav_top' %>
  
   <div class="docstitle">
 
@@ -27,29 +26,29 @@
     <div class="listings">
 
       <div class = "doctitle">
-        <h4>Title</h4>
+        <h5>Title</h5>
         <p><%= document.title %></p>
       </div>
 
       <div class = "docdescribe">
-      <h4>Description</h4>
+      <h5>Description</h5>
         <p><%= truncate(document.description, length:100) %></p>
       </div>
 
       <div class = "docsubject">
-        <h4>Subject</h4>
+        <h5>Subject</h5>
         <p><% document.subjects.each do |sub| %>
           <li><%= sub.name %></li>
         <% end %></p>
       </div>
 
       <div class="doctype">
-        <h4>Document Type</h4>
+        <h5>Document Type</h5>
         <p><%= document.doc_type %></p>
       </div>
 
       <div class = "docrating">
-        <h4>Rating</h4>
+        <h5>Rating</h5>
         <p><%= number_with_precision document.ratings.average(:score), :precision => 1 %>
         (<%= document.ratings.count %>)
         </p>
@@ -57,15 +56,18 @@
 
       <div class = "doclinks">
         <ul>
-          <li><%= link_to "Edit", edit_document_path(document.id) %></li>
           <li><%= link_to "Show", document_path(document.id) %></li>
+        <% if current_user && (current_user == document.user || current_user.admin) %>
+          <li><%= link_to "Edit", edit_document_path(document.id) %></li>
           <li><%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %></li>
+        
+        <% end %>
         </ul>
       </div>
 
     </div>
   <% end %>
 
-  <%=render 'nav_bottom' %>
+
 </body>
 

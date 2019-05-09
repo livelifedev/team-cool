@@ -1,6 +1,4 @@
-#header {
-  position: fixed;
-}
+
 /* HAMBURGER MENU */
 
 a
@@ -41,15 +39,13 @@ a:hover
   
   cursor: pointer;
   
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0;
+  z-index: 2; 
   
   -webkit-touch-callout: none;
 }
 
-/*
- * Just a quick hamburger
- */
+
 #menuToggle span
 {
   display: block;
@@ -80,10 +76,7 @@ a:hover
   transform-origin: 0% 100%;
 }
 
-/* 
- * Transform all the slices of hamburger
- * into a crossmark.
- */
+
 #menuToggle input:checked ~ span
 {
   opacity: 1;
@@ -91,28 +84,21 @@ a:hover
   background: #232323;
 }
 
-/*
- * But let's hide the middle one.
- */
+
 #menuToggle input:checked ~ span:nth-last-child(3)
 {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
+
 #menuToggle input:checked ~ span:nth-last-child(2)
 {
   opacity: 1;
   transform: rotate(-45deg) translate(0, -1px);
 }
 
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
+
 #menu
 {
   position: absolute;
@@ -125,7 +111,7 @@ a:hover
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
+
   
   transform-origin: 0% 0%;
   transform: translate(100%, 0);
@@ -139,9 +125,7 @@ a:hover
   font-size: 22px;
 }
 
-/*
- * And let's fade it in from the left
- */
+
 #menuToggle input:checked ~ ul
 {
   transform: scale(1.0, 1.0);
@@ -168,7 +152,6 @@ a:hover
 #wrap {
   margin: 4% 8%;
   display: inline-block;
-  float: right;
   padding: 0;
   position: relative;
 }
@@ -213,7 +196,6 @@ a:hover
     width: 63px;
     display: inline-block;
     color:red;
-    float: right;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
     text-indent: -10000px;
     border: none;

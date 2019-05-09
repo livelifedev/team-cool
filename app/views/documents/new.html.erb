@@ -16,9 +16,10 @@
 
   <body>
 
-    <%= render 'nav_top' %>
 
+  <div class="docstitle">
     <h2> Upload </h2>
+  </div>
 
 <% if @document.errors.any? %>
   <% @document.errors.full_messages.each do |error| %>
@@ -71,4 +72,3 @@
     <% end %>
 
 
-  <%=render 'nav_bottom' %>

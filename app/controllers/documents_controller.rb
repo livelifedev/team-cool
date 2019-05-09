@@ -40,6 +40,9 @@ class DocumentsController < ApplicationController
   end
 
   def edit
+    if !(current_user == @document.user || current_user.admin)
+      redirect_to root_path
+    end
   end
 
   def show
@@ -59,7 +62,6 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    # byebug
     @document.destroy
     flash[:notice] = "Document was successfully deleted."
     if URI(request.referer).path == "/admin"
