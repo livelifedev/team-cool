@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   
   def index
     user_id = current_user.id.to_s
-    # domain = request.base_url
+    domain = request.base_url
     @stripe_session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
         client_reference_id: user_id,
@@ -13,9 +13,8 @@ class AccountsController < ApplicationController
         currency: 'aud',
         quantity: 1,
         }],
-        #make this dynamic using env variable
-        success_url: "http://lib-u.herokuapp.com/payments/success", 
-        cancel_url: "http://lib-u.herokuapp.com/cancel",
+        success_url: "#{domain}/payments/success", 
+        cancel_url: "#{domain}/cancel",
     })
   end
 
