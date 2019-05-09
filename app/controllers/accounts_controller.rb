@@ -13,7 +13,6 @@ class AccountsController < ApplicationController
         currency: 'aud',
         quantity: 1,
         }],
-        #make this dynamic using env variable
         success_url: "#{domain}/payments/success", 
         cancel_url: "#{domain}/cancel",
     })
