@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :admin_access, only: [:new, :edit]
+
 
   def index
     session[:search_results] = request.url
@@ -7,7 +9,6 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    # byebug
     Subject.create(subject_params)
     redirect_to admin_path
   end

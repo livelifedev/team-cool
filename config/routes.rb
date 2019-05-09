@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   delete "/bookmark/:id", to: "bookmarks#destroy", as: "bookmark"
   resources :users, only: [:show, :edit, :update]
-  resources :questions do
+  resources :questions, except: [:index] do
     resources :answers
   end
 end

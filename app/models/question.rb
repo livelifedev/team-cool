@@ -2,8 +2,9 @@ class Question < ApplicationRecord
     belongs_to :user
     has_many :answers
     enum reason: { 
-        'I have problem with my account': 0, 
-        'Account cancellation': 1, 
-        'Other': 2 
+        'General enquiries': 0, 
+        'I have problem with my account': 1, 
+        'Account cancellation': 2, 
+        'Other': 3
     }
 end

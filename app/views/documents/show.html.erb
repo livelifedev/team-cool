@@ -15,11 +15,12 @@
     </head>
 
 
-    <%= render 'nav_top' %>
 
   <body>
 
+  <div class="docstitle">
     <h5><%= @document.title %></h5>
+  </div>
 
     <div class="docshow">
       <%= image_tag("https://i.imgur.com/GOXwLQi.png?1") %>
@@ -104,10 +105,11 @@
 
     <div class = "links">
       <ul>
-        <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
-        <li><%= link_to "Back to Search Results", session[:search_results] %><li> <br> <br>
-
-          <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></i>
+        <li><%= link_to "Back to Search Results", session[:search_results] %></li> <br> <br>
+        <% if current_user && (current_user == @document.user || current_user.admin) %>
+          <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
+          <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></li>
+        <% end %>
         </ul>
       </div>
 
@@ -117,8 +119,7 @@
 
   </body>
 
-  <%render 'nav_bottom' %>
-
+  
 </html>
 
 
