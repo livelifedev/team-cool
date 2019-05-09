@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
   
   def index
     user_id = current_user.id.to_s
+    domain = request.base_url
     @stripe_session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
         client_reference_id: user_id,
@@ -12,19 +13,20 @@ class AccountsController < ApplicationController
         currency: 'aud',
         quantity: 1,
         }],
-        #make this dynamic using env variable
-        success_url: 'http://localhost:3000/payments/success', 
-        cancel_url: 'http://localhost:3000/cancel',
+        success_url: "#{domain}/payments/success", 
+        cancel_url: "#{domain}/cancel",
     })
   end
 
   def profile
-    @documents = Document.where(user_id: current_user.id)
+    @documents = Document.all
+    @user_documents = Document.where(user_id: current_user.id)
   end
 
   def admin
     @users = User.all
     @documents = Document.all
+    @subjects = Subject.all
   end
 
 

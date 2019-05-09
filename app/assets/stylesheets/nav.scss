@@ -155,11 +155,10 @@ a:hover
 @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 
 .searchbutton {
-      display: flex;
+    background-color: #071E22;
+    display: flex;
     flex-direction: row-reverse;
     justify-content: flex-start;
-    margin-right: 3%;
-    margin-top: -1.5%;
     position: fixed;
     top: 0;
     left: 0;
@@ -232,3 +231,28 @@ a:hover
     opacity: 0.8;
   }
 }
+
+
+/*NAV BOTTOM*/
+.bottomnav {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  background-color: none;
+  margin-top: 30%;
+  }
+  
+  .bottomnav ul {
+  display: inline-flex;
+  }
+  
+  .bottomnav li {
+  display: inline;
+  margin-right: 40px;
+  padding: 5px;
+  }
+  
+  .footer {
+  text-align: center;
+  }  

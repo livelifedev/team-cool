@@ -19,7 +19,7 @@
  
   <div class="docstitle">
 
-   <h3> Your search results </h3>
+   <h4> Your search results </h4>
 </div>
 
 
@@ -39,29 +39,29 @@
       </div>
 
       <div class = "doctitle">
-        <h3>Title</h3>
+        <h4>Title</h4>
         <p><%= document.title %></p>
       </div>
 
       <div class = "docdescribe">
-      <h3>Description</h3>
+      <h4>Description</h4>
         <p><%= truncate(document.description, length:100) %></p>
       </div>
 
       <div class = "docsubject">
-        <h3>Subject</h3>
+        <h4>Subject</h4>
         <p><% document.subjects.each do |sub| %>
           <li><%= sub.name %></li>
         <% end %></p>
       </div>
 
       <div class="doctype">
-        <h3>Document Type</h3>
+        <h4>Document Type</h4>
         <p><%= document.doc_type %></p>
       </div>
 
       <div class = "docrating">
-        <h3>Rating</h3>
+        <h4>Rating</h4>
         <p><%= number_with_precision document.ratings.average(:score), :precision => 1 %>
         (<%= document.ratings.count %>)
         </p>

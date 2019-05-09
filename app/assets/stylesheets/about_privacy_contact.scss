@@ -1,0 +1,80 @@
+/*ABOUT STYLES*/
+
+.quote {
+    color: #ffff;
+    background-color: #858181;
+    margin: 4% 11% 8%;
+    padding: 8%;
+    border-radius: 1%;
+    font-size: xx-large;
+  }
+  
+  .about {
+    display: inline-flex;
+    justify-content: center;
+    margin: 8% 0 -15%;
+  }
+  
+  .abouttext {
+    padding: 2%;
+    width: 49%;
+    background-color: #d4cfcf;
+    border-radius: 4%;
+    margin-top: 35%;
+    font-size: large;
+  }
+  
+  img.logo {
+    height: 600px;
+    border-radius: 7%;
+    margin-right: -38%;
+  }
+
+  /* PRIVACY STYLES */
+  
+  .privacyflex{
+    display: inline-flex;
+    justify-content: center;
+    margin: 8% 0 -15%;
+  }
+
+  img.logosmall {
+    height: 600px;
+    border-radius: 7%;
+    margin-right: -48%;
+  }
+  
+  .privacytext {
+    padding: 2%;
+    width: 64%;
+    background-color: #d4cfcf;
+    border-radius: 4%;
+    margin-top: 34%;
+    font-size: large;
+  }
+
+/*CONTACT STYLES*/
+
+.contactflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.contact {
+  display: inline-grid;
+  background-color: #d4cfcf;
+  padding: 4%;
+  border-radius: 8%;
+  font-size: 19px;
+  }
+
+  .backbutton {
+    text-align: center;
+    margin-top: -4%;
+  }
+
+  .contactsubmit {
+    text-align: center;
+    margin: 2%;
+  }

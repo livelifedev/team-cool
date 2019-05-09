@@ -1,186 +1,228 @@
+
 body {
-    max-width: 1400px;
-    margin: 0 auto;
-    color: #404443;
-    background-color: #b9b7b7;
-    font-family: 'Exo', sans-serif;
-    background: asset_url("new.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
+  max-width: -webkit-fill-available;
+  margin: 0 auto;
+  color: #30323D;
+  background-color: #071E22;
+  font-family: 'Exo', sans-serif;
+  background: asset_url("background.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-size: cover;
 
 }
+
+
+
+
+
+/* h1 h2 h3 styles */
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+:root{
+  --bg-color: 	#CDCDCB;
+}
+  
+.hometitle {
+  background-color: #679289;
+}
+
+
+h1 {
+    text-align: center;
+    color: #E8B80B;
+
+    font-size: 71px;
+    letter-spacing: 23px;
+    margin-top: 8%;
+    padding: 2%;
+    opacity: 0.0;
+    animation: port 3s 1 forwards;
+    -webkit-animation: port 3s 1 forwards;
+    
+}
+
+h3 {
+      text-align: center;
+      font-size: 26px;
+      letter-spacing: 23px;
+      margin-top: -7%;
+      color: #E8B80B;
+      padding: 1%;
+      opacity: 0.0;
+      animation: port 3s 1 forwards;
+      -webkit-animation: port 3s 1 forwards;
+    }
 
 
 /*TITLE ANIMATION*/
 
-
-/* title styles */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+h1 h3 :nth-of-type(2){
+  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
 }
 
-:root{
-    --bg-color: 	#CDCDCB;
+h1 h3:nth-of-type(3){
+  animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
 }
 
-h1 {
-    text-align: center;
-    font-size: 59px;
-    letter-spacing: 23px;
-    margin-top: 7%;
-    color: #404443;
+h1 h3:nth-of-type(4){
+  animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
 }
 
-#linetwo {
-    text-align: center;
-    font-size: 30px;
-    letter-spacing: 23px;
-    margin-top: -5%;
-    color: #404443;
+h1 h3:nth-of-type(5){
+  animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
 }
 
-.home-title span{
-    position: relative;
-    overflow: hidden;
-    display: block;
-    line-height: 1.2;
+h1 h3:nth-of-type(6){
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
 }
 
-.home-title span::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background:rgb(214, 214, 212);
-    animation: a-ltr-after 2s cubic-bezier(.77,0,.18,1) forwards;
-    transform: translateX(-101%);
+h1 h3:nth-of-type(7){
+  animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
 }
 
-.home-title span::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-color);
-    animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
-    transform: translateX(0);
+h1 h3:nth-of-type(8){
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
 }
 
-.home-title span:nth-of-type(1)::before,
-.home-title span:nth-of-type(1)::after{
-    animation-delay: 1s;
+h1 h3:nth-of-type(9){
+  animation-delay: 0.8s;
+  -webkit-animation-delay: 0.8s;
 }
 
-.home-title span:nth-of-type(2)::before,
-.home-title span:nth-of-type(2)::after{
-    animation-delay: 1.5s;
+h1 h3:hover h1 h2 h3 {
+  animation: reset 1s 1;
+  -webkit-animation: reset 1s 1 ;
 }
 
-@keyframes a-ltr-after{
-    0% {transform: translateX(-100%)}
-    100% {transform: translateX(101%)}
+@keyframes port {
+  0%{
+    transform: rotateY(90deg) translateY(25%);
+    opacity: 0.0;
+  }
+  100%{
+    transform: rotateY(0deg) translateY(0%);
+    opacity: 1.0;
+  }
 }
 
-@keyframes a-ltr-before{
-    0% {transform: translateX(0)}
-    100% {transform: translateX(200%)}
+@-webkit-keyframes port {
+  0%{
+   -webkit-transform: rotateY(90deg) translateY(25%);
+    opacity: 0.0;
+  }
+  100%{
+    -webkit-transform: rotateY(0deg) translateY(0%);
+    opacity: 1.0;
+  }
 }
+
+@keyframes reset {
+  0%{}
+  100%{}
+}
+
+@-webkit-keyframes reset {
+  0%{}
+  100%{}
+}
+
+
+/*SEARCH*/
+
 
 .search {
-    padding-top: 50%;
-    width: 100%;
-    position: relative;
-    display: flex;
-  }
-  
-  .searchTerm {
-    width: 100%;
-    border: 3px solid #000000;
-    border-right: none;
-    padding: 5px;
-    height: 20px;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: #9DBFAF;
-  }
-  
-  .searchTerm:focus{
-    color: #00B4CC;
-  }
-  
-  .searchButton {
-    width: 40px;
-    height: 36px;
-    border: 1px solid #000000;
-    background: #000000;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  
-  /*Resize the wrap to see the search bar change!*/
-  .wrap{
-    width: 40%;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  padding-top: 50%;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #000000;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #000000;
+  background: #000000;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*SUBJECTS*/
 
 .subjectgrid {
-    margin-top: 36%;   
+  margin-top: 32%;  
+  background-color: #071E22; 
+
+  h2 {
+    font-size: 34px;
+    letter-spacing: 23px;
+    color: #E8B80B;
+    text-align: center;
+    padding: 3%;
+  
+  }
 }
 
 .subjectline {
-    margin-top: 6%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  margin-top: -1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .subjectone {
-  font-size: 24px;
-  margin: 3%;
+font-size: 24px;
+margin: 3%;
 }
 
 .subjecttwo {
-  font-size: 24px;
-  margin: 3%;
+font-size: 24px;
+margin: 3%;
 }
 
 .subjectthree {
-  font-size: 24px;
-  margin: 3%;
+font-size: 24px;
+margin: 3%;
 }
 
-.bottomnav {
-  text-align: center;
-  width: 100%;
-  margin: auto;
-  overflow: hidden;
-  background-color: none;
-}
 
-.bottomnav ul {
-  display: inline-flex;
-}
 
-.bottomnav li {
-  display: inline;
-  margin-right: 40px;
-  padding: 5px;
-}
-
-.footer {
-  text-align: center;
-}

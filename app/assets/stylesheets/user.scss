@@ -1,0 +1,168 @@
+/*LOGIN STYLES */
+
+  .login{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  }
+  
+  .form {
+  display: inline-grid;
+  background-color: #d4cfcf;
+  padding: 8%;
+  border-radius: 8%;
+  font-size: 19px;
+  }
+  
+  .remember {
+  display: inline-flex;
+  }
+  
+  .rememberme {
+  margin-left: 21%;
+  font-size: small;
+  }
+  
+  .actions {
+  margin: 30% 3% 20% 3%;
+  text-align: center;
+  }
+
+/*PASWORD RESET*/
+.passwordtitle {
+    font-size: 34px;
+    margin-top: 3%;
+    letter-spacing: 23px;
+    text-align: center;
+}
+
+.resetforms {
+    display: inline-grid;
+    text-align: center;
+    background-color: #d4cfcf;
+    margin: 2%;
+    padding: 8%;
+    border-radius: 8%;
+}
+
+.resetformsflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.resetemail {
+    text-align: justify;
+    margin-top: -28%;
+}
+
+.resetsubmit {
+    margin-bottom: -20%;
+    margin-top: 22%;
+
+}
+
+/*SIGNUP STYLES*/
+
+
+.memberlink   {
+    margin-left: 24%;
+    margin-top: 7%;
+}
+
+.signupflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #d4cfcf;
+    margin: -7% 20% 15% 20%;
+    border-radius: 2%;
+    padding-top: 5%; 
+    font-style: oblique; 
+}
+
+.signupforms1 {
+    padding: 9%;
+    margin-right: 5%;
+}
+
+.signupforms2 {
+    padding: 8%;
+}
+
+.field {
+    padding: 3%;
+}
+
+/*STYLING FOR PAYMENTS PAGE*/
+.subscriptionflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}  
+
+.subscription {
+    background-color: #d4cfcf;
+    border-radius: 2%;
+    font-style: oblique; 
+    margin: 5% 20% -1% 20%;
+    padding: 4%;
+
+}
+
+.subscriptionbutton {
+    text-align: center;
+    margin-top: -4%;
+}
+
+/*CONFIMATION STYLES*/
+.confirmed h2 {
+    text-align: center;
+    margin-top: 13%;
+    font-size: 50px;
+  }
+  
+  .confirmed p {
+    text-align: center;
+    margin-top: -3%;
+    font-size: 19px;
+  }
+
+  .viewprofile {
+    text-align: center;
+  }
+
+/*PASSWORD RESET*/
+
+.passwordtitle {
+    font-size: 34px;
+    margin-top: 3%;
+    letter-spacing: 23px;
+    text-align: center;
+}
+
+.resetforms {
+    display: inline-grid;
+    text-align: center;
+    background-color: #d4cfcf;
+    margin: 2%;
+    padding: 8%;
+    border-radius: 8%;
+}
+
+.resetformsflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.resetemail {
+    text-align: justify;
+    margin-top: -28%;
+}
+
+.resetsubmit {
+    margin-bottom: -20%;
+    margin-top: 22%;
+
+}

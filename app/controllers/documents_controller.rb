@@ -1,12 +1,17 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :subjects, :results]
-  before_action :set_document, only: [:show, :edit, :update, :destroy, :library]
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_action :set_types, only: [:new, :edit]
   before_action :access, only: [:show]
 
 
   def index
     @documents = Document.all
+    if params[:subject]
+      @document_subjects = Subject.find(params[:subject])
+    else
+      redirect_to subjects_path
+    end
   end
 
   def search
@@ -18,11 +23,6 @@ class DocumentsController < ApplicationController
     @q = Document.ransack(params[:q])
     @document = @q.result(distinct: true)
     session[:search_results] = request.url
-  end
-
-  def subjects
-    session[:search_results] = request.url
-    @subjects = Subject.all
   end
 
   def create
@@ -37,6 +37,7 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
+    @subjects = Subject.all
   end
 
   def edit
@@ -44,6 +45,7 @@ class DocumentsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @rated = @document.ratings.find_by_user_id(current_user.id)
   end
 
   def update
@@ -58,9 +60,14 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    # byebug
     @document.destroy
     flash[:notice] = "Document was successfully deleted."
-    redirect_to documents_path
+    if URI(request.referer).path == "/admin"
+      redirect_to admin_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
