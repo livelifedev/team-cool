@@ -1,8 +1,9 @@
 class AnswersController < ApplicationController
-
+    before_action :admin_access
 
     def new
-        @answer = Answer.new
+        @question = Question.find(params[:question_id])
+        @answer = Answer.new(:question=>@question)
     end
 
     def create

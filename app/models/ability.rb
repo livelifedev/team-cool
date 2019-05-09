@@ -9,7 +9,6 @@ class Ability
     else
       # setting permission to users - action, Model
       can :create, Question
-      can :create, Answer
 
       # setting permission to owners to delete and edit
       can :update, Question do |question|
@@ -18,10 +17,6 @@ class Ability
 
       can :destroy, Question do |question|
         question.user == user
-      end
-
-      can :destroy, Answer do |answer|
-        answer.user == user
       end
 
     end
