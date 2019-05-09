@@ -11,6 +11,8 @@ class Document < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
   has_one_attached :file
 
+
+  ##temporily disabled for seeds
   # validate :file_check
   
   # def file_check

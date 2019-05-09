@@ -38,7 +38,9 @@
                     <a href="#"><li><%= link_to "Login", new_user_session_path %></li></a>
                     <a href="#"><li><%= link_to "Signup", new_user_registration_path %></li></a>
                 <% end %>
-                
+                <% if current_user && current_user.admin %>
+                    <a href="#"><li><%= link_to "Admin", admin_path %></li></a>
+                <% end %>
                 
                 
             </ul>
