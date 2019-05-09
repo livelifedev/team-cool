@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import 'mediaqueries.scss'
 
-
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "home.scss"

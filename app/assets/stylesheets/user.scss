@@ -105,14 +105,15 @@
     background-color: #d4cfcf;
     border-radius: 2%;
     font-style: oblique; 
-    margin: 5% 20% -1% 20%;
-    padding: 4%;
+    padding: 12%;
 
 }
 
 .subscriptionbutton {
-    text-align: center;
-    margin-top: -4%;
+    margin-top: -12%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 /*CONFIMATION STYLES*/
