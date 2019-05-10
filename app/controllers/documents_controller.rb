@@ -84,6 +84,8 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
+    params[:document][:title].to_s.gsub!(/(<[^>]+>|&nbsp;|\r|\n)/,"")
+    params[:document][:description].to_s.gsub!(/(<[^>]+>|&nbsp;|\r|\n)/,"")
     params.require(:document).permit(:title, :description, :user_id, :doc_type, :file, subject_ids: [])
   end
 
