@@ -29,6 +29,7 @@ class AccountsController < ApplicationController
     @documents = Document.all
     @subjects = Subject.all
     @questions = Question.all
+    @comments = Comment.all
   end
 
 

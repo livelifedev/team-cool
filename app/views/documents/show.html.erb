@@ -85,11 +85,14 @@
 
     <div class="comments">
       <h4>Comment</h4>
-      <p><% @document.comments.each do |comment| %>
+      <ul><% @document.comments.each do |comment| %>
         <li><%= comment.user.username %></li>
         <li><%= comment.body %></li>
         <li>created <%= time_ago_in_words(comment.created_at) %> ago</li>
-      <% end %></p>
+        <% if current_user && current_user.admin %>
+          <li><%= link_to "Delete", delete_comment_path(comment.id, document_id: params[:id]), method: :delete, data: {confirm: "Are you sure?"} %></li>
+        <% end %>
+      <% end %></ul>
 
 
         <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>

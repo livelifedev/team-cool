@@ -48,7 +48,6 @@
 
 <h3>Questions:</h3>
 <div class="scrollbox">
-<p><%= link_to "Add", new_subject_path %></p>
   <ul>
     <% @questions.each do |question| %>
       <li>
@@ -59,6 +58,21 @@
         <%= link_to "Show", question_path(question.id) %> |
         <%= link_to "Edit", edit_question_path(question.id) %> |
         <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<h3>Comments:</h3>
+<div class="scrollbox">
+  <ul>
+    <% @comments.each do |comment| %>
+      <li>
+        ID<%= comment.id %> -
+        Doc <%= comment.document_id %> -
+        <%= comment.body %> -
+        <%= link_to "Delete", delete_comment_path(comment.id), method: :delete, data: {confirm: "Are you sure?"} %>
       </li>
     <% end %>
   </ul>
