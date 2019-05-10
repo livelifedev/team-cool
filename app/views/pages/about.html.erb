@@ -1,50 +1,32 @@
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+<div class="abouthead">          
+  <h1> About Us </h1>
+</div>
 
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+<div class="quote">
+  <p>
+    Those with access to these resources — students, librarians, scientists — you have been 
+    given a privilege. You get to feed at this banquet of knowledge while the rest of the world 
+    is locked out. But you need not — indeed, morally, you cannot — keep this privilege for 
+    yourselves. You have a duty to share it with the world. <br>
+    --Aaron Swartz
+  </p>
+</div> <br><br>
+<hr>
 
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/about_privacy_contact.scss" %>
-       
-    </head>
+<div class="about">
+  <%= image_tag("logo.png", :alt => "Logo", :class => "logo") %> <br>
+  <div class="abouttext">
+    <p>
+      At LibU we've made it our mission to help connect students and
+      teachers around the world by allowing them to share and discuss
+      peer produced academic materials.<br>
+      
+      LibU hopes to become a CreativeCommons recognised platform to allow 
+      copyright free distubution of the resources uploaded to the site.
+    </p>
 
-    <body>
-         
-
-        <div class="abouthead">          
-            <h1> About Us </h1>
-        </div>
-        
-
-        <div class="quote">
-        <p> Those with access to these resources — students, librarians, scientists — you have been 
-        given a privilege. You get to feed at this banquet of knowledge while the rest of the world 
-        is locked out. But you need not — indeed, morally, you cannot — keep this privilege for 
-        yourselves. You have a duty to share it with the world. <br>
-        --Aaron Swartz</p>
-        </div> <br><br>
-
-        <hr>
-
-        <div class="about">
-
-                    <%= image_tag("logo.png", :alt => "Logo", :class => "logo") %> <br>
-                
-            <div class="abouttext">
-                <p>
-                At LibU we've made it our mission to help connect students and
-                teachers around the world by allowing them to share and discuss
-                peer produced academic materials.<br>
-                
-                LibU hopes to become a CreativeCommons recognised platform to allow 
-                copyright free distubution of the resources uploaded to the site.
-                </p>
-
-                Read more about <%= link_to "CreativeCommons", "https://creativecommons.org/about/", :target => "_blank" %>
-            </div>
-        </div> 
+    Read more about <%= link_to "CreativeCommons", "https://creativecommons.org/about/", :target => "_blank" %>
+  </div>
+</div> 
 
  

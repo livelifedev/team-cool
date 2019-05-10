@@ -5,86 +5,75 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
     <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://js.stripe.com/v3/"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/nav_top.scss" %>
-
-<header id="head">
-
-        <nav>
-
-            <div id="menuToggle">
-                    
-                <input type="checkbox" />
-                        
-                <span></span>
-                <span></span>
-                <span></span>
-                
-            <ul id="menu">
-                <a href="#"><li><%= link_to "Home", root_path %></li></a>
-                <a href="#"><li><%= link_to "Subjects", subjects_path %></li></a>
-                <% if current_user %>
-                    
-                    <a href="#"><li><%= link_to "Profile", profile_path %></li></a>
-                    <a href="#"><li><%= link_to "Upload", new_document_path %></li></a>
-                    <a href="#"><li><%= link_to "Advanced Search", search_path %></li></a>
-                    <a href="#"><li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li></a>
-                <% else %>
-                    <a href="#"><li><%= link_to "About", about_path %></li></a>
-                    <a href="#"><li><%= link_to "Login", new_user_session_path %></li></a>
-                    <a href="#"><li><%= link_to "Signup", new_user_registration_path %></li></a>
-                <% end %>
-                <% if current_user && current_user.admin %>
-                    <a href="#"><li><%= link_to "Admin", admin_path %></li></a>
-                <% end %>
-                
-                
-            </ul>
-            </div>
-        </nav>
-
-    <div class="searchbutton">
-        <div id="wrap">
-            <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get">
-                <input name="utf8" type="hidden" value="✓">
-                <input id="search" class="searchTerm" placeholder="What are you looking for?" type="text" name="q[title_or_description_cont]" id="q_title_or_description_cont">
-                <input id="search_submit" type="submit" name="commit" class="searchButton" value="Rechercher" data-disable-with="Rechercher">
-            </form>
-        </div>
-    </div>
-    
-
-</header>
-
   <body>
-    
+    <header id="head">
+      <nav>
+        <div id="menuToggle">
+            <input type="checkbox" />
+                    
+            <span></span>
+            <span></span>
+            <span></span>
+            
+          <ul id="menu">
+            <a href="#"><li><%= link_to "Home", root_path %></li></a>
+            <a href="#"><li><%= link_to "Subjects", subjects_path %></li></a>
+            <% if current_user %>
+                <a href="#"><li><%= link_to "Profile", profile_path %></li></a>
+                <a href="#"><li><%= link_to "Upload", new_document_path %></li></a>
+                <a href="#"><li><%= link_to "Advanced Search", search_path %></li></a>
+                <a href="#"><li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li></a>
+            <% else %>
+                <a href="#"><li><%= link_to "About", about_path %></li></a>
+                <a href="#"><li><%= link_to "Login", new_user_session_path %></li></a>
+                <a href="#"><li><%= link_to "Signup", new_user_registration_path %></li></a>
+            <% end %>
+            <% if current_user && current_user.admin %>
+                <a href="#"><li><%= link_to "Admin", admin_path %></li></a>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="searchbutton">
+        <div id="wrap">
+          <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="✓">
+            <input id="search" class="searchTerm" placeholder="What are you looking for?" type="text" name="q[title_or_description_cont]" id="q_title_or_description_cont">
+            <input id="search_submit" type="submit" name="commit" class="searchButton" value="Rechercher" data-disable-with="Rechercher">
+          </form>
+        </div>
+      </div>
+    </header>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
     <%= yield %>
-  </body>
 
     <footer>
-        <div class="footer">
-            <nav class="bottomnav">
-
-                <ul>
-
-                    <li><a href="#top">Back to top</a></li>
-                    <a href="#"><li><%= link_to "About", about_path %></li></a>
-                    <a href="#"><li><%= link_to "Contact Us", new_question_path %></li></a>
-                    <a href="#"><li><%= link_to "Privacy Policy", privacy_path %></li></a>
-                </ul>
-
-            </nav>
-            <br>
-            &copy; 2019 Libu
-            <br>
-            
-        </div>
+      <div class="footer">
+          <nav class="bottomnav">
+            <ul>
+              <li><a href="#top">Back to top</a></li>
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "Contact Us", new_question_path %></li>
+              <li><%= link_to "Privacy Policy", privacy_path %></li>
+            </ul>
+          </nav>
+          <br>
+          &copy; 2019 Libu
+          <br>  
+      </div>
     </footer>
+
+  </body>
+
 </html>
