@@ -12,6 +12,11 @@ class User < ApplicationRecord
   enum gender: { male: 0, female: 1, other: 2 }
   validates :first_name, :surname, :birthday, :gender, :email, :school, presence: true, length: { minimum: 2 }
   validates :username, :email, uniqueness: true
-  validates :password, length: { in: 6..20 }
+  validates :password, length: { in: 6..20 }, on: :create
+  validates :password, length: { in: 6..20 }, on: :edit, unless: :password_check
   has_one_attached :picture
+
+  def password_check
+    !password.nil?
+  end
 end

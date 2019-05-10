@@ -44,7 +44,7 @@
 
       <ul class="data">
         <li>
-          <span> <%= button_to "Click here to edit account details", edit_user_registration_path, :method => :get, :class => "edit"%></span>
+          <span> <%= button_to "Click here to edit account details", edit_user_registration_path(current_user), :method => :get, :class => "edit"%></span>
         </li>
       </ul>
     </div>
