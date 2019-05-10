@@ -1,87 +1,65 @@
-<!DOCTYPE html>
-<html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--LINK ONCE INSIDE RAILS-->
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+<div class="docstitle">
+  <h2>Profile</h2>
+</div>
 
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/profile.scss" %>
-    </head>
+<div class="profileflex">
 
-  <body>
-          
-
-
-
-  <div class="docstitle">
-    <h2>Profile</h2>
-    </div>
-  
-  <div class="profileflex">
-
-    <div class="user-profile">
-      <div class="avatar">
-        <%= image_tag("user.png", :alt => "avatar", :class => "avatar") %>
-      </div>
-
-      <div class="username">
-        Hi <%= current_user.username %>
-      </div>
-
-      <div class="bio">
-        <%= current_user.first_name %><br>
-        <%= current_user.surname %>
-      </div>
-
-      <div class="description">
-        <%= current_user.email %><br>
-        <%= current_user.school %>
-      </div>
-
-      <ul class="data">
-        <li>
-          <span> <%= button_to "Click here to edit account details", edit_user_registration_path(current_user), :method => :get, :class => "edit"%></span>
-        </li>
-      </ul>
+  <div class="user-profile">
+    <div class="avatar">
+      <%= image_tag("user.png", :alt => "avatar", :class => "avatar") %>
     </div>
 
-    <div class="accountflex">
-    
-      <div class="bookmarks">
-        <button id="button">My Bookmarks</button>
-        <div id="content">
-          <ul>
-            <% current_user.bookmarks.each do |bookmark| %>
-              <li>
-                <%= link_to @documents.find(bookmark.document_id).title, document_path(@documents.find(bookmark.document_id)) %> |
-                <%= link_to "Delete", bookmark_path(bookmark.id), method: :delete, data: {confirm: "Are you sure?"} %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+    <div class="username">
+      Hi <%= current_user.username %>
+    </div>
 
-      <div class="uploads">
-        <button id="button">My Uploads</button>
-        <div id ="content">
-          <ul>
-            <% @user_documents.each do |doc| %>
-              <li><%= link_to doc.title, document_path(doc.id) %> |
+    <div class="bio">
+      <%= current_user.first_name %><br />
+      <%= current_user.surname %>
+    </div>
+
+    <div class="description">
+      <%= current_user.email %><br>
+      <%= current_user.school %>
+    </div>
+
+    <ul class="data">
+      <li>
+        <span> <%= button_to "Click here to edit account details", edit_user_registration_path(current_user), :method => :get, :class => "edit"%></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="accountflex">
+
+    <div class="bookmarks">
+      <button id="button">My Bookmarks</button>
+      <div id="content">
+        <ul>
+          <% current_user.bookmarks.each do |bookmark| %>
+          <li>
+            <%= link_to @documents.find(bookmark.document_id).title, document_path(@documents.find(bookmark.document_id)) %> |
+            <%= link_to "Delete", bookmark_path(bookmark.id), method: :delete, data: {confirm: "Are you sure?"} %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="uploads">
+      <button id="button">My Uploads</button>
+      <div id ="content">
+        <ul>
+          <% @user_documents.each do |doc| %>
+            <li>
+              <%= link_to doc.title, document_path(doc.id) %> |
               <%= link_to "Delete", document_path(doc.id), method: :delete, data: {confirm: "Are you sure?"} %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+            </li>
+          <% end %>
+        </ul>
       </div>
-
     </div>
 
   </div>
-  </body>
 
-
-</html>
+</div>

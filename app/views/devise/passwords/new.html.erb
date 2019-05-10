@@ -1,58 +1,25 @@
-<!DOCTYPE html>
-<html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--LINK ONCE INSIDE RAILS-->
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+<%= render "devise/shared/links" %>
 
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/home.scss" %>
-    </head>
+<div class="docstitle">
+  <h2>Forgot your password?</h2>
+</div>
 
-    <body>
-        
-        <!DOCTYPE html>
-        <html>
-        <html lang="en">
-            <head>
-                <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <title>LibU</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <!--LINK ONCE INSIDE RAILS-->
-                <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-        
-                <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/user.scss" %>
-            </head>
-        
-  <body>
-                
-   
-    <%= render "devise/shared/links" %>
 
-    <div class="docstitle">
-      <h2>Forgot your password?</h2>
-    </div>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="resetformsflex">
+    <div class = "resetforms">
 
-    <div class="resetformsflex">
-      <div class = "resetforms"
+      <div class="resetemail">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="resetemail">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="resetsubmit">
-          <%= f.submit "Reset my password" %>
-        </div>
+      <div class="resetsubmit">
+        <%= f.submit "Reset my password" %>
       </div>
     </div>
-    <% end %>
+  </div>
+<% end %>
 
 

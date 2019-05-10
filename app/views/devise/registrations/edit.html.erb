@@ -1,170 +1,124 @@
-<!DOCTYPE html>
-<html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/user.scss" %>
-        
-    </head>
-
-  
-
-    
-  
-  
-
-  <body class="bg-light">
-
-    <div class="container">
+<body class="bg-light">
+  <div class="container">
     <div class="signup">
+
       <div class="py-5 text-center">
         <div class="docstitle">
           <h2>Edit <%= resource_name.to_s.humanize %></h2>
         </div>
-       
       </div>
 
-    <div class="signupflex">
+      <div class="signupflex">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="row">
+            <div class="col-md-8 order-md-1">
 
-    
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="row">
-          <div class="col-md-8 order-md-1">
-
-            <div class="row">
-               
-          
-              <div class="col-md-6 mb-3">
-                
-                <label for="firstName">
-                  <%= f.label :first_name %>
-                </label>
-                  
-                  <%= f.text_field :first_name, autofocus: true, :class => "form-control", :id => "firstName" %>
-              </div>
-
-              <div class="col-md-6 mb-3">
-                  <label for="lastName">
-                  <%= f.label :surname %>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">
+                    <%= f.label :first_name %>
                   </label>
+                  <%= f.text_field :first_name, autofocus: true, :class => "form-control", :id => "firstName" %>
+                </div>
 
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">
+                    <%= f.label :surname %>
+                  </label>
                   <%= f.text_field :surname, autofocus: true, :class => "form-control", :id => "lastName"%>
-          
-              </div>
-
-            
-            </div>
-
-            <div class="row">
-              <div class="mb-3">
-                <label for="username">
-                  <%= f.label :username %>
-                </label>
-
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                    <%= f.text_field :username, autofocus: true, :class =>"form-control", :id => "username" %>
-                    </span>
-                  </div>
-                  
-                
                 </div>
               </div>
-            </div>
 
+              <div class="row">
+                <div class="mb-3">
+                  <label for="username">
+                    <%= f.label :username %>
+                  </label>
 
-            <div class="row">
-              <div class="mb-3">
-                <label for="email">
-                <%= f.label :email %>
-                </label>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", :id => "email", :placeholder => "you@example.com" %>
-                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                <% end %>
-                
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <%= f.text_field :username, autofocus: true, :class =>"form-control", :id => "username" %>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <div class="row">
+                <div class="mb-3">
+                  <label for="email">
+                    <%= f.label :email %>
+                  </label>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", :id => "email", :placeholder => "you@example.com" %>
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                  <% end %>
+                </div>
+              </div>
 
               <div class="mb-3">
                 <div class="row">
-                <div class='col-sm-6'>
-                  <div class="form-group">
-                  <%= f.label :birthday %>
 
+                  <div class='col-sm-6'>
+                    <div class="form-group">
+                      <%= f.label :birthday %>
                       <%= f.date_field :birthday, autofocus: true, :class => "input-group date", :id => "datetimepicker1" %>
-                    
                     </div>
-                    </div>
+                  </div>
 
-                    <div class="col-md-4 mb-3">
+                  <div class="col-md-4 mb-3">
                     <label for="state">
-                    <%= f.label :gender %>
+                      <%= f.label :gender %>
                     </label>
                     <%= f.select :gender, User.genders.keys, {}, :class => "custom-select d-block w-100"%>
-                    </select>
                   </div>
 
                 </div>
               </div>
 
               <div class="row">
-          
                 <div class="col-md-6 mb-3">
-                
-                <label for="firstName">
-                <%= f.label :password %>
-                (leave blank if you don't want to change it)
-                </label>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
-                <%= f.password_field :password, autocomplete: "new-password", :class => "form-control", :id => "firstname"%>
-
+                  <label for="firstName">
+                    <%= f.label :password %>
+                    (leave blank if you don't want to change it)
+                  </label>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password", :class => "form-control", :id => "firstname"%>
                 </div>
-
-                <div class="col-md-6 mb-3">
-                <label for="address2">
-                <%= f.label :password_confirmation %>
-                </label>
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
-          
-                </div>
-              </div>
-
-              <div class="row">
 
                 <div class="col-md-6 mb-3">
                   <label for="address2">
-                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)
+                    <%= f.label :password_confirmation %>
                   </label>
-                  <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control" %>
-        
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
                 </div>
-
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
+                  <label for="address2">
+                    <%= f.label :current_password %> <i>
+                    (we need your current password to confirm your changes)
+                  </label>
+                  <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control" %>
+                </div>
+              </div>
 
+              <div class="row">
+                <div class="col-md-6 mb-3">
                   <label for="address2">
                     Delete account
                   </label>
-                  <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class =>"btn-info" %></p>
+                  <p>
+                    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class =>"btn-info" %>
+                  </p>
                 </div>
-            
               </div>
-            
+
               <div class ="row">
                 <div class="button">
                   <div class="mb-4">
@@ -173,61 +127,56 @@
                 </div>
               </div>
 
-          <div class="row">
-            <div class="button">
-              <div class="mb-4">
-                <%= button_to "Back", :back, :class =>"btn-info btn-block" %>
+              <div class="row">
+                <div class="button">
+                  <div class="mb-4">
+                    <%= button_to "Back", :back, :class =>"btn-info btn-block" %>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
-      
-
         <% end %>
+      </div>
+      
     </div>
-    </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/vendor/holder.min.js"></script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
 
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
 
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-    </script>
-    <script type="text/javascript">
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+  <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker();
+      $('#datetimepicker1').datetimepicker();
     });
-</script>
-
-
-
+  </script>
 
 </body>
-
-
-
-
-</html>
