@@ -41,14 +41,14 @@
             </div>
 
             <div class="col-sm-3"> 
-            <p><%= link_to "Math", documents_path(subject:1, :class => "img-responsive", :style => "width:100%") %></p>
-                <%= image_tag("math_photo.jpg", :alt => "Math") %>
+            <p><%= link_to "Math", documents_path(subject:1) %></p>
+                <%= image_tag("math.jpg", :alt => "Math", :class => "img-responsive", :style => "width:100%") %>
             
             </div>
 
             <div class="col-sm-3">
-            <p><%= link_to "English", documents_path(subject:5, :class => "img-responsive", :style => "width:100%") %></p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p><%= link_to "English", documents_path(subject:5) %></p>
+            <%= image_tag("english.jpg", :alt => "English", :class => "img-responsive", :style => "width:100%") %>
             </div>
 
         </div>

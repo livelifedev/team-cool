@@ -34,7 +34,8 @@
 
       <div class="uploadform">
         <%= form.label :title %>
-        <%= form.text_field :title %>
+
+        <%= form.text_field :title, :class => "titleform" %>
       </div>
 
       <div class="uploadform">
@@ -63,12 +64,9 @@
         <p>(PDF only)</p>
       </div>
 
-      <div class="uploadform">
+      <button class="btn btn-primary btn-block" id="uploadbutton">
         <%= form.submit %>
-      </div>
-      
-        </div>
-      </div>
+      </button>
     <% end %>
 
 

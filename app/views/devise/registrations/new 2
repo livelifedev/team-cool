@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/user.scss" %>
+        
+    </head>
+
+  <body>
+
+
+
+
+ 
+
+
+
+
+    <div class="docstitle">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="editaccountflex">
+      <div class="editaccount">
+
+          <div class="field">
+            <%= f.label :first_name %><br />
+            <div class="editform">
+            <%= f.text_field :first_name, autofocus: true %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :surname %><br />
+            <div class="editform">
+            <%= f.text_field :surname, autofocus: true %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :username %><br />
+            <div class="editform">
+            <%= f.text_field :username, autofocus: true %>
+            </div>
+          </div>
+
+
+          <div class='field'>
+            <%=f.label :gender %> 
+            <div class="editform">           
+            <%= f.select :gender, User.genders.keys, {} %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :birthday %><br />
+            <div class="editform">
+            <%= f.date_field :birthday, autofocus: true %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :school %><br />
+            <div class="editform">
+            <%= f.text_field :school, autofocus: true %>
+            </div>
+          </div>
+
+
+          <div class="field">
+            <%= f.label :email %><br />
+            <div class="editform">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <?div>
+            </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+
+          <div class="field">
+            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+            <div class="editform">
+            <%= f.password_field :password, autocomplete: "new-password" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            
+            <div class="editform">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          </div>
+          <div class="editform">
+            <%= f.password_field :current_password, autocomplete: "current-password" %>
+          </div>
+            </div>
+
+          <div class="actions">
+            <%= f.submit "Update" %>
+            <% end %>
+          </div>
+
+          <div class="cancel">
+            <h5>Delete account</h5>
+
+            <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+            <%= button_to "Back", :back %>
+          </div>
+      </div>
+  
+
+  <br>
+  
+  </body>
+</html>
+
+      
+
+      

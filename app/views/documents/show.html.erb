@@ -19,7 +19,7 @@
   <body>
 
   <div class="docstitle">
-    <h5><%= @document.title %></h5>
+    <h2><%= @document.title %></h2>
   </div>
 
     <div class="docshow">
@@ -27,7 +27,11 @@
     </div>
 
     <div class="bookmark">
-      <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
+    <span class="btn btn-info btn-lg">
+    <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post, :class => "glyphicon glyphicon-bookmark" %>
+    </span>
+
+      
     </div>
 
     <div class ="documentinfo">
