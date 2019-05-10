@@ -38,11 +38,10 @@ ActiveRecord::Schema.define(version: 2019_05_03_051254) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
-    t.integer "question_id"
-    t.bigint "user_id"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_answers_on_user_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -92,9 +91,9 @@ ActiveRecord::Schema.define(version: 2019_05_03_051254) do
   create_table "ratings", force: :cascade do |t|
     t.float "score"
     t.bigint "document_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["document_id"], name: "index_ratings_on_document_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
@@ -126,7 +125,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_051254) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "answers", "users"
+  add_foreign_key "answers", "questions"
   add_foreign_key "bookmarks", "documents"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "documents"
