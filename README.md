@@ -5,54 +5,77 @@
 ## Description
 LIBU is a web application which students and teachers have access to and be able to easily find academic materials, on a wide range of subjects, without infringing on copyright laws. 
 
-View our application, [please click here](https://lib-u.herokuapp.com/)
+View our application, [please click here](https://lib-u.herokuapp.com/).
+View our repo [here](https://github.com/livelifedev/team-cool)
 
 ## Purpose of LIBU application 
 The aim is to provide a platform for students and teachers to upload, share and download academic materials created by their peers. This allows for materials to be covered under [Creative Commons](https://creativecommons.org/) licensing and can be distributed and shared freely.
-View our repo [here](https://github.com/livelifedev/team-cool)
 
 In addition, LIBU is to become a community where students can share and discuss ideas with their peers and/or educators. The interface should make it easier for our users to locate relevant information by being intuitive, easy to navigate and grouping materials by subject.
 ## Functionality / features
+(i) Search educational materials based on different subjects: Mathematics, History, Science, Geography, English and Biology
+(ii) Create and upload new academic materials to share with other members
+(iii) Bookmarks users' favorite documents
+(iv) Ratings
+(v) Comments
 
 ## Screenshots
-[Libu's Homepage](https://drive.google.com/file/d/1ENonLfJmuXfCxyIz2jQHlhYNyG2DIKMk/view?usp=sharing)
-
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/homepage_view.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/homepage2.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/subjects.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/upload_create.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/user_dashboard.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/user_profile.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/search.png?raw=true)
 ## Tech stack (e.g. html, css, deployment platform, etc)
 (i) Ruby on Rails
 (ii) HTML
-(iii) CSS
-(iv) Stripe
-(v) Devise
-(vi) Cypress
-(viii) Github
-(ix) GitKraken
-(x) Trello
-(xi) Slack
-(xii) Lucidchart
+(iii) CSS and SASS for styling
+(iv) Stripe for payment
+(v) Devise for users
+(vi) Cypress for application testing
+(viii) Github for collaboration
+(ix) GitKraken for collaboration
+(x) Trello for project management
+(xi) Slack for communication
+(xii) Lucidchart for ERD
+(xiii) Bootstraps for styling
+(xiv) Faker gems to generate random data
+(xv) Ransack for search functions
+(xvi) TZInfo-Data for setting timezone database
+(xvii) CanCan for user authorization
+(xviii) Heroku for deployment
+(xix) AWS
 
 
 ## Instructions on how to setup, configure and use your App.
 TBC
 ## Design documentation
-TBC
+
 #### Design process
-TBC
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/workflow.png?raw=true)
 #### User stories
 (i) As a student with minimal income, I want to be able to quickly access to a low cost and up-to-date research in European history as I’m completing my final year in Bachelor of Arts.
 (ii) As a year 12 student, I’d love to access other students’ works in Mathematics on my phone so I could be better prepared for my HSC at the end of this year
 (iii) As a teacher, I would like to share my research materials and books in a platform for academics
 #### A workflow diagram of the user journey/s.
-TBC
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/user_flowchart.png?raw=true)
 #### Wireframes
-View our wireframe [here](https://drive.google.com/file/d/1VY1LZgJODxal_xDovEaXdbKk0HLO-Ys6/view?usp=sharing)
+View our wireframe documents [here](https://drive.google.com/file/d/1VY1LZgJODxal_xDovEaXdbKk0HLO-Ys6/view?usp=sharing)
 #### Database Entity Relationship Diagrams
-View our Database Entity Relationship Diagram [here](https://drive.google.com/file/d/1Bgd5D19MojKDgLunFlrRvbdFc8GuPFx1/view?usp=sharing)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/ERD_v2.jpeg?raw=true)
 #### Details of planning process
-TBC
+(i) Initial Planning, Research & Brainstorming
+(ii) Design Process, Wireframing & ERD
+(iii) Approval for Concepts, Wireframing & ERD
+(iv) Work on application and styling
+(v) Finalize all features and styling
+(vi) Documentations
+(vii) Project Completion - Presentation
 #### Project plan & timeline
-TBC
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/Timeline.png?raw=true)
 #### Screenshots of Trello board(s)
-Project Development Management using [Trello](https://drive.google.com/file/d/1dGexnrkb0L7UOkHCOWa-NUExOr3xSQcF/view?usp=sharing)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/trello.png?raw=true)
 ## Short Answer questions (Section 2.2)
 
 ##### 1. What is the need (i.e. challenge) that you will be addressing in your project?
@@ -97,8 +120,6 @@ Cypress for application testing
 Devise for user registration
 
 ##### Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). 
->>>>>(GEORGIE REMEMBER TO FIX UP)
-	
 Bored of Studies - http://www.boredofstudies.org/ 
 Bored of studies is a platform for students within NSW and VIC to share their essays from year 11 and 12 HSC with other members of the site. 
 Each resource has an associated; description, subject, title etc. and these can be used to search database.
@@ -110,10 +131,18 @@ The other relationship that we have in our databases is the many-to-many relatio
 Databases can also reference (establish a relationship) with more than one database, such as the ratings has the one-to-many relationship with both users and listings, because a user will create a rating on a listing so the rating will have both the user’s and listing’s id.
 
 ##### Describe your project’s models in terms of the relationships (active record associations) they have with each other.
-
+(i) User has many documents, bookmarks, comments, ratings, questions and answers
+(ii) Subject has many documents through document-subjects
+(iii) Rating belongs to users and documents
+(iv) Question belongs to users and has many answers
+(v) Document belongs to users, has many subjects through document-subjects, has many ratings, comments and bookmarks and has one attached document
+(vi) Document-subject belongs to documents and subjects
+(vii) Comment belongs to user and document
+(viii) Bookmark belongs to user and document
+(ix) Answer belongs to user and question
 
 ##### Database schema design
-
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/ERD_v2.jpeg?raw=true)
 
 ##### User stories 
 (i) As a student with minimal income, I want to be able to quickly access to a low cost and up-to-date research in European history as I'm completing my final year in Bachelor of Arts.
@@ -121,7 +150,7 @@ Databases can also reference (establish a relationship) with more than one datab
 (iii) As a teacher, I would like to share my research materials and books in a platform for academics
 
 ##### Provide Wireframes for your App.
-[Wireframing](https://drive.google.com/file/d/1VY1LZgJODxal_xDovEaXdbKk0HLO-Ys6/view?usp=sharing) 
+[Wireframing Documents](https://drive.google.com/file/d/1VY1LZgJODxal_xDovEaXdbKk0HLO-Ys6/view?usp=sharing) 
 
 ##### How tasks are allocated and tracked in our project.
 
