@@ -1,8 +1,8 @@
 class CreateDocumentSubjects < ActiveRecord::Migration[5.2]
   def change
     create_table :document_subjects do |t|
-      t.integer :document_id
-      t.integer :subject_id
+      t.references :document, foreign_key: true
+      t.references :subject, foreign_key: true
     end
   end
 end

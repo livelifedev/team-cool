@@ -11,12 +11,9 @@ class Document < ApplicationRecord
   validates :title, :doc_type, presence: true, length: { minimum: 3, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
   has_one_attached :file
-
-
   validate :file_check, unless: :skip_validation
   
   def file_check
-    # return if :skip_validation
     unless file.attached?
       errors.add :file, 'Please select a document' unless file.attached?
     end

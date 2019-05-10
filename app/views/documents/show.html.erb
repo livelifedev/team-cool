@@ -1,55 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+<div class="docstitle">
+  <h2><%= @document.title %></h2>
+</div>
 
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+<div class="docshow">
+  <%= image_tag("book_sample.png") %>
+</div>
 
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/docs.scss" %>
-        
-    </head>
+<div class="bookmark">
+  <span class="btn btn-info btn-lg">
+    <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post, :class => "glyphicon glyphicon-bookmark" %>
+  </span>
+</div>
 
-
-
-  <body>
-
-  <div class="docstitle">
-    <h5><%= @document.title %></h5>
-  </div>
-
-    <div class="docshow">
-      <%= image_tag("https://i.imgur.com/GOXwLQi.png?1") %>
-    </div>
-
-    <div class="bookmark">
-      <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post %>
-    </div>
-
-    <div class ="documentinfo">
-      
-    <div class>
+<div class ="documentinfo">
+  <div class>
     <h4>Author</h4>
     <p><%= @document.user.username %></p>
-    </div>
+  </div>
 
-      <div>
-        <h5>Description</h5>
-        <p><%= @document.description %></p>
-      </div>
+  <div>
+    <h5>Description</h5>
+    <p><%= @document.description %></p>
+  </div>
 
-      <div>
-        <h5>Subject</h5>
-        <p><% @document.subjects.each do |sub| %>
+  <div>
+    <h5>Subject</h5>
+    <ul>
+      <% @document.subjects.each do |sub| %>
         <li><%= sub.name %></li>
-        <% end %></p>
-      </div>
+      <% end %>
+    </ul>
+  </div>
 
-    <div>
+  <div>
     <h4>Type</h4>
     <p><%= @document.doc_type %></p>
     <% if @document.file.attached? %>
@@ -57,14 +40,13 @@
     <% else %>
       <p>Download link not available</p>
     <% end %>
-    </div>
+  </div>
 
-
-    <div>
+  <div>
     <h4> Current rating </h4>
-      <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
-      (<%= @document.ratings.count %>)
-    
+    <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
+    (<%= @document.ratings.count %>)
+
     <h4> Leave your rating </h4>
     <form action="<%= document_ratings_path(@document) %>" method="POST">
       <% if @rated %>
@@ -80,50 +62,42 @@
       </select>
       <input type="submit" value="Rate" />
     </form>
-    </div>
+  </div>
 
 
-    <div class="comments">
-      <h4>Comment</h4>
-      <ul><% @document.comments.each do |comment| %>
+  <div class="comments">
+    <h4>Comment</h4>
+    <ul>
+      <% @document.comments.each do |comment| %>
         <li><%= comment.user.username %></li>
         <li><%= comment.body %></li>
         <li>created <%= time_ago_in_words(comment.created_at) %> ago</li>
         <% if current_user && current_user.admin %>
           <li><%= link_to "Delete", delete_comment_path(comment.id, document_id: params[:id]), method: :delete, data: {confirm: "Are you sure?"} %></li>
         <% end %>
-      <% end %></ul>
+      <% end %>
+    </ul>
 
-
-        <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
-          <div>
-            <%= form.label :body %>
-            <%= form.text_area :body %>
-          </div>
-          <div>
-            <%= form.submit %>
-          </div>
-          <% end %>
+    <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
+      <div>
+        <%= form.label :body %>
+        <%= form.text_area :body %>
       </div>
 
-    <div class = "links">
-      <ul>
-        <li><%= link_to "Back to Search Results", session[:search_results] %></li> <br> <br>
-        <% if current_user && (current_user == @document.user || current_user.admin) %>
-          <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
-          <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></li>
-        <% end %>
-        </ul>
+      <div>
+        <%= form.submit %>
       </div>
+    <% end %>
+  </div>
 
-    </div>
+  <div class = "links">
+    <ul>
+      <li><%= link_to "Back to Search Results", session[:search_results] %></li> <br> <br>
+      <% if current_user && (current_user == @document.user || current_user.admin) %>
+        <li><%= link_to "Edit", edit_document_path(@document.id) %></li>
+        <li><%= link_to 'Delete', document_path(@document), method: :delete, data: {confirm: "Are you sure?"} %></li>
+      <% end %>
+    </ul>
+  </div>
 
-        
-
-  </body>
-
-  
-</html>
-
-
-
+</div>

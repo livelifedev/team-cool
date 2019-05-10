@@ -40,6 +40,7 @@ class DocumentsController < ApplicationController
   end
 
   def edit
+    @subjects = Subject.all
     if !(current_user == @document.user || current_user.admin)
       redirect_to root_path
     end
@@ -66,6 +67,8 @@ class DocumentsController < ApplicationController
     flash[:notice] = "Document was successfully deleted."
     if URI(request.referer).path == "/admin"
       redirect_to admin_path
+    elsif URI(request.referer).path == "/profile"
+      redirect_to profile_path
     else
       redirect_to root_path
     end

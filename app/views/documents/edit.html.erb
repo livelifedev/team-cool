@@ -1,38 +1,75 @@
-<% if @document.errors.any? %>
-  <% @document.errors.full_messages.each do |error| %>
-    <p><%= error %></p>
-  <% end %>
-<% end %>
+<body class="bg-light">
+  <div class="container">
+    <div class="docs">
+      <% if @document.errors.any? %>
+        <% @document.errors.full_messages.each do |error| %>
+          <p><%= error %></p>
+        <% end %>
+      <% end %>
 
+      <%= form_with model: @document, local: true do |form| %>
+        <div class="py-5 text-center">
+          <div class="docstitle">
+            <h2> Edit document information</h2>
+          </div>
+        </div>
 
-<%= form_with model: @document, local: true do |form| %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+        <div class="docsflex">
+          <div class="row">
+            <div class="col-md-6 mb-3">  
+              <label for="title">
+                <%= form.label :title %>
+              </label>                
+              <%= form.text_field :title, :class => "form-control", :id => "title" %>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="description">
+                  <%= form.label :description %>
+                </label>
+                <%= form.text_area :description, :class => "form-control", :id => "description" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3">
+              <%= form.collection_check_boxes :subject_ids, @subjects, :id, :name do |sub| %>
+                <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3">
+              <% @types.each do |option| %>
+                <div>
+                  <%= form.radio_button :doc_type, option %>
+                  <%= form.label "doc_type_#{option}".to_sym, option %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <%= form.label :document %>
+              <%= form.file_field :file, accept: "application/pdf" %>
+              <p>(PDF only)</p>
+            </div>
+          </div>
+
+          <div class="button">
+            <div class="mb-4">
+              <%= form.submit "Update", :class =>"btn-info btn-block" %>
+            </div>
+          </div>
+        </div>
+      <%end%>
+
+    </div>
   </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-  <div>
-    <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :name do |sub| %>
-    <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
-    <% end %>
-  </div>
-  <div>
-    <% @types.each do |option| %>
-      <div>
-        <%= form.radio_button :doc_type, option %>
-        <%= form.label "doc_type_#{option}".to_sym, option %>
-      </div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :document %>
-    <%= form.file_field :file, accept: "application/pdf" %>
-    <p>(PDF only)</p>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+
+</body>
+

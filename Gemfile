@@ -70,3 +70,4 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "aws-sdk-s3", "~> 1.36"
 
 gem 'bootstrap-sass'
+gem 'jquery-rails'

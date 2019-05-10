@@ -1,56 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/views/pages/home.html.erb" %>
-        
-    </head>
-
-
-
-    <body>
-
-    <div class="hometitle">
-        <div class="jumbotron">
-            <div class="container text-center">
-                <h1>LibU</h1>      
-                    <span> <p>Connecting students</p> </span>
-            </div>
-        </div>
+<div class="hometitle">
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1>LibU</h1>      
+      <span> <p>Connecting students</p> </span>
     </div>
-      
-    <div class="container-fluid bg-3 text-center">    
-      <h3>Popular subjects</h3><br>
-        <div class="row">
-            <div class="col-sm-3">
-                <p> <%= link_to "Science", documents_path(subject:3) %> </p>
-                <%= image_tag("science_photo.jpg", :alt => "Science", :class => "img-responsive", :style => "width:100%" ) %>
-            </div>
+  </div>
+</div>
+  
+<div class="container-fluid bg-3 text-center">    
+  <h3>Popular subjects</h3><br>
+  <div class="row">
+    <div class="col-sm-3">
+      <p> <%= link_to "Science", documents_path(subject:3) %> </p>
+      <%= image_tag("science_photo.jpg", :alt => "Science", :class => "img-responsive", :style => "width:100%" ) %>
+    </div>
 
-            <div class="col-sm-3"> 
-                <p><%= link_to "History", documents_path(subject:2) %> </p>
-                <%= image_tag("history_photo.jpg", :alt => "History", :class => "img-responsive", :style => "width:100%") %>
-            </div>
+    <div class="col-sm-3"> 
+      <p><%= link_to "History", documents_path(subject:2) %> </p>
+      <%= image_tag("history_photo.jpg", :alt => "History", :class => "img-responsive", :style => "width:100%") %>
+    </div>
 
-            <div class="col-sm-3"> 
-            <p><%= link_to "Math", documents_path(subject:1, :class => "img-responsive", :style => "width:100%") %></p>
-                <%= image_tag("math_photo.jpg", :alt => "Math") %>
-            
-            </div>
+    <div class="col-sm-3"> 
+      <p><%= link_to "Math", documents_path(subject:1) %></p>
+      <%= image_tag("math.jpg", :alt => "Math", :class => "img-responsive", :style => "width:100%") %>
+    </div>
 
-            <div class="col-sm-3">
-            <p><%= link_to "English", documents_path(subject:5, :class => "img-responsive", :style => "width:100%") %></p>
-            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-            </div>
-
-        </div>
-    </div><br>
+    <div class="col-sm-3">
+      <p><%= link_to "English", documents_path(subject:5) %></p>
+      <%= image_tag("english.jpg", :alt => "English", :class => "img-responsive", :style => "width:100%") %>
+    </div>
+  </div>
+</div><br>
     

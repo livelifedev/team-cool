@@ -1,32 +1,7 @@
-<!DOCTYPE html>
-    <html>
-        <html lang="en">
-            <head>
-                <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <title>LibU</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <!--LINK ONCE INSIDE RAILS-->
-                <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+<div class="confirmed">
+  <h2> You're good to go! </h2><br>
+  <p>Thank you for your payment</p>
+</div>
 
-                <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/confirmation.scss", :media => "all" %>
-            </head>
-
-            <body>
-                
-
-                
-
-                <div class="confirmed">
-                    <h2> You're good to go! </h2><br>
-                        <p>
-                            Thank you for your payment
-                        </p>
-                </div>
-            
-                <%= button_to "BUTTON: link version", users_path, :method => "get" %>
-            </body>
-
-              
-    </html>
+<%= button_to "BUTTON: link version", users_path, :method => "get" %>
 

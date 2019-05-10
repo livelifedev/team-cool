@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_024127) do
+ActiveRecord::Schema.define(version: 2019_05_03_051254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,10 @@ ActiveRecord::Schema.define(version: 2019_05_06_024127) do
   create_table "answers", force: :cascade do |t|
     t.text "content"
     t.integer "question_id"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -64,8 +65,8 @@ ActiveRecord::Schema.define(version: 2019_05_06_024127) do
   end
 
   create_table "document_subjects", force: :cascade do |t|
-    t.integer "document_id"
-    t.integer "subject_id"
+    t.bigint "document_id"
+    t.bigint "subject_id"
     t.index ["document_id"], name: "index_document_subjects_on_document_id"
     t.index ["subject_id"], name: "index_document_subjects_on_subject_id"
   end
@@ -73,19 +74,19 @@ ActiveRecord::Schema.define(version: 2019_05_06_024127) do
   create_table "documents", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "doc_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "doc_type"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
+    t.string "email"
+    t.integer "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "reason"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -119,12 +120,13 @@ ActiveRecord::Schema.define(version: 2019_05_06_024127) do
     t.string "school"
     t.integer "gender"
     t.boolean "admin", default: false
-    t.string "stripe_transaction"
+    t.string "stripe_transaction", default: "unpaid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "users"
   add_foreign_key "bookmarks", "documents"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "documents"

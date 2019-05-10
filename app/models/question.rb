@@ -1,5 +1,4 @@
 class Question < ApplicationRecord
-    belongs_to :user
     has_many :answers
     enum reason: { 
         'General enquiries': 0, 
