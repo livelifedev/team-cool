@@ -15,12 +15,13 @@ Rails.application.routes.draw do
   get "/documents/results", to: "documents#results", as: "results"
   resources :subjects
   resources :documents do
-    resources :comments, only: [:index, :create, :destroy]
+    resources :comments, only: [:index, :create]
     resources :bookmarks, only: [:index, :create]
     resources :ratings, only: [:index, :create, :destroy]
     put "/ratings", to: "ratings#update"
     patch "/ratings", to: "ratings#update"
   end
+  delete "/comment/:id", to: "comments#destroy", as: "delete_comment"
   delete "/bookmark/:id", to: "bookmarks#destroy", as: "bookmark"
   resources :users, only: [:show, :edit, :update]
   resources :questions, except: [:index] do

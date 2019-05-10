@@ -1,6 +1,7 @@
 class Document < ApplicationRecord
+  attr_accessor :skip_validation
   belongs_to :user
-  # before_create :file_check
+  before_create :file_check
   has_many :document_subjects
   has_many :subjects, through: :document_subjects, dependent: :destroy
   has_many :ratings, dependent: :destroy
@@ -12,13 +13,13 @@ class Document < ApplicationRecord
   has_one_attached :file
 
 
-  ##temporily disabled for seeds
-  # validate :file_check
+  validate :file_check, unless: :skip_validation
   
-  # def file_check
-  #   unless file.attached?
-  #     errors.add :picture, 'Please select a document' unless file.attached?
-  #   end
-  # end
+  def file_check
+    # return if :skip_validation
+    unless file.attached?
+      errors.add :file, 'Please select a document' unless file.attached?
+    end
+  end
 
 end
