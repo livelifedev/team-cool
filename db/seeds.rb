@@ -42,10 +42,9 @@ user = User.create(
   admin: false
 )
 
-users = []
 
 20.times do
-  users << User.create(
+  User.create(
     first_name: Faker::Name.first_name,
     surname: Faker::Name.last_name,
     username: Faker::Team.mascot,
@@ -59,10 +58,9 @@ users = []
   )
 end
 
-documents = []
-
 40.times do
-  documents << Document.create(
+  Document.create(
+    :skip_validation => true,
     title: Faker::Book.title, 
     description: Faker::Quote.matz,
     doc_type: rand(2),
@@ -70,7 +68,12 @@ documents = []
   ).subject_ids = [rand(1..6)]
 end
 
+Document.all.each do |x|
+  x.file.attach(io: File.open('app/assets/files/test.pdf'), filename: 'test.pdf')
+end
+
 Bookmark.create(
   user_id: rand(User.count + 1),
   document_id: rand(Document.count + 1)
 )
+
