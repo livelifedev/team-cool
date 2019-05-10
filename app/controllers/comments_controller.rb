@@ -7,10 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # render plain: params.inspect
-    # "document"=>{"body"=>"hoohaaa"}
     @comment = @document.comments.create(
-      # body: params[:body],
       body: params[:document][:body],
       user_id: current_user.id
     )
@@ -35,7 +32,6 @@ class CommentsController < ApplicationController
   private
 
   def set_document
-    # render plain: params.inspect
     id = params[:document_id]
     @document = Document.find(id)
   end
