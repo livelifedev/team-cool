@@ -40,6 +40,7 @@ class DocumentsController < ApplicationController
   end
 
   def edit
+    @subjects = Subject.all
     if !(current_user == @document.user || current_user.admin)
       redirect_to root_path
     end

@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/docs.scss" %>
-        
-    </head>
-
-  <body>
-
-
-  <div class="docstitle">
-    <h2> Upload </h2>
-  </div>
+<div class="docstitle">
+  <h2> Upload </h2>
+</div>
 
 <% if @document.errors.any? %>
   <% @document.errors.full_messages.each do |error| %>
@@ -27,14 +8,13 @@
   <% end %>
 <% end %>
 
-
 <%= form_with model: @document, local: true do |form| %>
   <div class="uploadflex">
     <div class="upload">
 
       <div class="uploadform">
         <%= form.label :title %>
-        <%= form.text_field :title %>
+        <%= form.text_field :title, :class => "titleform" %>
       </div>
 
       <div class="uploadform">
@@ -44,7 +24,7 @@
 
       <div class="uploadform">
         <%= form.collection_check_boxes :subject_ids, @subjects, :id, :name do |sub| %>
-        <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
+          <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
         <% end %>
       </div>
 
@@ -63,12 +43,9 @@
         <p>(PDF only)</p>
       </div>
 
-      <div class="uploadform">
+      <button class="btn btn-primary btn-block" id="uploadbutton">
         <%= form.submit %>
-      </div>
-      
-        </div>
-      </div>
-    <% end %>
+      </button>
+<% end %>
 
 

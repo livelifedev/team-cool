@@ -1,65 +1,39 @@
-<!DOCTYPE html>
-<html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LibU</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--LINK ONCE INSIDE RAILS-->
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/search.scss", :media => "all" %>
-    </head>
-
-    <body>
-        
-    
-
-    <div class="docstitle">
-    <h2>Advanced Search</h1>
-    </div>
-
-  
-
-    <div id="cover">
-      <div class="searchwrap">
-        <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get">
-        <input name="utf8" type="hidden" value="✓">
-          <div class="tb">
-            <div class="td"><input class="advancedsearchTerm" placeholder="Search" type="search" name="q[g][0][c][0][v][0][value]" id="q_g_0_c_0_v_0_value"></div>
-            
-            <div class="td" id="s-cover">
-              <button type="submit" name="commit" value="Search" data-disable-with="Search">
-                <div id="s-circle"></div>
-                <span></span>
-              </button>
-            </div>
-          </div>
-      </div>
-  
-
-        <select name="q[g][0][c][0][a][0][name]" id="q_g_0_c_0_a_0_name">
-            <option value="title">Title</option>
-            <option value="description">Description</option>
-            <option value="user_username">Author</option>
-            <option value="subjects_name">Subject</option>
-        </select>
-
-        <select name="q[g][0][c][0][p]" id="q_g_0_c_0_p">
-            <option value="eq">Equals</option>
-            <option value="eq_all">Equals all</option>
-            <option value="not_eq">Not equal to</option>
-            <option value="not_eq_all">Not equal to all</option>
-            <option selected="selected" value="cont">Contains</option>
-            <option value="cont_all">Contains all</option>
-        </select>
-
-      </form>
-
-    </div>
-    
+<div class="docstitle">
+  <h2>Advanced Search</h1>
 </div>
 
-</body>
-</html>
+<div id="cover">
+  <div class="searchwrap">
+    <form class="document_search" id="document_search" action="/documents/results" accept-charset="UTF-8" method="get">
+      <input name="utf8" type="hidden" value="✓">
+
+      <div class="tb">
+        <div class="td"><input class="advancedsearchTerm" placeholder="Search" type="search" name="q[g][0][c][0][v][0][value]" id="q_g_0_c_0_v_0_value">
+        </div>
+        <div class="td" id="s-cover">
+          <button type="submit" name="commit" value="Search" data-disable-with="Search">
+            <div id="s-circle"></div>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <select name="q[g][0][c][0][a][0][name]" id="q_g_0_c_0_a_0_name">
+        <option value="title">Title</option>
+        <option value="description">Description</option>
+        <option value="user_username">Author</option>
+        <option value="subjects_name">Subject</option>
+      </select>
+
+      <select name="q[g][0][c][0][p]" id="q_g_0_c_0_p">
+        <option value="eq">Equals</option>
+        <option value="eq_all">Equals all</option>
+        <option value="not_eq">Not equal to</option>
+        <option value="not_eq_all">Not equal to all</option>
+        <option selected="selected" value="cont">Contains</option>
+        <option value="cont_all">Contains all</option>
+      </select>
+    </form>
+  </div>
+</div>
+
