@@ -1,38 +1,150 @@
-<% if @document.errors.any? %>
-  <% @document.errors.full_messages.each do |error| %>
-    <p><%= error %></p>
-  <% end %>
-<% end %>
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LibU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
 
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 
-<%= form_with model: @document, local: true do |form| %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-  <div>
-    <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :name do |sub| %>
-    <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
-    <% end %>
-  </div>
-  <div>
-    <% @types.each do |option| %>
-      <div>
-        <%= form.radio_button :doc_type, option %>
-        <%= form.label "doc_type_#{option}".to_sym, option %>
+        <%= stylesheet_link_tag "/home/georgia/team-cool/app/assets/stylesheets/docs.scss" %>
+        
+    </head>
+
+  
+
+    
+  
+  
+
+  <body class="bg-light">
+
+    <div class="container">
+   
+    <div class="docs">
+      <% if @document.errors.any? %>
+      <% @document.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+      <% end %>
+      <% end %>
+      
+
+  <%= form_with model: @document, local: true do |form| %>
+
+      <div class="py-5 text-center">
+        <div class="docstitle">
+          <h2> Edit document information</h2>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :document %>
-    <%= form.file_field :file, accept: "application/pdf" %>
-    <p>(PDF only)</p>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+
+      <div class="docsflex">
+
+            <div class="row"
+              <div class="col-md-6 mb-3">  
+                <label for="title">
+                  <%= form.label :title %>
+                </label>                
+                  <%= form.text_field :title, :class => "form-control", :id => "title" %>
+              </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                  <label for="description">
+                  <%= form.label :description %>
+                  </label>
+
+                  <%= form.text_area :description, :class => "form-control", :id => "description"%>
+              </div>
+            </div>
+            
+            </div>
+
+            <div class="row">
+              <div class="mb-3">
+              <%= form.collection_check_boxes :subject_ids, Subject.all, :id, :name do |sub| %>
+                <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
+                <% end %>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="mb-3">
+              <% @types.each do |option| %>
+                <div>
+                  <%= form.radio_button :doc_type, option %>
+                  <%= form.label "doc_type_#{option}".to_sym, option %>
+                </div>
+              <% end %>
+                
+              </div>
+            </div>
+
+              <div class="mb-3">
+                <div class="row">
+                  <%= form.label :document %>
+                  <%= form.file_field :file, accept: "application/pdf" %>
+                  <p>(PDF only)</p>
+                </div>
+              </div>
+
+              
+              <div class="button">
+              <div class="mb-4">
+              <%= form.submit "Update", :class =>"btn-info btn-block" %>
+    <%end%>
+            </div>
+          </div>
+        </div>
+      
+
+  
+    </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+    <script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
+
+
+
+
+</body>
+
+
+</html>

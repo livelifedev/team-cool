@@ -1,7 +1,4 @@
 /*DOCSHOW*/
-h4 {
-    color: #E8B80B;
-}
 
 h5 {
     padding-bottom: 1%;
@@ -26,14 +23,13 @@ h5 {
     margin-left: 27%;
 }
 
-.bookmark a {
-    color: #49948e;
-}
+
 
 .documentinfo {
     background-color: #d4cfcf;
     padding: 8%;
-    margin: -4% 25% 25% 25%
+    margin: -4% 25% 25% 25%;
+    border-radius: 3%;
 }
 
 .links {
@@ -58,10 +54,10 @@ h5 {
 
 .docstitle {
     text-align: center;
-    font-size: 50px;
+    font-size: 70px;
     letter-spacing: 22px;
     margin-top: 9%;
-    color: #404443;
+    color: #E8B80B;
     padding: 4%;
 }
 
@@ -153,12 +149,38 @@ h5 {
     font-size: 19px;
     }
 
-.uploadform {
+.uploadform{
     padding: 5%;
 }
 
 .doctype {
     display: inline-flex;
 
+}
+
+.titleform {
+    background-color: #ffffff;
+    border: #000000;
+}
+
+#uploadbutton {
+    
+}
+
+/*EDIT*/
+
+
+.row {
+    padding: 5%;
+
+}
+
+.docs {
+    background-color: #d4cfcf;
+    border-radius: 2%;
+}
+.button {
+    font-size: x-large;
+    border-radius: 2%;
 }
     

@@ -66,20 +66,23 @@
     <%= yield %>
   </body>
 
-  <footer>
-    <div class="footer">
-    <nav class="bottomnav">
-        <ul>
+    <footer>
+        <div class="footer">
+            <nav class="bottomnav">
 
-            <li><a href="#top">Back to top</a></li>
-            <a href="#"><li><%= link_to "About", about_path %></li></a>
-            <a href="#"><li><%= link_to "Contact Us", new_question_path %></li></a>
-            <a href="#"><li><%= link_to "Privacy Policy", privacy_path %></li></a>
+                <ul>
+
+                    <li><a href="#top">Back to top</a></li>
+                    <a href="#"><li><%= link_to "About", about_path %></li></a>
+                    <a href="#"><li><%= link_to "Contact Us", new_question_path %></li></a>
+                    <a href="#"><li><%= link_to "Privacy Policy", privacy_path %></li></a>
+                </ul>
+
+            </nav>
+            <br>
+            &copy; 2019 Libu
+            <br>
             
-    </nav>
-    <br>
-    &copy; 2019 Libu
-    <br>
-    </div>
-</footer>
+        </div>
+    </footer>
 </html>
