@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_document, except: [:new]
+  before_action :set_document, except: [:new, :destroy]
 
   def index
     @comments = @document.comments.order(created_at: :desc)
@@ -19,6 +19,17 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:notice] = "Comment was successfully deleted."
+    if params[:document_id]
+      redirect_to document_path(params[:document_id])
+    else
+      redirect_to admin_path
+    end
   end
 
   private

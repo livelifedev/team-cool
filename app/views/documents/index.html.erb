@@ -25,6 +25,11 @@
   <% @document_subjects.documents.each do |document| %>
     <div class="listings">
 
+      <div class ="doctitle">
+        <h3>Author</h3>
+        <p><%= document.user.username %></p>
+      </div>
+
       <div class = "doctitle">
         <h5>Title</h5>
         <p><%= document.title %></p>
