@@ -177,10 +177,38 @@ h5 {
     padding: 8%;
     border-radius: 8%;
     font-size: 19px;
+
+    button {
+        margin-top: 40px;
     }
+}
 
 .uploadform{
     padding: 5%;
+
+
+    textarea {
+        border: none;
+        width: 400px;
+        height: 150px;
+        border-radius: 4px;
+    }
+
+    label {
+        display: block;
+        margin-left: 5px; 
+    }
+    .checkbox-inline{
+        display: inline-block;
+        margin-left: 10px;
+    }
+    .file-upload {
+        font-size: 14px;
+        p {
+            margin: 5px;
+        }
+    }
+
 }
 
 .doctype {
@@ -191,6 +219,8 @@ h5 {
 .titleform {
     background-color: #ffffff;
     border: #000000;
+    width: 300px;
+    border-radius: 4px;
 }
 
 #uploadbutton {

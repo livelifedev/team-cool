@@ -23,12 +23,14 @@
       </div>
 
       <div class="uploadform">
+        <p>Subject(s)</p>
         <%= form.collection_check_boxes :subject_ids, @subjects, :id, :name do |sub| %>
           <% sub.label(class: "checkbox-inline input_checkbox") {sub.check_box(class: "checkbox") + sub.text} %>
         <% end %>
       </div>
 
       <div class="uploadform">
+        <p>Type</p>
         <% @types.each do |option| %>
           <div class="doctype">
             <%= form.radio_button :doc_type, option %>
@@ -38,9 +40,11 @@
       </div>
 
       <div class="uploadform">
-        <%= form.label :document %>
-        <%= form.file_field :file, accept: "application/pdf" %>
-        <p>(PDF only)</p>
+        <%= form.label :document, "Upload file" %>
+        <div class="file-upload">
+          <%= form.file_field :file, accept: "application/pdf" %>
+          <p>(PDF only)</p>
+        </div>
       </div>
 
       <button class="btn btn-primary btn-block" id="uploadbutton">
