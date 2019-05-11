@@ -64,7 +64,7 @@ end
     :skip_validation => true,
     title: Faker::Book.title, 
     description: Faker::Quote.matz,
-    doc_type: rand(2),
+    doc_type: rand(3),
     user_id: (rand(User.count) + 1)
   )
 end

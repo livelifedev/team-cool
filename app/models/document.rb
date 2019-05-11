@@ -7,7 +7,7 @@ class Document < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  enum doc_type: { essay: 0, presentation: 1 }
+  enum doc_type: { essay: 0, presentation: 1, other: 2 }
   validates :title, :doc_type, presence: true, length: { minimum: 3, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
   has_one_attached :file
