@@ -4,7 +4,10 @@
 
 <% if @document.errors.any? %>
   <% @document.errors.full_messages.each do |error| %>
-    <p><%= error %></p>
+    <div class="error-msg alert alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <%= error %>
+    </div>
   <% end %>
 <% end %>
 

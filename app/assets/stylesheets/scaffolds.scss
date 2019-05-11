@@ -82,3 +82,12 @@ label {
   top: 160px;
   background-color: #FCF8E3;
 }
+
+.error-msg {
+  color:#A94442;
+  z-index: 12;
+  position: fixed;
+  left: 10px;
+  top: 160px;
+  background-color: #F2DEDE;
+}

@@ -10,6 +10,7 @@ class Document < ApplicationRecord
   enum doc_type: { essay: 0, presentation: 1, other: 2 }
   validates :title, :doc_type, presence: true, length: { minimum: 3, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
+  validates :subjects, presence: true
   has_one_attached :file
   validate :file_check, unless: :skip_validation
   
