@@ -16,11 +16,6 @@ h2 {
   font-weight: bold; 
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
 /*BOOTSTRAP*/
 
@@ -38,9 +33,6 @@ ul {
     font-size: 3.5rem;
   }
 }
-
-
-
 
 /* h1 .hometitle styles */
 *,
@@ -64,6 +56,9 @@ box-sizing: border-box;
   -webkit-animation: port 3s 1 forwards;
   background-color: #679289;
   margin-top: 5%;
+  position: relative;
+  z-index: 5;
+
 }
 
 .jumbotron {

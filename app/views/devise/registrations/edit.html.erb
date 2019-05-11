@@ -31,23 +31,16 @@
               </div>
 
               <div class="row">
-                <div class="mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="username">
                     <%= f.label :username %>
                   </label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <%= f.text_field :username, autofocus: true, :class =>"form-control", :id => "username" %>
-                      </span>
-                    </div>
-                  </div>
+                  <%= f.text_field :username, autofocus: true, :class =>"form-control", :id => "username" %>
                 </div>
               </div>
 
               <div class="row">
-                <div class="mb-3">
+                <div class="col-md-8 mb-3">
                   <label for="school">
                     <%= f.label :school %>
                   </label>
@@ -56,7 +49,7 @@
               </div>
 
               <div class="row">
-                <div class="mb-3">
+                <div class="col-md-12 mb-3">
                   <label for="email">
                     <%= f.label :email %>
                   </label>
@@ -91,12 +84,12 @@
                 <div class="col-md-6 mb-3">
                   <label for="firstName">
                     <%= f.label :password %>
-                    (leave blank if you don't want to change it)
                   </label>
                   <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %><br />
                   <%= f.password_field :password, autocomplete: "new-password", :class => "form-control", :id => "firstname"%>
+                  <p>(leave blank if you don't want to change it)</p>
                 </div>
 
                 <div class="col-md-6 mb-3">
@@ -111,9 +104,9 @@
                 <div class="col-md-6 mb-3">
                   <label for="address2">
                     <%= f.label :current_password %> <i>
-                    (we need your current password to confirm your changes)
                   </label>
                   <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control" %>
+                  <p>(we need your current password to confirm your changes)</p>
                 </div>
               </div>
 
