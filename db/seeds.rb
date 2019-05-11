@@ -64,12 +64,13 @@ end
     title: Faker::Book.title, 
     description: Faker::Quote.matz,
     doc_type: rand(2),
-    user_id: rand(User.count + 1)
-  ).subject_ids = [rand(1..6)]
+    user_id: (rand(User.count) + 1)
+  )
 end
 
 Document.all.each do |x|
   x.file.attach(io: File.open('app/assets/files/test.pdf'), filename: 'test.pdf')
+  x.subject_ids = [rand(1..6)]
 end
 
 Bookmark.create(
