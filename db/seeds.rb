@@ -13,6 +13,7 @@ subjects = Subject.create([
   { name: "Geography" },
   { name: "English" },
   { name: "Biology" },
+  { name: "Physics" }
 ])
 
 
@@ -74,7 +75,7 @@ Document.all.each do |x|
 end
 
 Bookmark.create(
-  user_id: rand(User.count + 1),
-  document_id: rand(Document.count + 1)
+  user_id: (rand(User.count) + 1),
+  document_id: (rand(Document.count) + 1)
 )
 

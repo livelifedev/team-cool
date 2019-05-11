@@ -6,25 +6,26 @@
   <%= image_tag("book_sample.png") %>
 </div>
 
-<div class="bookmark">
-  <span class="btn btn-info btn-lg">
-    <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post, :class => "glyphicon glyphicon-bookmark" %>
-  </span>
-</div>
-
 <div class ="documentinfo">
-  <div class>
+
+  <div class="bookmark">
+    <span class="btn btn-info btn-lg">
+      <%= link_to "Bookmark", document_bookmarks_path(@document.id), method: :post, :class => "glyphicon glyphicon-bookmark" %>
+    </span>
+  </div>
+
+  <div class="info-inner">
     <h4>Author</h4>
     <p><%= @document.user.username %></p>
   </div>
 
-  <div>
-    <h5>Description</h5>
+  <div class="info-inner">
+    <h4>Description</h4>
     <p><%= @document.description %></p>
   </div>
 
-  <div>
-    <h5>Subject</h5>
+  <div class="info-inner">
+    <h4>Subject</h4>
     <ul>
       <% @document.subjects.each do |sub| %>
         <li><%= sub.name %></li>
@@ -32,22 +33,22 @@
     </ul>
   </div>
 
-  <div>
+  <div class="info-inner">
     <h4>Type</h4>
     <p><%= @document.doc_type %></p>
     <% if @document.file.attached? %>
-      <p><%= link_to "Download", @document.file %></p>
+      <h5><%= link_to "Download", @document.file %></h5>
     <% else %>
       <p>Download link not available</p>
     <% end %>
   </div>
 
-  <div>
+  <div class="info-inner">
     <h4> Current rating </h4>
     <%= number_with_precision @document.ratings.average(:score), :precision => 1 %>
     (<%= @document.ratings.count %>)
 
-    <h4> Leave your rating </h4>
+    <h5> Leave your rating </h5>
     <form action="<%= document_ratings_path(@document) %>" method="POST">
       <% if @rated %>
         <input type="hidden" name="_method" value="put" />
@@ -66,26 +67,26 @@
 
 
   <div class="comments">
-    <h4>Comment</h4>
-    <ul>
+    <h4>Comments:</h4>
       <% @document.comments.each do |comment| %>
-        <li><%= comment.user.username %></li>
-        <li><%= comment.body %></li>
-        <li>created <%= time_ago_in_words(comment.created_at) %> ago</li>
-        <% if current_user && current_user.admin %>
-          <li><%= link_to "Delete", delete_comment_path(comment.id, document_id: params[:id]), method: :delete, data: {confirm: "Are you sure?"} %></li>
-        <% end %>
+        <ul>
+          <li><%= comment.user.username %> says</li>
+          <li><%= comment.body %></li>
+          <li>created <%= time_ago_in_words(comment.created_at) %> ago</li>
+          <% if current_user && current_user.admin %>
+            <li><%= link_to "Delete", delete_comment_path(comment.id, document_id: params[:id]), method: :delete, data: {confirm: "Are you sure?"} %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
 
     <%= form_with model: @document, url: document_comments_path(@document), method: "post", local: true do |form| %>
       <div>
-        <%= form.label :body %>
+        <%= form.label :body, "Leave a comment:" %>
         <%= form.text_area :body %>
       </div>
 
       <div>
-        <%= form.submit %>
+        <%= form.submit "Submit" %>
       </div>
     <% end %>
   </div>
