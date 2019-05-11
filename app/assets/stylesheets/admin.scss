@@ -5,12 +5,43 @@
     text-align: center;
   }
   .scrollbox {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #071D22;
     margin: auto;
     border: 2px solid black;
+    border-radius: 4px;
     height: 200px;
     width: 800px;
     overflow: scroll;
+
+    li {
+      margin: 4px 0;
+    }
+
+    span {
+      color: rgb(170, 170, 170);
+    }
+
+    .c {
+      font-style: italic;
+    }
+  }
+
+  .questions-admin {
+    .q {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  .subjects-admin {
+    ul {
+      margin-left: 25px;
+    }
+    p {
+      font-size: 18px;
+      float: left;
+      padding: 4px 8px;
+    }
   }
 
 }

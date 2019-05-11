@@ -51,10 +51,14 @@
         </div>
       </div>
     </header>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     
+  <% flash.each do |name, msg| %>
+    <div class="notice-msg alert alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <%= msg %>
+    </div>
+  <% end %>
+
     <%= yield %>
 
     <footer>

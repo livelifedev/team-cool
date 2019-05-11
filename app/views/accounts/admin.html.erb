@@ -8,9 +8,9 @@
     <ul>
       <% @users.each do |user| %>
         <li>
-          ID<%= user.id %> -
+          ID<%= user.id %> -<span>
           <%= user.first_name %>
-          <%= user.surname %> -
+          <%= user.surname %> -</span>
           <%= link_to "Delete", user_path(user.id), method: :delete, data: {confirm: "Are you sure?"} %>
         </li>
       <% end %>
@@ -22,8 +22,8 @@
     <ul>
       <% @documents.each do |doc| %>
         <li>
-          ID<%= doc.id %> -
-          <%= doc.title %> -
+          ID<%= doc.id %> -<span>
+          <%= doc.title %> -</span>
           <%= link_to "Show", document_path(doc.id) %> |
           <%= link_to "Edit", edit_document_path(doc.id) %> |
           <%= link_to "Delete", document_path(doc.id), method: :delete, data: {confirm: "Are you sure?"} %>
@@ -33,12 +33,12 @@
   </div>
 
   <h3>Subjects:</h3>
-  <div class="scrollbox">
+  <div class="scrollbox subjects-admin">
     <p><%= link_to "Add", new_subject_path %></p>
     <ul>
       <% @subjects.each do |subject| %>
-        <li>
-          <%= subject.name %> -
+        <li><span>
+          <%= subject.name %> -</span>
           <%= link_to "Edit", edit_subject_path(subject.id) %> |
           <%= link_to "Delete", subject_path(subject.id), method: :delete, data: {confirm: "Are you sure?"} %>
         </li>
@@ -47,17 +47,18 @@
   </div>
 
   <h3>Questions:</h3>
-  <div class="scrollbox">
+  <div class="scrollbox questions-admin">
     <ul>
       <% @questions.each do |question| %>
         <li>
-          ID<%= question.id %> -
+          ID<%= question.id %> -<span>
           <%= question.reason %> -
-          <%= question.content %> -
+          <%= question.email %> -</span>
           <%= link_to "Answer", new_question_answer_path(question.id) %> |
           <%= link_to "Show", question_path(question.id) %> |
           <%= link_to "Edit", edit_question_path(question.id) %> |
-          <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %>
+          <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %><br />
+          <span class="q">"<%= question.content %>"</span>
         </li>
       <% end %>
     </ul>
@@ -69,9 +70,9 @@
     <ul>
       <% @comments.each do |comment| %>
         <li>
-          ID<%= comment.id %> -
-          Doc <%= comment.document_id %> -
-          <%= comment.body %> -
+          ID<%= comment.id %> -<span>
+          Doc <%= comment.document_id %> -<span class="c">
+          "<%= comment.body %>" -</span></span>
           <%= link_to "Delete", delete_comment_path(comment.id), method: :delete, data: {confirm: "Are you sure?"} %>
         </li>
       <% end %>

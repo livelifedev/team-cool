@@ -1,19 +1,21 @@
-<div class="contactflex">
-  <div class="contact">
-    <h2>Answers to Questions</h2>
+<div class="answer-page">
+  <div class="contactflex">
+    <div class="contact">
+      <h2>Answers to Questions</h2>
 
-    <p>ID <%= @question.id %></p>
-    <p><%= @question.content %></p>
+      <p>ID <%= @question.id %></p>
+      <p><%= @question.content %></p>
 
-    <%= form_with(model: [@question, @answer], local: true) do |form| %>
-      <div class="field">
-        <%= form.label :content, "Provide answer:" %><br />
-        <%= form.text_field :content %>
-      </div>
+      <%= form_with(model: [@question, @answer], local: true) do |form| %>
+        <div class="field">
+          <%= form.label :content, "Provide answer:" %><br />
+          <%= form.text_field :content %>
+        </div>
 
-      <div class="contactsubmit">
-        <%= submit_tag "Submit" %>
-      </div>
-    <% end %>
+        <div class="contactsubmit">
+          <%= submit_tag "Submit" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
