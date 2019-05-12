@@ -44,7 +44,7 @@ user = User.create(
 )
 
 
-20.times do
+80.times do
   User.create(
     first_name: Faker::Name.first_name,
     surname: Faker::Name.last_name,
@@ -59,19 +59,19 @@ user = User.create(
   )
 end
 
-40.times do
+80.times do
   Document.create(
     :skip_validation => true,
     title: Faker::Book.title, 
     description: Faker::Quote.matz,
     doc_type: rand(3),
-    user_id: (rand(User.count) + 1)
+    user_id: (rand(User.count) + 1),
+    subject_ids: [rand(1..6)]
   )
 end
 
 Document.all.each do |x|
   x.file.attach(io: File.open('app/assets/files/test.pdf'), filename: 'test.pdf')
-  x.subject_ids = [rand(1..6)]
 end
 
 Bookmark.create(
