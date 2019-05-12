@@ -72,9 +72,3 @@ end
 Document.all.each do |x|
   x.file.attach(io: File.open('app/assets/files/test.pdf'), filename: 'test.pdf')
 end
-
-Bookmark.create(
-  user_id: (rand(User.count) + 1),
-  document_id: (rand(Document.count) + 1)
-)
-
