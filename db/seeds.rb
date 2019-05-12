@@ -13,7 +13,6 @@ subjects = Subject.create([
   { name: "Geography" },
   { name: "English" },
   { name: "Biology" },
-  { name: "Physics" }
 ])
 
 

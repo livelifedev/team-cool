@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :subjects, :results]
-  before_action :access, only: [:show]
+  before_action :access, only: [:show, :new]
   before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_action :set_types, only: [:new, :edit]
 

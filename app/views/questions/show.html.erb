@@ -7,7 +7,9 @@
 
   <h3>Answers:</h3>
   <% if @question.answers.any? %>
-    <p><%= render @question.answers %></p>
+    <% @question.answers.each do |q| %>
+      <p>q</p>
+    <% end %>
   <% else %>
     <p>No Answers yet.</p>
   <% end %>

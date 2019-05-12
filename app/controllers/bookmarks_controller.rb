@@ -7,6 +7,7 @@ class BookmarksController < ApplicationController
       @bookmark = @document.bookmarks.create(
         user_id: current_user.id
       )
+      flash[:notice] = "Bookmarked successfully."
       redirect_to document_path(@document)
     end
   end

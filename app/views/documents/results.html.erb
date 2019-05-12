@@ -8,58 +8,60 @@
       <% if @document.count <= 0 %>
         <p class="noresult">No results</p>
       <% else %>
-        <% @document.each do |document| %>
-        
-          <div class="listings">
-            <div class ="doctitle">
-              <h3>Author</h3>
-              <p><%= document.user.username %></p>
-            </div>
+        <div class="doc-index">
+          <% @document.each do |document| %>
+          
+            <div class="listings">
+              <div class ="doctitle">
+                <h3>Author</h3>
+                <p><%= document.user.username %></p>
+              </div>
 
-            <div class = "doctitle">
-              <h4>Title</h4>
-              <p><%= document.title %></p>
-            </div>
+              <div class = "doctitle">
+                <h4>Title</h4>
+                <p><%= document.title %></p>
+              </div>
 
-            <div class = "docdescribe">
-              <h4>Description</h4>
-              <p><%= truncate(document.description, length:100) %></p>
-            </div>
+              <div class = "docdescribe">
+                <h4>Description</h4>
+                <p><%= truncate(document.description, length:100) %></p>
+              </div>
 
-            <div class = "docsubject">
-              <h4>Subject</h4>
+              <div class = "docsubject">
+                <h4>Subject</h4>
+                  <ul>
+                    <% document.subjects.each do |sub| %>
+                      <li><%= sub.name %></li>
+                    <% end %>
+                  </ul>
+              </div>
+
+              <div class="doctype">
+                <h4>Document Type</h4>
+                <p><%= document.doc_type %></p>
+              </div>
+
+              <div class = "docrating">
+                <h4>Rating</h4>
+                <p>
+                  <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
+                  (<%= document.ratings.count %>)
+                </p>
+              </div>
+
+              <div class = "doclinks">
                 <ul>
-                  <% document.subjects.each do |sub| %>
-                    <li><%= sub.name %></li>
+                  <li><%= link_to "Show", document_path(document.id) %></li>
+                  <% if current_user && (current_user == document.user || current_user.admin) %>
+                    <li><%= link_to "Edit", edit_document_path(document.id) %></li>
+                    <li><%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %></li>
                   <% end %>
                 </ul>
+              </div>
             </div>
 
-            <div class="doctype">
-              <h4>Document Type</h4>
-              <p><%= document.doc_type %></p>
-            </div>
-
-            <div class = "docrating">
-              <h4>Rating</h4>
-              <p>
-                <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
-                (<%= document.ratings.count %>)
-              </p>
-            </div>
-
-            <div class = "doclinks">
-              <ul>
-                <li><%= link_to "Show", document_path(document.id) %></li>
-                <% if current_user && (current_user == document.user || current_user.admin) %>
-                  <li><%= link_to "Edit", edit_document_path(document.id) %></li>
-                  <li><%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <% end %>

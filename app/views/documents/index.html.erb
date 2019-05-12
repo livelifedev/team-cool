@@ -2,57 +2,59 @@
   <h2><%= @document_subjects.name %></h2>
 </div>
 
-<% @document_subjects.documents.each do |document| %>
-  <div class="listings">
+<div class="doc-index">
+  <% @document_subjects.documents.each do |document| %>
+    <div class="listings">
 
-    <div class ="doctitle">
-      <h3>Author</h3>
-      <p><%= document.user.username %></p>
+      <div class ="doctitle">
+        <h3>Author</h3>
+        <p><%= document.user.username %></p>
+      </div>
+
+      <div class = "doctitle">
+        <h5>Title</h5>
+        <p><%= document.title %></p>
+      </div>
+
+      <div class = "docdescribe">
+      <h5>Description</h5>
+        <p><%= truncate(document.description, length:100) %></p>
+      </div>
+
+      <div class = "docsubject">
+        <h5>Subject</h5>
+        <ul>
+          <% document.subjects.each do |sub| %>
+            <li><%= sub.name %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="doctype">
+        <h5>Document Type</h5>
+        <p><%= document.doc_type %></p>
+      </div>
+
+      <div class = "docrating">
+        <h5>Rating</h5>
+        <p>
+          <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
+          (<%= document.ratings.count %>)
+        </p>
+      </div>
+
+      <div class = "doclinks">
+        <ul>
+          <li><%= link_to "Show", document_path(document.id) %></li>
+          <% if current_user && (current_user == document.user || current_user.admin) %>
+            <li><%= link_to "Edit", edit_document_path(document.id) %></li>
+            <li><%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %></li>
+          <% end %>
+        </ul>
+      </div>
+
     </div>
-
-    <div class = "doctitle">
-      <h5>Title</h5>
-      <p><%= document.title %></p>
-    </div>
-
-    <div class = "docdescribe">
-    <h5>Description</h5>
-      <p><%= truncate(document.description, length:100) %></p>
-    </div>
-
-    <div class = "docsubject">
-      <h5>Subject</h5>
-      <ul>
-        <% document.subjects.each do |sub| %>
-          <li><%= sub.name %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="doctype">
-      <h5>Document Type</h5>
-      <p><%= document.doc_type %></p>
-    </div>
-
-    <div class = "docrating">
-      <h5>Rating</h5>
-      <p>
-        <%= number_with_precision document.ratings.average(:score), :precision => 1 %>
-        (<%= document.ratings.count %>)
-      </p>
-    </div>
-
-    <div class = "doclinks">
-      <ul>
-        <li><%= link_to "Show", document_path(document.id) %></li>
-        <% if current_user && (current_user == document.user || current_user.admin) %>
-          <li><%= link_to "Edit", edit_document_path(document.id) %></li>
-          <li><%= link_to 'Delete', document_path(document), method: :delete, data: {confirm: "Are you sure?"} %></li>
-        <% end %>
-      </ul>
-    </div>
-
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 

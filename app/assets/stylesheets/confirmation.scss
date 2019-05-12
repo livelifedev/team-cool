@@ -1,9 +1,23 @@
-  .confirmed p {
-    text-align: center;
-    margin-top: -3%;
-    font-size: 19px;
+  .confirmed {
+    p {
+      text-align: center;
+      margin-top: -3%;
+      font-size: 19px;
+    }
+
+    h1 {
+      margin-bottom: 50px;
+    }
   }
 
   .viewprofile {
     text-align: center;
+  }
+
+  .success-page {
+    margin: 200px auto;
+    width: 100%;
+    background-color: #D4CFCF;
+    text-align: center;
+    padding: 20px;
   }
