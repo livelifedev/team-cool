@@ -1,18 +1,19 @@
-<h2>Add a Subject</h2>
-<%= render 'shared/errors', obj: @subject %>
-<%= form_with model: @subject, local: true do |form| %>
-  <div class="uploadflex">
-    <div class="upload">
+<div class="subjects-page"> 
+  <%= render 'shared/errors', obj: @subject %>
+  <%= form_with model: @subject, local: true do |form| %>
+    <div class="uploadflex">
+      <div class="upload">
+        <h3>Add a Subject</h3>
+        <div class="uploadform">
+          <%= form.label :name, "Subject Name:" %>
+          <%= form.text_field :name %>
+        </div>
 
-      <div class="uploadform">
-        <%= form.label :name, "Subject Name" %>
-        <%= form.text_field :name %>
+        <div class="uploadform">
+          <%= form.submit %>
+        </div>
+
       </div>
-
-      <div class="uploadform">
-        <%= form.submit %>
-      </div>
-
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

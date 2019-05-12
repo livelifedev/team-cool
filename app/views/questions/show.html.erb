@@ -1,8 +1,11 @@
-<div>
+<div class="q-a">
   <h3>Question ID<%= @question.id %></h3>
   <p><%= @question.content %></p>
 
-  <h3>Answers</h3>
+    <h3>Email:</h3>
+    <p><%= @question.email %></p>
+
+  <h3>Answers:</h3>
   <% if @question.answers.any? %>
     <p><%= render @question.answers %></p>
   <% else %>
