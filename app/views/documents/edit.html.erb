@@ -1,11 +1,7 @@
 <body class="bg-light">
   <div class="container">
     <div class="docs">
-      <% if @document.errors.any? %>
-        <% @document.errors.full_messages.each do |error| %>
-          <p><%= error %></p>
-        <% end %>
-      <% end %>
+      <%= render 'shared/errors', obj: @document %>
 
       <%= form_with model: @document, local: true do |form| %>
         <div class="py-5 text-center">

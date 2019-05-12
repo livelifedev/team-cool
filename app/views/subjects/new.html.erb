@@ -1,5 +1,5 @@
 <h2>Add a Subject</h2>
-
+<%= render 'shared/errors', obj: @subject %>
 <%= form_with model: @subject, local: true do |form| %>
   <div class="uploadflex">
     <div class="upload">
