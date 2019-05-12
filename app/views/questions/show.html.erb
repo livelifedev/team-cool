@@ -8,7 +8,7 @@
   <h3>Answers:</h3>
   <% if @question.answers.any? %>
     <% @question.answers.each do |q| %>
-      <p>q</p>
+      <p><%= q.content %></p>
     <% end %>
   <% else %>
     <p>No Answers yet.</p>
